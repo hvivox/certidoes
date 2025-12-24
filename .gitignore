@@ -1,0 +1,83 @@
+# .gitignore padrão para projeto Java/Maven (Wicket)
+# Inclui artefatos de build, IDEs, arquivos do SO e chaves/keystores
+
+# Build
+/target/
+/build/
+/out/
+
+# Maven / Gradle
+/.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.apk
+*.exe
+
+# Logs
+*.log
+logs/
+
+# IDEs
+# IntelliJ
+/.idea/
+*.iml
+/out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# NetBeans
+nbproject/private/
+
+# VS Code
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment
+.env
+.env.*
+
+# Test / temporary
+*.tmp
+*.temp
+*.swp
+
+# keystores and secrets (don't commit private keys)
+# Exemplo no projeto: test/resources/keystore e target/test-classes/keystore
+/test/resources/keystore
+/target/test-classes/keystore
+/test/jetty/keystore
+**/keystore
+
+# IDE/OS specific thumbnails or caches
+*.class
+*.cache
+
+# Maven wrapper and local settings
+.settings/
+/.mvn/
+
+# Generated files
+/generated-sources/
+/generated-test-sources/
+
+# Ignore the WAR generated in workspace (if present)
+*.war
+
+# Optional: ignore local scripts/build artifacts
+deploy-run.bat
+
+# End of .gitignore
+
