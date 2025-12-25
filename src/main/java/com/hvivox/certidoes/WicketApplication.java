@@ -27,7 +27,11 @@ public class WicketApplication extends WebApplication
 	public void init()
 	{
 		super.init();
+		// Configurar encoding UTF-8 para todas as requisições
+		getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
 
-		// add your configuration here
+		// Garantir que o Content-Type seja configurado corretamente
+		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
+
 	}
 }

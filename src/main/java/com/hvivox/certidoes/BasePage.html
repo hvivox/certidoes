@@ -2,6 +2,7 @@
 <html xmlns:wicket="http://wicket.apache.org">
 <head>
     <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title wicket:id="appTitle">Certidões</title>
 
     <!-- Bootstrap (pra ficar com cara de sistema sem sofrer) -->
@@ -9,12 +10,32 @@
 </head>
 
 <body class="bg-light">
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <span class="navbar-brand mb-0 h1" wicket:id="appName">Certidões</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a wicket:id="linkHome" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a wicket:id="linkListar" class="nav-link">Listar Certidões</a>
+            </li>
+            <li class="nav-item">
+                <a wicket:id="linkNova" class="nav-link">Nova Certidão</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <div class="container mt-4">
     <wicket:child/>
 </div>
+
+<!-- Bootstrap JS (para o menu mobile funcionar) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
