@@ -2,9 +2,81 @@
 <html xmlns:wicket="http://wicket.apache.org">
 <body>
 <wicket:extend>
-    <h2>Detalhe da Certidão</h2>
-    <p>Implementaremos no Passo 4...</p>
+    <div wicket:id="headerContainer" class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Detalhe da Certidão</h2>
+        <div>
+            <a wicket:id="linkEditar" class="btn btn-warning mr-2">Editar</a>
+            <a wicket:id="linkVoltar" class="btn btn-secondary">Voltar</a>
+        </div>
+    </div>
+
+    <div wicket:id="certidaoContainer">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Informações da Certidão</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <strong>ID:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        <span wicket:id="id"></span>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <strong>Número:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        <span wicket:id="numero"></span>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <strong>Tipo:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        <span wicket:id="tipo"></span>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <strong>Interessado:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        <span wicket:id="interessado"></span>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <strong>Data de Emissão:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        <span wicket:id="dataEmissao"></span>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <strong>Status:</strong>
+                    </div>
+                    <div class="col-md-9">
+                        <span wicket:id="status" class="badge badge-secondary"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div wicket:id="notFoundMessage" class="alert alert-danger">
+        <p>Certidão não encontrada.</p>
+        <a wicket:id="linkVoltarNotFound" class="btn btn-secondary">Voltar para Lista</a>
+    </div>
 </wicket:extend>
 </body>
 </html>
-
