@@ -2,8 +2,49 @@
 <html xmlns:wicket="http://wicket.apache.org">
 <body>
 <wicket:extend>
-    <h2>Nova Certidão</h2>
-    <p>Formulário será implementado no Passo 3...</p>
+    <h2 wicket:id="titulo">Nova Certidão</h2>
+    
+    <form wicket:id="form">
+        <div class="form-group">
+            <label for="numero">Número <span class="text-danger">*</span></label>
+            <input wicket:id="numero" type="text" class="form-control" placeholder="Ex: 0001"/>
+            <span wicket:id="numeroFeedback"></span>
+        </div>
+        
+        <div class="form-group">
+            <label for="tipo">Tipo <span class="text-danger">*</span></label>
+            <select wicket:id="tipo" class="form-control">
+                <option value="">Selecione...</option>
+            </select>
+            <span wicket:id="tipoFeedback"></span>
+        </div>
+        
+        <div class="form-group">
+            <label for="interessado">Interessado <span class="text-danger">*</span></label>
+            <input wicket:id="interessado" type="text" class="form-control" placeholder="Nome do interessado"/>
+            <span wicket:id="interessadoFeedback"></span>
+        </div>
+        
+        <div class="form-group">
+            <label for="dataEmissao">Data de Emissão <span class="text-danger">*</span></label>
+            <input wicket:id="dataEmissao" type="text" class="form-control" placeholder="dd/MM/yyyy"/>
+            <small class="form-text text-muted">Formato: dd/MM/yyyy (ex: 25/12/2025)</small>
+            <span wicket:id="dataEmissaoFeedback"></span>
+        </div>
+        
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select wicket:id="status" class="form-control">
+                <option value="">Selecione...</option>
+            </select>
+            <span wicket:id="statusFeedback"></span>
+        </div>
+        
+        <div class="form-group">
+            <button wicket:id="salvar" type="submit" class="btn btn-primary">Salvar</button>
+            <a wicket:id="cancelar" class="btn btn-secondary ml-2">Cancelar</a>
+        </div>
+    </form>
 </wicket:extend>
 </body>
 </html>

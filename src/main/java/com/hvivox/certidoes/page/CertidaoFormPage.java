@@ -1,12 +1,147 @@
 package com.hvivox.certidoes.page;
 
 import com.hvivox.certidoes.BasePage;
+import com.hvivox.certidoes.domain.Certidao;
+import com.hvivox.certidoes.domain.CertidaoStatus;
+import com.hvivox.certidoes.domain.CertidaoTipo;
+import com.hvivox.certidoes.infra.CertidaoRepository;
+import com.hvivox.certidoes.infra.InMemoryCertidaoRepository;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.*;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.validation.validator.StringValidator;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
 
 public class CertidaoFormPage extends BasePage {
     private static final long serialVersionUID = 1L;
 
+    // Repositório (transient porque não é serializável - Wicket serializa páginas)
+    private transient CertidaoRepository repository;
+    private Certidao certidao;
+    private boolean isEditMode;
+
     public CertidaoFormPage(final PageParameters parameters) {
-        // Placeholder - implementaremos no Passo 3
+        super();
+
+        // Verificar se é edição (tem parâmetro id)
+        Long id = parameters.get("id").toOptionalLong();
+        isEditMode = (id != null);
+
+        if (isEditMode) {
+            // Modo edição: buscar certidão existente
+            certidao = getRepository().findById(id)
+                    .orElseThrow(() -> new RuntimeException("Certidão não encontrada"));
+        } else {
+            // Modo novo: criar certidão vazia
+            certidao = new Certidao();
+        }
+
+        // Criar formulário com modelo composto (bind automático)
+        Form<Certidao> form = new Form<Certidao>("form", new CompoundPropertyModel<>(certidao)) {
+            @Override
+            protected void onSubmit() {
+                // Validar data antes de salvar
+                String dataStr = certidao.getDataEmissao();
+                if (dataStr != null && !dataStr.isEmpty()) {
+                    if (!isValidDate(dataStr)) {
+                        error("Data de emissão inválida! Use o formato dd/MM/yyyy");
+                        return;
+                    }
+                }
+
+                // Salvar
+                getRepository().save(certidao);
+
+                if (isEditMode) {
+                    getSession().info("Certidão atualizada com sucesso!");
+                } else {
+                    getSession().info("Certidão cadastrada com sucesso!");
+                }
+
+                setResponsePage(CertidaoListPage.class);
+            }
+        };
+        add(form);
+
+        // Título da página (fora do form, dentro do wicket:extend)
+        Label titulo = new Label("titulo", isEditMode ? "Editar Certidão" : "Nova Certidão");
+        add(titulo);
+
+        // Campo Número (obrigatório)
+        TextField<String> numeroField = new TextField<>("numero");
+        numeroField.setRequired(true);
+        numeroField.add(StringValidator.minimumLength(1));
+        form.add(numeroField);
+        form.add(new WebMarkupContainer("numeroFeedback"));
+
+        // Campo Tipo (obrigatório) - Dropdown
+        DropDownChoice<CertidaoTipo> tipoField = new DropDownChoice<>("tipo",
+                Arrays.asList(CertidaoTipo.values()));
+        tipoField.setRequired(true);
+        tipoField.setNullValid(false);
+        form.add(tipoField);
+        form.add(new WebMarkupContainer("tipoFeedback"));
+
+        // Campo Interessado (obrigatório)
+        TextField<String> interessadoField = new TextField<>("interessado");
+        interessadoField.setRequired(true);
+        interessadoField.add(StringValidator.minimumLength(1));
+        form.add(interessadoField);
+        form.add(new WebMarkupContainer("interessadoFeedback"));
+
+        // Campo Data Emissão (obrigatório)
+        TextField<String> dataEmissaoField = new TextField<>("dataEmissao");
+        dataEmissaoField.setRequired(true);
+        dataEmissaoField.add(StringValidator.minimumLength(10));
+        form.add(dataEmissaoField);
+        form.add(new WebMarkupContainer("dataEmissaoFeedback"));
+
+        // Campo Status (opcional) - Dropdown
+        DropDownChoice<CertidaoStatus> statusField = new DropDownChoice<>("status",
+                Arrays.asList(CertidaoStatus.values()));
+        statusField.setNullValid(true);
+        form.add(statusField);
+        form.add(new WebMarkupContainer("statusFeedback"));
+
+        // Botões
+        form.add(new Button("salvar"));
+        form.add(new BookmarkablePageLink<>("cancelar", CertidaoListPage.class));
+    }
+
+    /**
+     * Obtém a instância do repositório (lazy initialization)
+     * Como o repositório usa dados estáticos, podemos criar uma nova instância
+     * quando necessário
+     */
+    private CertidaoRepository getRepository() {
+        if (repository == null) {
+            repository = new InMemoryCertidaoRepository();
+        }
+        return repository;
+    }
+
+    /**
+     * Valida se a data está no formato dd/MM/yyyy
+     */
+    private boolean isValidDate(String dateStr) {
+        if (dateStr == null || dateStr.length() != 10) {
+            return false;
+        }
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            sdf.setLenient(false); // Não aceitar datas inválidas como 32/13/2025
+            Date date = sdf.parse(dateStr);
+            // Verificar se a data parseada corresponde exatamente ao input
+            return sdf.format(date).equals(dateStr);
+        } catch (ParseException e) {
+            return false;
+        }
     }
 }
