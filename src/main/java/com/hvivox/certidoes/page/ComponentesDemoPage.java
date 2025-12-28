@@ -2,6 +2,8 @@ package com.hvivox.certidoes.page;
 
 import com.hvivox.certidoes.BasePage;
 import com.hvivox.certidoes.HomePage;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.*;
@@ -73,22 +75,57 @@ public class ComponentesDemoPage extends BasePage {
         add(labelDinamico);
 
         // ============================================================
-        // 2. TEXTFIELD - Campo de texto simples
+        // 2. TEXTFIELD - Campo de texto simples com Ajax
         // ============================================================
-        TextField<String> campoTexto = new TextField<>("campoTexto", 
+        // Usando Ajax para atualizar o valor em tempo real sem recarregar a página
+        TextField<String> campoTexto = new TextField<>("campoTexto",
                 new PropertyModel<>(this, "textoSimples"));
         campoTexto.add(StringValidator.minimumLength(3));
-        add(campoTexto);
+        campoTexto.setOutputMarkupId(true); // Necessário para Ajax
 
         // Label que mostra o valor digitado
-        Label valorDigitado = new Label("valorDigitado", 
+        // IMPORTANTE: setOutputMarkupId(true) é obrigatório para atualização via Ajax
+        Label valorDigitado = new Label("valorDigitado",
                 new PropertyModel<>(this, "textoSimples"));
+        valorDigitado.setOutputMarkupId(true); // Necessário para Ajax identificar o componente
+
+        // AjaxFormComponentUpdatingBehavior processa o valor do campo automaticamente
+        // antes de executar o onUpdate, garantindo que o modelo seja atualizado
+        campoTexto.add(new AjaxFormComponentUpdatingBehavior("keyup") {
+            @Override
+            protected void onUpdate(AjaxRequestTarget target) {
+                // O valor do campo já foi processado e atualizado no modelo
+                // Agora atualizamos o label para mostrar o novo valor
+                target.add(valorDigitado);
+            }
+
+            @Override
+            protected void onError(AjaxRequestTarget target, RuntimeException e) {
+                // Em caso de erro de validação, ainda atualiza o label
+                target.add(valorDigitado);
+            }
+        });
+
+        // Também atualiza quando o campo perde o foco (blur)
+        campoTexto.add(new AjaxFormComponentUpdatingBehavior("blur") {
+            @Override
+            protected void onUpdate(AjaxRequestTarget target) {
+                target.add(valorDigitado);
+            }
+
+            @Override
+            protected void onError(AjaxRequestTarget target, RuntimeException e) {
+                target.add(valorDigitado);
+            }
+        });
+
+        add(campoTexto);
         add(valorDigitado);
 
         // ============================================================
         // 3. TEXTFIELD COM VALIDAÇÃO DE EMAIL
         // ============================================================
-        TextField<String> campoEmail = new TextField<>("campoEmail", 
+        TextField<String> campoEmail = new TextField<>("campoEmail",
                 new PropertyModel<>(this, "email"));
         campoEmail.setRequired(true);
         campoEmail.add(EmailAddressValidator.getInstance());
@@ -97,7 +134,7 @@ public class ComponentesDemoPage extends BasePage {
         // ============================================================
         // 4. TEXTAREA - Área de texto multilinha
         // ============================================================
-        TextArea<String> areaTexto = new TextArea<>("areaTexto", 
+        TextArea<String> areaTexto = new TextArea<>("areaTexto",
                 new PropertyModel<>(this, "textoLongo"));
         areaTexto.setRequired(false);
         add(areaTexto);
@@ -105,11 +142,11 @@ public class ComponentesDemoPage extends BasePage {
         // ============================================================
         // 5. CHECKBOX - Caixa de seleção
         // ============================================================
-        CheckBox checkbox = new CheckBox("checkbox", 
+        CheckBox checkbox = new CheckBox("checkbox",
                 new PropertyModel<>(this, "aceito"));
         add(checkbox);
 
-        Label statusCheckbox = new Label("statusCheckbox", 
+        Label statusCheckbox = new Label("statusCheckbox",
                 new PropertyModel<>(this, "aceito"));
         add(statusCheckbox);
 
@@ -117,10 +154,10 @@ public class ComponentesDemoPage extends BasePage {
         // 6. RADIOGROUP - Grupo de botões de opção
         // ============================================================
         List<String> opcoes = Arrays.asList("Opção 1", "Opção 2", "Opção 3");
-        
-        RadioGroup<String> radioGroup = new RadioGroup<>("radioGroup", 
+
+        RadioGroup<String> radioGroup = new RadioGroup<>("radioGroup",
                 new PropertyModel<>(this, "opcaoSelecionada"));
-        
+
         // Adicionar cada opção como Radio
         for (int i = 0; i < opcoes.size(); i++) {
             String opcao = "opcao" + (i + 1);
@@ -128,10 +165,10 @@ public class ComponentesDemoPage extends BasePage {
             radio.setLabel(Model.of(opcoes.get(i)));
             radioGroup.add(radio);
         }
-        
+
         add(radioGroup);
 
-        Label opcaoSelecionadaLabel = new Label("opcaoSelecionadaLabel", 
+        Label opcaoSelecionadaLabel = new Label("opcaoSelecionadaLabel",
                 new PropertyModel<>(this, "opcaoSelecionada"));
         add(opcaoSelecionadaLabel);
 
@@ -139,13 +176,13 @@ public class ComponentesDemoPage extends BasePage {
         // 7. DROPDOWNCHOICE - Lista suspensa
         // ============================================================
         List<String> opcoesDropdown = Arrays.asList("Selecione...", "Java", "Python", "JavaScript", "C++", "Go");
-        DropDownChoice<String> dropdown = new DropDownChoice<>("dropdown", 
-                new PropertyModel<>(this, "itemSelecionado"), 
+        DropDownChoice<String> dropdown = new DropDownChoice<>("dropdown",
+                new PropertyModel<>(this, "itemSelecionado"),
                 opcoesDropdown);
         dropdown.setNullValid(true);
         add(dropdown);
 
-        Label itemSelecionadoLabel = new Label("itemSelecionadoLabel", 
+        Label itemSelecionadoLabel = new Label("itemSelecionadoLabel",
                 new PropertyModel<>(this, "itemSelecionado"));
         add(itemSelecionadoLabel);
 
@@ -165,13 +202,13 @@ public class ComponentesDemoPage extends BasePage {
         // ============================================================
         // 9. LINKS - Diferentes tipos de links
         // ============================================================
-        
+
         // BookmarkablePageLink - Link para outra página (URL amigável)
         add(new BookmarkablePageLink<>("linkAmigavelHome", HomePage.class));
-        
+
         // ExternalLink - Link para URL externa
         add(new ExternalLink("linkExterno", "https://wicket.apache.org", "Site do Wicket"));
-        
+
         // Link com ação customizada
         Link<Void> linkAcao = new Link<Void>("linkAcao") {
             @Override
@@ -198,7 +235,7 @@ public class ComponentesDemoPage extends BasePage {
         add(formDemo);
 
         // Adicionar campos ao formulário
-        TextField<String> formCampoTexto = new TextField<>("formCampoTexto", 
+        TextField<String> formCampoTexto = new TextField<>("formCampoTexto",
                 new PropertyModel<>(this, "textoSimples"));
         formCampoTexto.setRequired(true);
         formCampoTexto.add(StringValidator.minimumLength(5));
@@ -212,7 +249,7 @@ public class ComponentesDemoPage extends BasePage {
         // ============================================================
         WebMarkupContainer container = new WebMarkupContainer("container");
         container.setVisible(contador > 0); // Visível apenas se contador > 0
-        container.add(new Label("mensagemContainer", 
+        container.add(new Label("mensagemContainer",
                 "Este container só aparece quando o contador é maior que 0!"));
         add(container);
 
@@ -280,4 +317,3 @@ public class ComponentesDemoPage extends BasePage {
         this.contador = contador;
     }
 }
-
