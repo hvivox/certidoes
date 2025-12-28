@@ -65,7 +65,7 @@ public class ComponentesDemoPage extends BasePage {
         // ============================================================
         // 1. LABEL - Exibição de texto
         // ============================================================
-        add(new Label("titulo", "Demonstração de Componentes Wicket"));
+        add(new Label("tituloDemoPage", "Demonstração de Componentes Wicket"));
         add(new Label("subtitulo", "Esta página mostra os principais componentes do Apache Wicket"));
 
         // Label com modelo dinâmico (atualiza automaticamente)
@@ -167,7 +167,7 @@ public class ComponentesDemoPage extends BasePage {
         // ============================================================
         
         // BookmarkablePageLink - Link para outra página (URL amigável)
-        add(new BookmarkablePageLink<>("linkHome", HomePage.class));
+        add(new BookmarkablePageLink<>("linkAmigavelHome", HomePage.class));
         
         // ExternalLink - Link para URL externa
         add(new ExternalLink("linkExterno", "https://wicket.apache.org", "Site do Wicket"));
