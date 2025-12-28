@@ -1,7 +1,11 @@
 package com.hvivox.certidoes;
 
+import com.hvivox.certidoes.session.CertidoesSession;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.protocol.http.WebSession;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.Response;
 
 /**
  * Application object for your web application.
@@ -19,6 +23,23 @@ public class WicketApplication extends WebApplication {
 	@Override
 	public Class<? extends WebPage> getHomePage() {
 		return HomePage.class;
+	}
+
+	/**
+	 * Cria uma nova instância da Session customizada.
+	 * 
+	 * MÓDULO 2 - ITEM 1: SESSION CUSTOMIZADA
+	 * 
+	 * Este método é chamado automaticamente pelo Wicket quando uma nova sessão
+	 * precisa ser criada (primeira requisição do usuário).
+	 * 
+	 * @param request  Requisição HTTP atual
+	 * @param response Resposta HTTP atual
+	 * @return Nova instância da Session customizada (CertidoesSession)
+	 */
+	@Override
+	public WebSession newSession(Request request, Response response) {
+		return new CertidoesSession(request);
 	}
 
 	/**

@@ -2,8 +2,49 @@
 <html xmlns:wicket="http://wicket.apache.org">
 <body>
 <wicket:extend>
-    <h1 wicket:id="titulo"/>
-    <p>Primeira tela usando BasePage</p>
+    <div class="row">
+        <div class="col-12">
+            <h1 wicket:id="titulo"></h1>
+            <p class="lead">Sistema de Gerenciamento de Certidões</p>
+        </div>
+    </div>
+
+    <!-- MÓDULO 2 - ITEM 1: Dashboard da Session Customizada -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h3>📊 Estatísticas da Sessão</h3>
+            <p class="text-muted">
+                Este contador mostra quantas certidões foram excluídas nesta sessão.
+                Os dados são armazenados na Session e persistem entre requisições.
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-4 offset-md-4">
+            <div class="card text-center border-danger">
+                <div class="card-body">
+                    <h5 class="card-title">Certidões Excluídas</h5>
+                    <h2 class="text-danger" wicket:id="certidoesExcluidas">0</h2>
+                    <p class="text-muted small mb-0">Nesta sessão</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="alert alert-info">
+                <h6>💡 Como funciona a Session Customizada:</h6>
+                <ul class="mb-0">
+                    <li>O contador é incrementado automaticamente quando você exclui uma certidão</li>
+                    <li>Os dados persistem entre requisições (navegue para outras páginas e volte aqui)</li>
+                    <li>A Session expira quando você fecha o navegador ou após timeout do servidor</li>
+                    <li>Esta é uma demonstração prática do conceito de Session no Wicket</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </wicket:extend>
 </body>
 </html>
