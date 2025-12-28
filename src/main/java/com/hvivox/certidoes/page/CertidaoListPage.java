@@ -65,6 +65,12 @@ public class CertidaoListPage extends BasePage {
                     public void onClick() {
                         Long certidaoId = certidao.getId();
                         getRepository().delete(certidaoId);
+
+                        // MÓDULO 2 - ITEM 1: Incrementar contador na Session customizada
+                        com.hvivox.certidoes.session.CertidoesSession session = com.hvivox.certidoes.session.CertidoesSession
+                                .get();
+                        session.incrementarCertidoesExcluidas();
+
                         getSession().info("Certidão excluída com sucesso!");
                         setResponsePage(CertidaoListPage.class);
                     }
