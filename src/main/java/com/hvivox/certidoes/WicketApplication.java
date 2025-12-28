@@ -9,29 +9,53 @@ import org.apache.wicket.protocol.http.WebApplication;
  * 
  * @see com.hvivox.certidoes.Start#main(String[])
  */
-public class WicketApplication extends WebApplication
-{
+public class WicketApplication extends WebApplication {
 	/**
-	 * @see org.apache.wicket.Application#getHomePage()
+	 * Define qual página será exibida quando o usuário acessar a raiz da aplicação.
+	 * Esta é a página inicial (home page) da aplicação.
+	 * 
+	 * @return A classe da página inicial (HomePage)
 	 */
 	@Override
-	public Class<? extends WebPage> getHomePage()
-	{
+	public Class<? extends WebPage> getHomePage() {
 		return HomePage.class;
 	}
 
 	/**
+	 * Método de inicialização da aplicação Wicket.
+	 * Aqui são feitas todas as configurações globais da aplicação.
+	 * 
+	 * CONFIGURAÇÕES REALIZADAS:
+	 * - Encoding UTF-8: garante suporte a caracteres especiais (acentos, etc.)
+	 * - Markup encoding: configuração de encoding para arquivos HTML
+	 * 
+	 * OUTRAS CONFIGURAÇÕES POSSÍVEIS:
+	 * - getDebugSettings(): configurações de debug
+	 * - getResourceSettings(): configurações de recursos (CSS, JS, imagens)
+	 * - getSecuritySettings(): configurações de segurança
+	 * - getApplicationSettings(): configurações gerais
+	 * - getPageSettings(): configurações de páginas
+	 * - getRequestCycleSettings(): configurações do ciclo de requisição
+	 * 
 	 * @see org.apache.wicket.Application#init()
 	 */
 	@Override
-	public void init()
-	{
+	public void init() {
 		super.init();
+
 		// Configurar encoding UTF-8 para todas as requisições
+		// Isso garante que caracteres especiais (acentos, ç, etc.) sejam tratados
+		// corretamente
 		getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
 
 		// Garantir que o Content-Type seja configurado corretamente
+		// Define o encoding padrão para arquivos de markup (HTML)
 		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
 
+		// EXEMPLO: Configurar modo de desenvolvimento (útil para debug)
+		// getDebugSettings().setDevelopmentUtilitiesEnabled(true);
+
+		// EXEMPLO: Configurar recursos estáticos
+		// getResourceSettings().setResourcePollFrequency(Duration.seconds(1));
 	}
 }
