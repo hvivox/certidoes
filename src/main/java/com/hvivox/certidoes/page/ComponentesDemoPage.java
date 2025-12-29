@@ -299,6 +299,39 @@ public class ComponentesDemoPage extends BasePage {
 
         // Agora adicionar o container à página
         add(componenteContainer);
+
+        // ============================================================
+        // 14. BEHAVIOR CUSTOMIZADO - ConfirmacaoBehavior
+        // ============================================================
+        // MÓDULO 2 - ITEM 2: Behavior Customizado
+        // 
+        // Este exemplo demonstra como criar e usar um Behavior customizado:
+        // - Behavior adiciona comportamento a componentes sem modificar sua classe
+        // - Reutilizável: pode ser usado em qualquer componente (Link, Button, etc.)
+        // - Encapsulado: lógica separada do componente
+
+        // Link de exemplo com confirmação customizada
+        Link<Void> linkComConfirmacao = new Link<Void>("linkComConfirmacao") {
+            @Override
+            public void onClick() {
+                contador += 10;
+                getSession().success("Ação confirmada! Contador incrementado em 10.");
+            }
+        };
+        linkComConfirmacao.add(new com.hvivox.certidoes.behavior.ConfirmacaoBehavior(
+                "Tem certeza que deseja incrementar o contador em 10?"));
+        add(linkComConfirmacao);
+
+        // Link com mensagem padrão
+        Link<Void> linkComConfirmacaoPadrao = new Link<Void>("linkComConfirmacaoPadrao") {
+            @Override
+            public void onClick() {
+                contador = 0;
+                getSession().info("Contador resetado!");
+            }
+        };
+        linkComConfirmacaoPadrao.add(new com.hvivox.certidoes.behavior.ConfirmacaoBehavior());
+        add(linkComConfirmacaoPadrao);
     }
 
     // Getters e Setters para os modelos

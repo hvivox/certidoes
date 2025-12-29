@@ -63,7 +63,7 @@ public class CertidaoListPage extends BasePage {
                         params);
                 item.add(linkEditar);
 
-                // Link Excluir com confirmação (onclick está no HTML)
+                // Link Excluir com confirmação usando Behavior customizado (MÓDULO 2 - ITEM 2)
                 Link<Void> linkExcluir = new Link<Void>("linkExcluir") {
                     @Override
                     public void onClick() {
@@ -79,6 +79,9 @@ public class CertidaoListPage extends BasePage {
                         setResponsePage(CertidaoListPage.class);
                     }
                 };
+                // Adicionar o Behavior de confirmação
+                linkExcluir.add(new com.hvivox.certidoes.behavior.ConfirmacaoBehavior(
+                        "Tem certeza que deseja excluir esta certidão?"));
                 item.add(linkExcluir);
             }
         };

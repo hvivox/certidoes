@@ -161,18 +161,43 @@
 
     <div class="row mt-4">
         <div class="col-12">
-            <h2>Componente Customizado - CertidaoCard (Tríade do Wicket)</h2>
+            <h2>13. Componente Customizado - CertidaoCard (Tríade do Wicket)</h2>
             <p>
-                 Este exemplo demonstra um <strong>COMPONENTE</strong>:
+                <strong>MÓDULO 2 - ITEM 1:</strong> Este exemplo demonstra a <strong>TRÍADE DO WICKET</strong>:
             </p>
             <ul>
                 <li><strong>COMPONENT:</strong> <code>CertidaoCard.java</code> - Classe Java que define a lógica</li>
                 <li><strong>MARKUP:</strong> <code>CertidaoCard.html</code> - Arquivo HTML que define a estrutura visual</li>
                 <li><strong>MODEL:</strong> <code>IModel&lt;Certidao&gt;</code> - Fornece os dados da certidão</li>
             </ul>
+            <p>
+                <strong>Como usar:</strong> <code>add(new CertidaoCard("id", Model.of(certidao)));</code>
+            </p>
             <div wicket:id="componenteContainer">
                 <div wicket:id="certidaoCardExemplo"></div>
             </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>14. Behavior Customizado - ConfirmacaoBehavior</h2>
+            <p>
+                <strong>MÓDULO 2 - ITEM 2:</strong> Este exemplo demonstra como criar e usar um <strong>BEHAVIOR</strong> customizado:
+            </p>
+            <ul>
+                <li><strong>Behavior:</strong> Adiciona comportamento a componentes sem modificar sua classe</li>
+                <li><strong>Reutilizável:</strong> Pode ser usado em qualquer componente (Link, Button, etc.)</li>
+                <li><strong>Encapsulado:</strong> Lógica separada do componente</li>
+                <li><strong>Flexível:</strong> Mensagem de confirmação customizável</li>
+            </ul>
+            <p>
+                <strong>Como usar:</strong> <code>link.add(new ConfirmacaoBehavior("Mensagem?"));</code>
+            </p>
+            <p>
+                <a wicket:id="linkComConfirmacao" class="btn btn-warning">Ação com Confirmação Customizada</a>
+                <a wicket:id="linkComConfirmacaoPadrao" class="btn btn-secondary ml-2">Ação com Confirmação Padrão</a>
+            </p>
         </div>
     </div>
 </wicket:extend>
