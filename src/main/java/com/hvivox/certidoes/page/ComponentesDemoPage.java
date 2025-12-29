@@ -76,6 +76,36 @@ public class ComponentesDemoPage extends BasePage {
         add(new Label("tituloDemoPage", "Demonstração de Componentes Wicket"));
         add(new Label("subtitulo", "Esta página mostra os principais componentes do Apache Wicket"));
 
+        // ============================================================
+        // MÓDULO 2 - ITEM 3: DOCUMENTAÇÕES
+        // ============================================================
+        // Adicionar conteúdo das documentações sobre Arquitetura do Wicket
+        // As documentações estão em classes separadas no pacote 'documentacao'
+
+        // Documentação: Session Store
+        Label labelDocSessionStore = new Label("docSessionStore",
+                com.hvivox.certidoes.documentacao.SessionStoreDocumentacao.getConteudo());
+        labelDocSessionStore.setEscapeModelStrings(false); // Permite HTML
+        add(labelDocSessionStore);
+
+        // Documentação: Segurança de Thread
+        Label labelDocSegurancaThread = new Label("docSegurancaThread",
+                com.hvivox.certidoes.documentacao.SegurancaThreadDocumentacao.getConteudo());
+        labelDocSegurancaThread.setEscapeModelStrings(false); // Permite HTML
+        add(labelDocSegurancaThread);
+
+        // Documentação: MVC do jeito Wicket
+        Label labelDocMVC = new Label("docMVC",
+                com.hvivox.certidoes.documentacao.MVCDocumentacao.getConteudo());
+        labelDocMVC.setEscapeModelStrings(false); // Permite HTML
+        add(labelDocMVC);
+
+        // Documentação: Arquitetura do Wicket
+        Label labelDocArquitetura = new Label("docArquitetura",
+                com.hvivox.certidoes.documentacao.ArquiteturaDocumentacao.getConteudo());
+        labelDocArquitetura.setEscapeModelStrings(false); // Permite HTML
+        add(labelDocArquitetura);
+
         // Label com modelo dinâmico (atualiza automaticamente)
         Label labelDinamico = new Label("labelDinamico", new PropertyModel<>(this, "contador"));
         add(labelDinamico);
@@ -304,7 +334,7 @@ public class ComponentesDemoPage extends BasePage {
         // 14. BEHAVIOR CUSTOMIZADO - ConfirmacaoBehavior
         // ============================================================
         // MÓDULO 2 - ITEM 2: Behavior Customizado
-        // 
+        //
         // Este exemplo demonstra como criar e usar um Behavior customizado:
         // - Behavior adiciona comportamento a componentes sem modificar sua classe
         // - Reutilizável: pode ser usado em qualquer componente (Link, Button, etc.)
@@ -333,6 +363,10 @@ public class ComponentesDemoPage extends BasePage {
         linkComConfirmacaoPadrao.add(new com.hvivox.certidoes.behavior.ConfirmacaoBehavior());
         add(linkComConfirmacaoPadrao);
     }
+
+    // ============================================================
+    // MÉTODOS PARA CRIAR DOCUMENTAÇÕES - MÓDULO 2 - ITEM 3
+    // ============================================================
 
     // Getters e Setters para os modelos
     public String getTextoSimples() {
