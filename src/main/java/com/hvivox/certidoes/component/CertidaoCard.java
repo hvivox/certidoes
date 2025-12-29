@@ -1,8 +1,6 @@
 package com.hvivox.certidoes.component;
 
 import com.hvivox.certidoes.domain.Certidao;
-import com.hvivox.certidoes.domain.CertidaoStatus;
-import com.hvivox.certidoes.domain.CertidaoTipo;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -62,10 +60,11 @@ public class CertidaoCard extends Panel {
         // Número da certidão
         add(new Label("numero", new PropertyModel<>(model, "numero")));
 
-        // Tipo da certidão (formatado)
-        Label tipoLabel = new Label("tipo",
-                Model.of(formatTipo(model.getObject() != null ? model.getObject().getTipo() : null)));
-        tipoLabel.setEscapeModelStrings(false); // Permite HTML no label
+        // Tipo da certidão (usando método do enum - refatorado)
+        Label tipoLabel = new Label("tipo", Model.of(
+                model.getObject() != null && model.getObject().getTipo() != null
+                        ? model.getObject().getTipo().getDescricao()
+                        : ""));
         add(tipoLabel);
 
         // Interessado
@@ -74,9 +73,12 @@ public class CertidaoCard extends Panel {
         // Data de emissão
         add(new Label("dataEmissao", new PropertyModel<>(model, "dataEmissao")));
 
-        // Badge de status (classe CSS baseada no status)
-        // Este componente exibe o status formatado com badge colorido
-        Label statusBadge = new Label("statusBadge", formatStatus(model.getObject()));
+        // Badge de status (usando método do enum - refatorado)
+        // O enum já retorna o HTML formatado do badge
+        Label statusBadge = new Label("statusBadge", Model.of(
+                model.getObject() != null && model.getObject().getStatus() != null
+                        ? model.getObject().getStatus().getBadgeHtml()
+                        : "<span class='badge badge-secondary'>Sem Status</span>"));
         statusBadge.setEscapeModelStrings(false); // Permite HTML no badge
         add(statusBadge);
 
@@ -85,62 +87,5 @@ public class CertidaoCard extends Panel {
         params.add("id", new PropertyModel<>(model, "id").getObject());
         add(new BookmarkablePageLink<>("linkDetalhes",
                 com.hvivox.certidoes.page.CertidaoDetailPage.class, params));
-    }
-
-    /**
-     * Formata o tipo da certidão para exibição.
-     * 
-     * @param tipo Tipo da certidão
-     * @return String formatada
-     */
-    private String formatTipo(CertidaoTipo tipo) {
-        if (tipo == null)
-            return "";
-        switch (tipo) {
-            case NEGATIVA:
-                return "Negativa";
-            case POSITIVA:
-                return "Positiva";
-            case POSITIVA_COM_EFEITO_DE_NEGATIVA:
-                return "Positiva com Efeito de Negativa";
-            default:
-                return tipo.toString();
-        }
-    }
-
-    /**
-     * Formata o status da certidão com badge HTML colorido.
-     * 
-     * @param certidao Certidão
-     * @return HTML do badge
-     */
-    private String formatStatus(Certidao certidao) {
-        if (certidao == null || certidao.getStatus() == null) {
-            return "<span class='badge badge-secondary'>Sem Status</span>";
-        }
-
-        CertidaoStatus status = certidao.getStatus();
-        String texto = "";
-        String classe = "";
-
-        switch (status) {
-            case RASCUNHO:
-                texto = "Rascunho";
-                classe = "badge-secondary";
-                break;
-            case EMITIDA:
-                texto = "Emitida";
-                classe = "badge-success";
-                break;
-            case CANCELADA:
-                texto = "Cancelada";
-                classe = "badge-danger";
-                break;
-            default:
-                texto = status.toString();
-                classe = "badge-secondary";
-        }
-
-        return "<span class='badge " + classe + "'>" + texto + "</span>";
     }
 }

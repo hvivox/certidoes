@@ -40,10 +40,14 @@ public class CertidaoListPage extends BasePage {
                 // Colunas simples
                 item.add(new Label("id", certidao.getId()));
                 item.add(new Label("numero", certidao.getNumero()));
-                item.add(new Label("tipo", formatTipo(certidao.getTipo())));
+                // Tipo usando método do enum (refatorado)
+                item.add(new Label("tipo",
+                        certidao.getTipo() != null ? certidao.getTipo().getDescricao() : ""));
                 item.add(new Label("interessado", certidao.getInteressado()));
                 item.add(new Label("dataEmissao", certidao.getDataEmissao()));
-                item.add(new Label("status", formatStatus(certidao.getStatus())));
+                // Status usando método do enum (refatorado)
+                item.add(new Label("status",
+                        certidao.getStatus() != null ? certidao.getStatus().getDescricao() : ""));
 
                 // Links de ação
                 PageParameters params = new PageParameters();
@@ -99,41 +103,5 @@ public class CertidaoListPage extends BasePage {
             repository = new InMemoryCertidaoRepository();
         }
         return repository;
-    }
-
-    /**
-     * Formata o tipo da certidão para exibição
-     */
-    private String formatTipo(com.hvivox.certidoes.domain.CertidaoTipo tipo) {
-        if (tipo == null)
-            return "";
-        switch (tipo) {
-            case NEGATIVA:
-                return "Negativa";
-            case POSITIVA:
-                return "Positiva";
-            case POSITIVA_COM_EFEITO_DE_NEGATIVA:
-                return "Positiva com Efeito de Negativa";
-            default:
-                return tipo.toString();
-        }
-    }
-
-    /**
-     * Formata o status da certidão para exibição
-     */
-    private String formatStatus(com.hvivox.certidoes.domain.CertidaoStatus status) {
-        if (status == null)
-            return "";
-        switch (status) {
-            case RASCUNHO:
-                return "Rascunho";
-            case EMITIDA:
-                return "Emitida";
-            case CANCELADA:
-                return "Cancelada";
-            default:
-                return status.toString();
-        }
     }
 }
