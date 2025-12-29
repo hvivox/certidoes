@@ -1,5 +1,6 @@
 package com.hvivox.certidoes;
 
+import com.hvivox.certidoes.listener.CertidoesRequestCycleListener;
 import com.hvivox.certidoes.session.CertidoesSession;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -72,6 +73,10 @@ public class WicketApplication extends WebApplication {
 		// Garantir que o Content-Type seja configurado corretamente
 		// Define o encoding padrão para arquivos de markup (HTML)
 		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
+
+		// MÓDULO 2 - ITEM 2: Adicionar RequestCycleListener
+		// Intercepta o ciclo de requisição para logging e monitoramento
+		getRequestCycleListeners().add(new CertidoesRequestCycleListener());
 
 		// EXEMPLO: Configurar modo de desenvolvimento (útil para debug)
 		// getDebugSettings().setDevelopmentUtilitiesEnabled(true);
