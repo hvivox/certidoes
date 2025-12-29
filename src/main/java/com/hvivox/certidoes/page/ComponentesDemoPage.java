@@ -2,6 +2,12 @@ package com.hvivox.certidoes.page;
 
 import com.hvivox.certidoes.BasePage;
 import com.hvivox.certidoes.HomePage;
+import com.hvivox.certidoes.component.CertidaoCard;
+import com.hvivox.certidoes.domain.Certidao;
+import com.hvivox.certidoes.domain.CertidaoStatus;
+import com.hvivox.certidoes.domain.CertidaoTipo;
+import com.hvivox.certidoes.infra.CertidaoRepository;
+import com.hvivox.certidoes.infra.InMemoryCertidaoRepository;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -254,10 +260,45 @@ public class ComponentesDemoPage extends BasePage {
         add(container);
 
         // ============================================================
-        // 12. FEEDBACKPANEL - Já está na BasePage, mas podemos adicionar mais
+        // COMPONENTE CUSTOMIZADO - CertidaoCard (Demonstra Tríade do Wicket)
         // ============================================================
-        // O FeedbackPanel já está na BasePage
-        // Use getSession().info(), error(), success(), warn() para adicionar mensagens
+        // 1. COMPONENT: CertidaoCard.java (classe Java)
+        // 2. MARKUP: CertidaoCard.html (arquivo HTML)
+        // 3. MODEL: IModel<Certidao> (fornece os dados)
+
+        // IMPORTANTE: Criar o container PRIMEIRO
+        // O componente deve ser adicionado ao container, não diretamente à página
+        WebMarkupContainer componenteContainer = new WebMarkupContainer("componenteContainer");
+        componenteContainer.setVisible(true);
+
+        // Buscar algumas certidões do repositório para demonstrar
+        CertidaoRepository repo = new InMemoryCertidaoRepository();
+        List<Certidao> certidoes = repo.findAll();
+
+        // Criar o componente CertidaoCard
+        CertidaoCard certidaoCard;
+
+        // Se houver certidões, exibir o primeiro como exemplo
+        if (!certidoes.isEmpty()) {
+            Certidao exemploCertidao = certidoes.get(0);
+            certidaoCard = new CertidaoCard("certidaoCardExemplo", Model.of(exemploCertidao));
+        } else {
+            // Se não houver certidões, criar uma de exemplo
+            Certidao exemploCertidao = new Certidao();
+            exemploCertidao.setId(999L);
+            exemploCertidao.setNumero("12345/2024");
+            exemploCertidao.setTipo(CertidaoTipo.POSITIVA);
+            exemploCertidao.setInteressado("João da Silva");
+            exemploCertidao.setDataEmissao("15/01/2024");
+            exemploCertidao.setStatus(CertidaoStatus.EMITIDA);
+            certidaoCard = new CertidaoCard("certidaoCardExemplo", Model.of(exemploCertidao));
+        }
+
+        // Adicionar o componente AO CONTAINER (não à página diretamente)
+        componenteContainer.add(certidaoCard);
+
+        // Agora adicionar o container à página
+        add(componenteContainer);
     }
 
     // Getters e Setters para os modelos
