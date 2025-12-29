@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<!-- 
+    // ============================================================
+    // COMPONENTE CUSTOMIZADO - CertidaoCard (Demonstra Tríade do Wicket)
+    // ============================================================
+    
+    Este arquivo HTML define a estrutura visual do componente.
+
+-->
+<wicket:panel>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5 class="card-title">
+                        Certidão <span wicket:id="numero">Nº</span>
+                    </h5>
+                    <p class="card-text mb-1">
+                        <strong>Tipo:</strong> <span wicket:id="tipo">Tipo</span>
+                    </p>
+                    <p class="card-text mb-1">
+                        <strong>Interessado:</strong> <span wicket:id="interessado">Nome</span>
+                    </p>
+                    <p class="card-text mb-1">
+                        <strong>Data de Emissão:</strong> <span wicket:id="dataEmissao">dd/MM/yyyy</span>
+                    </p>
+                    <p class="card-text">
+                        <strong>Status:</strong> <span wicket:id="statusBadge">Status</span>
+                    </p>
+                </div>
+                <div class="col-md-4 text-right">
+                    <a wicket:id="linkDetalhes" class="btn btn-primary btn-sm">
+                        Ver Detalhes
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</wicket:panel>
+</body>
+</html>
+
