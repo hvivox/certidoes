@@ -239,5 +239,143 @@ public class ModelosDocumentacao {
         
         return html.toString();
     }
+
+    /**
+     * Retorna o conteúdo HTML formatado da documentação sobre LoadableDetachableModel.
+     * 
+     * ITEM 7: LoadableDetachableModel
+     * 
+     * @return HTML formatado com a documentação
+     */
+    public static String getConteudoLoadableDetachableModel() {
+        StringBuilder html = new StringBuilder();
+        html.append("<h6>LoadableDetachableModel</h6>");
+        html.append("<p>O <code>LoadableDetachableModel</code> é um tipo especial de Model que carrega objetos sob demanda e os libera da memória automaticamente.</p>");
+        
+        html.append("<h6>O que é LoadableDetachableModel?</h6>");
+        html.append("<p>É uma classe abstrata do Wicket que estende <code>AbstractReadOnlyModel</code> e implementa o padrão <strong>Lazy Loading</strong>.</p>");
+        html.append("<p>Diferente de <code>Model.of()</code>, o <code>LoadableDetachableModel</code> não mantém o objeto em memória entre requisições.</p>");
+        
+        html.append("<h6>Como Funciona?</h6>");
+        html.append("<p>O <code>LoadableDetachableModel</code> funciona em três etapas:</p>");
+        html.append("<ol>");
+        html.append("<li><strong>load()</strong>: Carrega o objeto quando necessário (lazy loading)</li>");
+        html.append("<li><strong>attach()</strong>: Mantém o objeto em memória durante o processamento da requisição</li>");
+        html.append("<li><strong>detach()</strong>: Libera o objeto da memória após o uso</li>");
+        html.append("</ol>");
+        
+        html.append("<h6>Estrutura da Classe:</h6>");
+        html.append("<pre><code>");
+        html.append("public abstract class LoadableDetachableModel&lt;T&gt; extends AbstractReadOnlyModel&lt;T&gt; {\n");
+        html.append("    protected abstract T load();  // Você implementa este método\n");
+        html.append("    // attach() e detach() são gerenciados automaticamente pelo Wicket\n");
+        html.append("}\n");
+        html.append("</code></pre>");
+        
+        html.append("<h6>Vantagens do LoadableDetachableModel:</h6>");
+        html.append("<ul>");
+        html.append("<li><strong>Evita problemas de serialização</strong>: Apenas dados leves (como ID) são serializados, não o objeto completo</li>");
+        html.append("<li><strong>Lazy Loading</strong>: O objeto só é carregado quando realmente necessário</li>");
+        html.append("<li><strong>Performance</strong>: Libera memória automaticamente após o uso</li>");
+        html.append("<li><strong>Segurança</strong>: Evita manter objetos grandes em memória entre requisições</li>");
+        html.append("<li><strong>Atualização automática</strong>: Se o objeto mudar no banco, será recarregado na próxima requisição</li>");
+        html.append("</ul>");
+        
+        html.append("<h6>Quando Usar LoadableDetachableModel?</h6>");
+        html.append("<ul>");
+        html.append("<li>Objetos pesados (entidades JPA, objetos grandes)</li>");
+        html.append("<li>Objetos que vêm de banco de dados</li>");
+        html.append("<li>Quando você quer evitar problemas de serialização</li>");
+        html.append("<li>Quando o objeto pode mudar entre requisições</li>");
+        html.append("<li>Quando você não quer manter o objeto em memória entre requisições</li>");
+        html.append("</ul>");
+        
+        html.append("<h6>Exemplo de Implementação:</h6>");
+        html.append("<pre><code>");
+        html.append("public class CertidaoLoadableDetachableModel extends LoadableDetachableModel&lt;Certidao&gt; {\n");
+        html.append("    private final Long certidaoId;  // Apenas o ID é serializado\n");
+        html.append("    private transient CertidaoRepository repository;  // Não serializável\n");
+        html.append("\n");
+        html.append("    public CertidaoLoadableDetachableModel(Long certidaoId) {\n");
+        html.append("        this.certidaoId = certidaoId;\n");
+        html.append("    }\n");
+        html.append("\n");
+        html.append("    @Override\n");
+        html.append("    protected Certidao load() {\n");
+        html.append("        // Carrega do repositório/banco de dados\n");
+        html.append("        return repository.findById(certidaoId).orElseThrow(...);\n");
+        html.append("    }\n");
+        html.append("}\n");
+        html.append("</code></pre>");
+        
+        html.append("<h6>Exemplo de Uso:</h6>");
+        html.append("<pre><code>");
+        html.append("// Criar o Model com o ID\n");
+        html.append("CertidaoLoadableDetachableModel model = new CertidaoLoadableDetachableModel(1L);\n");
+        html.append("\n");
+        html.append("// Usar o Model em componentes\n");
+        html.append("add(new Label(\"numero\", new PropertyModel&lt;&gt;(model, \"numero\")));\n");
+        html.append("add(new Label(\"interessado\", new PropertyModel&lt;&gt;(model, \"interessado\")));\n");
+        html.append("</code></pre>");
+        
+        html.append("<h6>Comparação: Model.of() vs LoadableDetachableModel</h6>");
+        html.append("<table class=\"table table-bordered\">");
+        html.append("<thead>");
+        html.append("<tr>");
+        html.append("<th>Aspecto</th>");
+        html.append("<th>Model.of()</th>");
+        html.append("<th>LoadableDetachableModel</th>");
+        html.append("</tr>");
+        html.append("</thead>");
+        html.append("<tbody>");
+        html.append("<tr>");
+        html.append("<td><strong>Serialização</strong></td>");
+        html.append("<td>Serializa o objeto completo</td>");
+        html.append("<td>Serializa apenas dados leves (ID)</td>");
+        html.append("</tr>");
+        html.append("<tr>");
+        html.append("<td><strong>Memória</strong></td>");
+        html.append("<td>Mantém objeto em memória</td>");
+        html.append("<td>Libera objeto após uso</td>");
+        html.append("</tr>");
+        html.append("<tr>");
+        html.append("<td><strong>Carregamento</strong></td>");
+        html.append("<td>Imediato</td>");
+        html.append("<td>Sob demanda (lazy)</td>");
+        html.append("</tr>");
+        html.append("<tr>");
+        html.append("<td><strong>Atualização</strong></td>");
+        html.append("<td>Objeto pode ficar desatualizado</td>");
+        html.append("<td>Recarrega a cada requisição</td>");
+        html.append("</tr>");
+        html.append("<tr>");
+        html.append("<td><strong>Uso recomendado</strong></td>");
+        html.append("<td>Valores simples, imutáveis</td>");
+        html.append("<td>Objetos pesados, de banco de dados</td>");
+        html.append("</tr>");
+        html.append("</tbody>");
+        html.append("</table>");
+        
+        html.append("<h6>Exemplo no Projeto:</h6>");
+        html.append("<p>Veja <code>CertidaoLoadableDetachableModel.java</code> que demonstra uma implementação completa.</p>");
+        html.append("<p>Este Model pode ser usado em qualquer página que precise exibir dados de uma Certidão sem manter o objeto em memória.</p>");
+        
+        html.append("<h6>Boas Práticas:</h6>");
+        html.append("<ul>");
+        html.append("<li>Armazene apenas dados leves no Model (IDs, chaves primárias)</li>");
+        html.append("<li>Marque dependências não serializáveis como <code>transient</code></li>");
+        html.append("<li>Recrie dependências no método <code>load()</code> se necessário</li>");
+        html.append("<li>Use para objetos que vêm de banco de dados ou serviços externos</li>");
+        html.append("<li>Evite usar para objetos simples ou valores primitivos</li>");
+        html.append("</ul>");
+        
+        html.append("<h6>Links Relacionados:</h6>");
+        html.append("<ul>");
+        html.append("<li><a href=\"https://wicket.apache.org/learn/guide/models.html#models_3\" target=\"_blank\">Documentação Oficial: LoadableDetachableModel</a></li>");
+        html.append("<li><a href=\"https://cwiki.apache.org/confluence/display/WICKET/LoadableDetachableModel\" target=\"_blank\">LoadableDetachableModel (Wiki)</a></li>");
+        html.append("</ul>");
+        
+        return html.toString();
+    }
 }
 

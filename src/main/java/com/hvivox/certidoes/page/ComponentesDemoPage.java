@@ -121,6 +121,12 @@ public class ComponentesDemoPage extends BasePage {
         labelDocPadroesModels.setEscapeModelStrings(false); // Permite HTML
         add(labelDocPadroesModels);
 
+        // Documentação: LoadableDetachableModel (Módulo 3 - Item 7)
+        Label labelDocLoadableDetachableModel = new Label("docLoadableDetachableModel",
+                com.hvivox.certidoes.documentacao.ModelosDocumentacao.getConteudoLoadableDetachableModel());
+        labelDocLoadableDetachableModel.setEscapeModelStrings(false); // Permite HTML
+        add(labelDocLoadableDetachableModel);
+
         // Link para página de exemplos práticos de Models (dentro do collapse de
         // documentações)
         add(new BookmarkablePageLink<>("linkModelosDemo",
