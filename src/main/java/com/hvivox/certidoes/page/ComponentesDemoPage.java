@@ -124,11 +124,34 @@ public class ComponentesDemoPage extends BasePage {
         // Documentação: LoadableDetachableModel (Módulo 3 - Item 7)
         Label labelDocLoadableDetachableModel = new Label("docLoadableDetachableModel",
                 com.hvivox.certidoes.documentacao.ModelosDocumentacao.getConteudoLoadableDetachableModel());
-        labelDocLoadableDetachableModel.setEscapeModelStrings(false); // Permite HTML
+        labelDocLoadableDetachableModel.setEscapeModelStrings(false);
         add(labelDocLoadableDetachableModel);
 
-        // Link para página de exemplos práticos de Models (dentro do collapse de
-        // documentações)
+        // Documentação: Detachable Models (Módulo 3)
+        Label labelDocDetachableModels = new Label("docDetachableModels",
+                com.hvivox.certidoes.documentacao.ModelosDocumentacao.getConteudoDetachableModels());
+        labelDocDetachableModels.setEscapeModelStrings(false);
+        add(labelDocDetachableModels);
+
+        // Documentação: Serialização (Módulo 3)
+        Label labelDocSerializacao = new Label("docSerializacao",
+                com.hvivox.certidoes.documentacao.ModelosDocumentacao.getConteudoSerializacao());
+        labelDocSerializacao.setEscapeModelStrings(false);
+        add(labelDocSerializacao);
+
+        // Documentação: Usando Model - Conceitos Avançados (Módulo 3 - Item 3)
+        Label labelDocUsandoModel = new Label("docUsandoModel",
+                com.hvivox.certidoes.documentacao.ModelosDocumentacao.getConteudoUsandoModel());
+        labelDocUsandoModel.setEscapeModelStrings(false);
+        add(labelDocUsandoModel);
+
+        // Documentação: Estático vs Dinâmico (Módulo 3)
+        Label labelDocEstaticoDinamico = new Label("docEstaticoDinamico",
+                com.hvivox.certidoes.documentacao.ModelosDocumentacao.getConteudoEstaticoDinamico());
+        labelDocEstaticoDinamico.setEscapeModelStrings(false);
+        add(labelDocEstaticoDinamico);
+
+        // Link para página de exemplos práticos de Models
         add(new BookmarkablePageLink<>("linkModelosDemo",
                 com.hvivox.certidoes.page.ModelosDemoPage.class));
 
