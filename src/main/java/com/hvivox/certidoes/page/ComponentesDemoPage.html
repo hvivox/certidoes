@@ -19,9 +19,9 @@
                 <div class="card">
                     <div class="card-header" id="headingDocumentacoes">
                         <h5 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDocumentacoes" 
-                                    aria-expanded="false" aria-controls="collapseDocumentacoes">
-                                <strong>📚 Documentações - Módulo 2: Arquitetura do Wicket</strong>
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDocumentacoes" 
+                                        aria-expanded="false" aria-controls="collapseDocumentacoes">
+                                <strong>📚 Documentações - Módulo 2: Arquitetura | Módulo 3: Modelos</strong>
                             </button>
                         </h5>
                     </div>
@@ -101,6 +101,55 @@
                                     </div>
                                 </div>
 
+                                <!-- Documentação: Revisão de Models (Módulo 3) -->
+                                <div class="card">
+                                    <div class="card-header" id="headingRevisaoModels">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseRevisaoModels" aria-expanded="false" aria-controls="collapseRevisaoModels">
+                                                Módulo 3: Revisão de Models
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseRevisaoModels" class="collapse" aria-labelledby="headingRevisaoModels" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docRevisaoModels">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documentação: Padrões de Models (Módulo 3) -->
+                                <div class="card">
+                                    <div class="card-header" id="headingPadroesModels">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapsePadroesModels" aria-expanded="false" aria-controls="collapsePadroesModels">
+                                                Módulo 3: Padrões (Standards) de Models
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapsePadroesModels" class="collapse" aria-labelledby="headingPadroesModels" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docPadroesModels">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                            <!-- Link para página de exemplos práticos de Models -->
+                            <div class="mt-3 pt-3 border-top">
+                                <p class="mb-2"><strong>📖 Exemplos Práticos:</strong></p>
+                                <p>
+                                    <a wicket:id="linkModelosDemo" class="btn btn-outline-primary btn-sm">
+                                        Ver Exemplos Práticos de Models
+                                    </a>
+                                </p>
+                                <small class="text-muted">
+                                    Acesse a página com exemplos interativos de uso de Model.of(), PropertyModel e CompoundPropertyModel.
+                                </small>
                             </div>
                         </div>
                     </div>

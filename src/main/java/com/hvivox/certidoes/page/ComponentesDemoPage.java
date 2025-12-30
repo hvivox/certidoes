@@ -106,6 +106,26 @@ public class ComponentesDemoPage extends BasePage {
         labelDocArquitetura.setEscapeModelStrings(false); // Permite HTML
         add(labelDocArquitetura);
 
+        // ============================================================
+        // MÓDULO 3: DOCUMENTAÇÕES SOBRE MODELOS
+        // ============================================================
+        // Documentação: Revisão de Models (Módulo 3 - Item 1)
+        Label labelDocRevisaoModels = new Label("docRevisaoModels",
+                com.hvivox.certidoes.documentacao.ModelosDocumentacao.getConteudoRevisao());
+        labelDocRevisaoModels.setEscapeModelStrings(false); // Permite HTML
+        add(labelDocRevisaoModels);
+
+        // Documentação: Padrões de Models (Módulo 3 - Item 2)
+        Label labelDocPadroesModels = new Label("docPadroesModels",
+                com.hvivox.certidoes.documentacao.ModelosDocumentacao.getConteudoPadroes());
+        labelDocPadroesModels.setEscapeModelStrings(false); // Permite HTML
+        add(labelDocPadroesModels);
+
+        // Link para página de exemplos práticos de Models (dentro do collapse de
+        // documentações)
+        add(new BookmarkablePageLink<>("linkModelosDemo",
+                com.hvivox.certidoes.page.ModelosDemoPage.class));
+
         // Label com modelo dinâmico (atualiza automaticamente)
         Label labelDinamico = new Label("labelDinamico", new PropertyModel<>(this, "contador"));
         add(labelDinamico);
