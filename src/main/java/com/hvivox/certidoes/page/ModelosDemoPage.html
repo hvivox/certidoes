@@ -148,6 +148,99 @@
         </div>
     </div>
 
+    <!-- EXEMPLOS PRÁTICOS: LOADABLEDETACHABLEMODEL -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2 wicket:id="exemploLoadableDetachableTitulo">Exemplos Práticos: LoadableDetachableModel</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>LoadableDetachableModel</strong> carrega objetos sob demanda e os libera da memória automaticamente.</p>
+                    <p>Este exemplo carrega uma Certidão do repositório usando apenas o ID (ID=1).</p>
+                    
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Propriedade</th>
+                                <th>Valor (carregado do repositório)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Número</strong></td>
+                                <td wicket:id="exemploLoadableNumero">-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interessado</strong></td>
+                                <td wicket:id="exemploLoadableInteressado">-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tipo</strong></td>
+                                <td wicket:id="exemploLoadableTipo">-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data Emissão</strong></td>
+                                <td wicket:id="exemploLoadableDataEmissao">-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Status</strong></td>
+                                <td wicket:id="exemploLoadableStatus">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="alert alert-info mt-3">
+                        <strong>💡 Como funciona:</strong>
+                        <ul class="mb-0">
+                            <li>O Model armazena apenas o ID (1L)</li>
+                            <li>O objeto Certidão é carregado do repositório quando necessário</li>
+                            <li>Após o uso, o objeto é liberado da memória (detach)</li>
+                            <li>Na próxima requisição, o objeto será recarregado (sempre atualizado)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPARAÇÃO: MODEL.OF() VS LOADABLEDETACHABLEMODEL -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2 wicket:id="comparacaoLoadableTitulo">Comparação: Model.of() vs LoadableDetachableModel</h2>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Model.of() - Objeto em Memória</h6>
+                            <p>O objeto é mantido em memória e serializado completamente:</p>
+                            <p><strong>Número:</strong> <span wicket:id="comparacaoModelOfNumero">-</span></p>
+                            <div class="alert alert-warning">
+                                <small><strong>⚠️ Desvantagens:</strong></small>
+                                <ul class="mb-0">
+                                    <li>Serializa o objeto completo</li>
+                                    <li>Mantém objeto em memória</li>
+                                    <li>Pode ficar desatualizado</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>LoadableDetachableModel - Carregamento Sob Demanda</h6>
+                            <p>O objeto é carregado do repositório quando necessário:</p>
+                            <p><strong>Número:</strong> <span wicket:id="comparacaoLoadableNumero">-</span></p>
+                            <div class="alert alert-success">
+                                <small><strong>✅ Vantagens:</strong></small>
+                                <ul class="mb-0">
+                                    <li>Serializa apenas o ID</li>
+                                    <li>Libera memória após uso</li>
+                                    <li>Sempre atualizado (recarrega)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- RESUMO E BOAS PRÁTICAS -->
     <div class="row mt-4">
         <div class="col-12">
@@ -157,6 +250,7 @@
                     <li><strong>Model.of()</strong>: Use para valores simples, imutáveis ou que não mudam</li>
                     <li><strong>PropertyModel</strong>: Use para acessar propriedades de objetos de forma dinâmica</li>
                     <li><strong>CompoundPropertyModel</strong>: Use em formulários para bind automático de propriedades</li>
+                    <li><strong>LoadableDetachableModel</strong>: Use para objetos pesados ou de banco de dados</li>
                     <li><strong>IModel&lt;T&gt;</strong>: Interface base que todos os Models implementam</li>
                 </ul>
             </div>
