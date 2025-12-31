@@ -43,7 +43,8 @@
 	<properties>
 		<wicket.version>7.18.0</wicket.version>
 		<jetty9.version>9.2.19.v20160908</jetty9.version>
-		<log4j.version>2.6.2</log4j.version>
+		<!-- Bumped to a secure Log4j 2.x release to mitigate critical CVEs (CVE-2021-44228, CVE-2021-45046, CVE-2021-45105, etc.) -->
+		<log4j.version>2.17.1</log4j.version>
 		<junit.version>4.12</junit.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
