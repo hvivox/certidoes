@@ -7,6 +7,7 @@ import com.hvivox.certidoes.domain.CertidaoTipo;
 import com.hvivox.certidoes.infra.CertidaoRepository;
 import com.hvivox.certidoes.infra.InMemoryCertidaoRepository;
 import com.hvivox.certidoes.validator.DataFormatadaValidator;
+import com.hvivox.certidoes.validator.NumeroUnicoValidator;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.*;
@@ -42,22 +43,97 @@ public class CertidaoFormPage extends BasePage {
         }
 
         // Criar formulário com modelo composto (bind automático)
+        // MÓDULO 4 - ITEM 5: Processamento Avançado (onError, onValidate)
         Form<Certidao> form = new Form<Certidao>("form", new CompoundPropertyModel<>(certidao)) {
             @Override
             protected void onSubmit() {
                 // Validação automática já foi feita pelos validadores antes deste método
+                // onValidate() também foi executado antes deste método
                 // Se chegou aqui, todos os campos estão válidos
 
                 // Salvar
                 getRepository().save(certidao);
 
                 if (isEditMode) {
-                    getSession().info("Certidão atualizada com sucesso!");
+                    getSession().success("Certidão atualizada com sucesso!");
                 } else {
-                    getSession().info("Certidão cadastrada com sucesso!");
+                    getSession().success("Certidão cadastrada com sucesso!");
                 }
 
                 setResponsePage(CertidaoListPage.class);
+            }
+
+            /**
+             * MÓDULO 4 - ITEM 5: Método onError()
+             * 
+             * Este método é chamado quando há erros de validação no formulário.
+             * É executado ANTES do onSubmit() se houver erros.
+             * 
+             * USO:
+             * - Tratar erros de validação de forma customizada
+             * - Adicionar mensagens de erro específicas
+             * - Registrar erros para análise
+             * - Personalizar feedback ao usuário
+             */
+            @Override
+            protected void onError() {
+                super.onError(); // Chama o método da classe pai para manter comportamento padrão
+
+                // Este método é chamado automaticamente quando há erros de validação
+                // (tanto de campos quanto de onValidate())
+
+                // Contar quantos erros existem
+                int totalErros = getFeedbackMessages().size();
+
+                // Adicionar mensagem geral se houver erros (apenas para feedback visual)
+                // Não adicionar se já houver muitas mensagens para evitar poluição
+                if (totalErros > 0 && totalErros <= 3) {
+                    // Mensagem geral apenas se houver poucos erros
+                    // (evita mensagem redundante se já há mensagens específicas)
+                }
+            }
+
+            /**
+             * MÓDULO 4 - ITEM 5: Método onValidate()
+             * 
+             * Este método é chamado ANTES do onSubmit() e DEPOIS das validações
+             * automáticas dos componentes (setRequired, validators, etc.).
+             * 
+             * USO:
+             * - Validações de negócio que dependem de múltiplos campos
+             * - Validações que não podem ser feitas em validadores individuais
+             * - Validações condicionais baseadas no estado do objeto
+             * - Validações que precisam acessar o repositório ou serviços
+             * 
+             * IMPORTANTE:
+             * - Se encontrar erros, use error() para adicionar mensagens
+             * - Se houver erros, onSubmit() NÃO será chamado
+             * - onError() será chamado se houver erros após onValidate()
+             */
+            /**
+             * MÓDULO 4 - ITEM 5: Método onValidate()
+             * 
+             * Este método é chamado ANTES do onSubmit() e DEPOIS das validações
+             * automáticas dos componentes (setRequired, validators, etc.).
+             * 
+             * IMPORTANTE: onValidate() é chamado SEMPRE, mesmo se houver erros de campo.
+             * Se adicionar erros aqui usando error(), o onSubmit() NÃO será chamado
+             * e onError() será chamado automaticamente.
+             * 
+             * NOTA: A validação de número único foi movida para NumeroUnicoValidator
+             * para garantir que seja executada no ciclo de validação do Wicket.
+             */
+            @Override
+            protected void onValidate() {
+                super.onValidate(); // Chama o método da classe pai
+
+                // Validações de negócio customizadas adicionais
+                // (validações que não podem ser feitas em validadores individuais)
+
+                // Validação: Verificar se interessado não está vazio (validação adicional)
+                if (certidao.getInteressado() != null && certidao.getInteressado().trim().isEmpty()) {
+                    error("O campo Interessado não pode conter apenas espaços em branco.");
+                }
             }
         };
         add(form);
@@ -67,9 +143,15 @@ public class CertidaoFormPage extends BasePage {
         add(titulo);
 
         // Campo Número (obrigatório)
+        // MÓDULO 4 - ITEM 5: Validação de número único usando validador customizado
         TextField<String> numeroField = new TextField<>("numero");
         numeroField.setRequired(true);
         numeroField.add(StringValidator.minimumLength(1));
+        // Adicionar validador de número único APENAS em modo novo (criação)
+        // Em modo edição, não validamos duplicação para permitir manter o mesmo número
+        if (!isEditMode) {
+            numeroField.add(new NumeroUnicoValidator(false, null));
+        }
         form.add(numeroField);
         form.add(new WebMarkupContainer("numeroFeedback"));
 
