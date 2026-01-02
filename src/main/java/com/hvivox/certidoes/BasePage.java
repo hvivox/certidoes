@@ -1,12 +1,12 @@
 package com.hvivox.certidoes;
 
+import com.hvivox.certidoes.component.FeedbackPanelCustomizado;
 import com.hvivox.certidoes.page.CertidaoFormPage;
 import com.hvivox.certidoes.page.CertidaoListPage;
 import com.hvivox.certidoes.page.ComponentesDemoPage;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 
 public abstract class BasePage extends WebPage {
 
@@ -19,8 +19,9 @@ public abstract class BasePage extends WebPage {
         // wicket:id="appTitle" no HTML
         add(new Label("appTitle", "Certidões"));
 
-        // FeedbackPanel para mensagens de sucesso/erro
-        add(new FeedbackPanel("feedback"));
+        // FeedbackPanel customizado para mensagens de sucesso/erro
+        // MÓDULO 4 - ITEM 7: Feedback Avançado
+        add(new FeedbackPanelCustomizado("feedback"));
 
         // Links do menu
         add(new BookmarkablePageLink<>("linkHome", HomePage.class));
