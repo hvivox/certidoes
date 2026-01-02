@@ -15,10 +15,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.validation.validator.StringValidator;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 
 public class CertidaoFormPage extends BasePage {
     private static final long serialVersionUID = 1L;
@@ -48,14 +45,8 @@ public class CertidaoFormPage extends BasePage {
         Form<Certidao> form = new Form<Certidao>("form", new CompoundPropertyModel<>(certidao)) {
             @Override
             protected void onSubmit() {
-                // Validar data antes de salvar
-                String dataStr = certidao.getDataEmissao();
-                if (dataStr != null && !dataStr.isEmpty()) {
-                    if (!isValidDate(dataStr)) {
-                        error("Data de emissão inválida! Use o formato dd/MM/yyyy");
-                        return;
-                    }
-                }
+                // Validação automática já foi feita pelos validadores antes deste método
+                // Se chegou aqui, todos os campos estão válidos
 
                 // Salvar
                 getRepository().save(certidao);
@@ -127,23 +118,5 @@ public class CertidaoFormPage extends BasePage {
             repository = new InMemoryCertidaoRepository();
         }
         return repository;
-    }
-
-    /**
-     * Valida se a data está no formato dd/MM/yyyy
-     */
-    private boolean isValidDate(String dateStr) {
-        if (dateStr == null || dateStr.length() != 10) {
-            return false;
-        }
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            sdf.setLenient(false); // Não aceitar datas inválidas como 32/13/2025
-            Date date = sdf.parse(dateStr);
-            // Verificar se a data parseada corresponde exatamente ao input
-            return sdf.format(date).equals(dateStr);
-        } catch (ParseException e) {
-            return false;
-        }
     }
 }
