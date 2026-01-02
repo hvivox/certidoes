@@ -6,6 +6,7 @@ import com.hvivox.certidoes.domain.CertidaoStatus;
 import com.hvivox.certidoes.domain.CertidaoTipo;
 import com.hvivox.certidoes.infra.CertidaoRepository;
 import com.hvivox.certidoes.infra.InMemoryCertidaoRepository;
+import com.hvivox.certidoes.validator.DataFormatadaValidator;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.*;
@@ -97,9 +98,10 @@ public class CertidaoFormPage extends BasePage {
         form.add(new WebMarkupContainer("interessadoFeedback"));
 
         // Campo Data Emissão (obrigatório)
+        // Usando DataFormatadaValidator para validar formato dd/MM/yyyy
         TextField<String> dataEmissaoField = new TextField<>("dataEmissao");
         dataEmissaoField.setRequired(true);
-        dataEmissaoField.add(StringValidator.minimumLength(10));
+        dataEmissaoField.add(new DataFormatadaValidator());
         form.add(dataEmissaoField);
         form.add(new WebMarkupContainer("dataEmissaoFeedback"));
 
