@@ -8,11 +8,14 @@ import com.hvivox.certidoes.infra.CertidaoRepository;
 import com.hvivox.certidoes.infra.InMemoryCertidaoRepository;
 import com.hvivox.certidoes.validator.DataFormatadaValidator;
 import com.hvivox.certidoes.validator.NumeroUnicoValidator;
-import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.feedback.ComponentFeedbackMessageFilter;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.validation.validator.StringValidator;
 
@@ -64,7 +67,6 @@ public class CertidaoFormPage extends BasePage {
             }
 
             /**
-             * MÓDULO 4 - ITEM 5: Método onError()
              * 
              * Este método é chamado quando há erros de validação no formulário.
              * É executado ANTES do onSubmit() se houver erros.
@@ -74,23 +76,24 @@ public class CertidaoFormPage extends BasePage {
              * - Adicionar mensagens de erro específicas
              * - Registrar erros para análise
              * - Personalizar feedback ao usuário
+             * - Adicionar classes CSS para destacar campos com erro
              */
             @Override
             protected void onError() {
                 super.onError(); // Chama o método da classe pai para manter comportamento padrão
 
-                // Este método é chamado automaticamente quando há erros de validação
-                // (tanto de campos quanto de onValidate())
-
-                // Contar quantos erros existem
-                int totalErros = getFeedbackMessages().size();
-
-                // Adicionar mensagem geral se houver erros (apenas para feedback visual)
-                // Não adicionar se já houver muitas mensagens para evitar poluição
-                if (totalErros > 0 && totalErros <= 3) {
-                    // Mensagem geral apenas se houver poucos erros
-                    // (evita mensagem redundante se já há mensagens específicas)
-                }
+                // MÓDULO 4 - ITEM 7: Adicionar classe CSS aos campos com erro
+                // Isso destaca visualmente os campos inválidos usando Bootstrap
+                visitChildren(FormComponent.class, (component, visit) -> {
+                    FormComponent<?> fc = (FormComponent<?>) component;
+                    if (!fc.isValid()) {
+                        // Adicionar classe Bootstrap para destacar campo com erro
+                        fc.add(new AttributeModifier("class", Model.of("form-control is-invalid")));
+                    } else {
+                        // Remover classe de erro se o campo estiver válido
+                        fc.add(new AttributeModifier("class", Model.of("form-control")));
+                    }
+                });
             }
 
             /**
@@ -143,7 +146,6 @@ public class CertidaoFormPage extends BasePage {
         add(titulo);
 
         // Campo Número (obrigatório)
-        // MÓDULO 4 - ITEM 5: Validação de número único usando validador customizado
         TextField<String> numeroField = new TextField<>("numero");
         numeroField.setRequired(true);
         numeroField.add(StringValidator.minimumLength(1));
@@ -153,7 +155,13 @@ public class CertidaoFormPage extends BasePage {
             numeroField.add(new NumeroUnicoValidator(false, null));
         }
         form.add(numeroField);
-        form.add(new WebMarkupContainer("numeroFeedback"));
+
+        // FeedbackPanel específico para o campo número (mostra apenas erros deste
+        // campo)
+        FeedbackPanel numeroFeedback = new FeedbackPanel("numeroFeedback",
+                new ComponentFeedbackMessageFilter(numeroField));
+        numeroFeedback.setOutputMarkupId(true);
+        form.add(numeroFeedback);
 
         // Campo Tipo (obrigatório) - Dropdown
         DropDownChoice<CertidaoTipo> tipoField = new DropDownChoice<>("tipo",
@@ -161,29 +169,54 @@ public class CertidaoFormPage extends BasePage {
         tipoField.setRequired(true);
         tipoField.setNullValid(false);
         form.add(tipoField);
-        form.add(new WebMarkupContainer("tipoFeedback"));
+
+        // FeedbackPanel específico para o campo tipo (mostra apenas erros deste campo)
+        FeedbackPanel tipoFeedback = new FeedbackPanel("tipoFeedback",
+                new ComponentFeedbackMessageFilter(tipoField));
+        tipoFeedback.setOutputMarkupId(true);
+        form.add(tipoFeedback);
 
         // Campo Interessado (obrigatório)
         TextField<String> interessadoField = new TextField<>("interessado");
         interessadoField.setRequired(true);
         interessadoField.add(StringValidator.minimumLength(1));
         form.add(interessadoField);
-        form.add(new WebMarkupContainer("interessadoFeedback"));
+
+        // FeedbackPanel específico para o campo interessado (mostra apenas erros deste
+        // campo)
+        FeedbackPanel interessadoFeedback = new FeedbackPanel("interessadoFeedback",
+                new ComponentFeedbackMessageFilter(interessadoField));
+        interessadoFeedback.setOutputMarkupId(true);
+        form.add(interessadoFeedback);
 
         // Campo Data Emissão (obrigatório)
         // Usando DataFormatadaValidator para validar formato dd/MM/yyyy
+        // MÓDULO 4 - ITEM 7: Feedback inline por componente
         TextField<String> dataEmissaoField = new TextField<>("dataEmissao");
         dataEmissaoField.setRequired(true);
         dataEmissaoField.add(new DataFormatadaValidator());
         form.add(dataEmissaoField);
-        form.add(new WebMarkupContainer("dataEmissaoFeedback"));
+        // MÓDULO 4 - ITEM 7: Feedback inline por componente
+        // FeedbackPanel específico para o campo dataEmissao (mostra apenas erros deste
+        // campo)
+        FeedbackPanel dataEmissaoFeedback = new FeedbackPanel("dataEmissaoFeedback",
+                new ComponentFeedbackMessageFilter(dataEmissaoField));
+        dataEmissaoFeedback.setOutputMarkupId(true);
+        form.add(dataEmissaoFeedback);
 
         // Campo Status (opcional) - Dropdown
+        // MÓDULO 4 - ITEM 7: Feedback inline por componente
         DropDownChoice<CertidaoStatus> statusField = new DropDownChoice<>("status",
                 Arrays.asList(CertidaoStatus.values()));
         statusField.setNullValid(true);
         form.add(statusField);
-        form.add(new WebMarkupContainer("statusFeedback"));
+        // MÓDULO 4 - ITEM 7: Feedback inline por componente
+        // FeedbackPanel específico para o campo status (mostra apenas erros deste
+        // campo)
+        FeedbackPanel statusFeedback = new FeedbackPanel("statusFeedback",
+                new ComponentFeedbackMessageFilter(statusField));
+        statusFeedback.setOutputMarkupId(true);
+        form.add(statusFeedback);
 
         // Botões
         form.add(new Button("salvar"));
