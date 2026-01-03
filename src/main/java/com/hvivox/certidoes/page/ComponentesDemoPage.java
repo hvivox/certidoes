@@ -67,6 +67,11 @@ public class ComponentesDemoPage extends BasePage {
     // Lista de exemplo para ListView
     private List<String> itensLista = Arrays.asList("Item 1", "Item 2", "Item 3", "Item 4", "Item 5");
 
+    // MÓDULO 4 - ITEM 3: Seleção múltipla
+    private List<String> opcoesMultiplas = Arrays.asList("Java", "Python", "JavaScript", "C++", "Go", "Rust", "Kotlin");
+    private List<String> selecoesCheckbox = new java.util.ArrayList<>();
+    private List<String> selecoesLista = new java.util.ArrayList<>();
+
     public ComponentesDemoPage() {
         super();
 
@@ -272,6 +277,70 @@ public class ComponentesDemoPage extends BasePage {
         add(itemSelecionadoLabel);
 
         // ============================================================
+        // MÓDULO 4 - ITEM 3: CHECKBOXMULTIPLECHOICE - Seleção múltipla com checkboxes
+        // ============================================================
+        // Form para os componentes de seleção múltipla
+        Form<Void> formSelecaoMultipla = new Form<Void>("formSelecaoMultipla") {
+            @Override
+            protected void onSubmit() {
+                // Atualizar os labels após submissão
+                // Os modelos já foram atualizados automaticamente pelo Wicket
+            }
+        };
+        add(formSelecaoMultipla);
+
+        CheckBoxMultipleChoice<String> checkboxMultiple = new CheckBoxMultipleChoice<>(
+                "checkboxMultiple",
+                new PropertyModel<>(this, "selecoesCheckbox"),
+                opcoesMultiplas);
+        checkboxMultiple.setRequired(false);
+        formSelecaoMultipla.add(checkboxMultiple);
+
+        // Label para mostrar as seleções
+        Label selecoesCheckboxLabel = new Label("selecoesCheckboxLabel",
+                new org.apache.wicket.model.AbstractReadOnlyModel<String>() {
+                    @Override
+                    public String getObject() {
+                        if (selecoesCheckbox == null || selecoesCheckbox.isEmpty()) {
+                            return "Nenhuma seleção";
+                        }
+                        return String.join(", ", selecoesCheckbox);
+                    }
+                });
+        selecoesCheckboxLabel.setOutputMarkupId(true);
+        formSelecaoMultipla.add(selecoesCheckboxLabel);
+
+        // ============================================================
+        // MÓDULO 4 - ITEM 3: LISTMULTIPLECHOICE - Lista com seleção múltipla
+        // ============================================================
+        ListMultipleChoice<String> listMultiple = new ListMultipleChoice<>(
+                "listMultiple",
+                new PropertyModel<>(this, "selecoesLista"),
+                opcoesMultiplas);
+        listMultiple.setRequired(false);
+        // Definir altura da lista (número de linhas visíveis)
+        listMultiple.setMaxRows(5);
+        formSelecaoMultipla.add(listMultiple);
+
+        // Label para mostrar as seleções
+        Label selecoesListaLabel = new Label("selecoesListaLabel",
+                new org.apache.wicket.model.AbstractReadOnlyModel<String>() {
+                    @Override
+                    public String getObject() {
+                        if (selecoesLista == null || selecoesLista.isEmpty()) {
+                            return "Nenhuma seleção";
+                        }
+                        return String.join(", ", selecoesLista);
+                    }
+                });
+        selecoesListaLabel.setOutputMarkupId(true);
+        formSelecaoMultipla.add(selecoesListaLabel);
+
+        // Botão para submeter o formulário e atualizar os labels
+        Button botaoAtualizarSelecoes = new Button("botaoAtualizarSelecoes");
+        formSelecaoMultipla.add(botaoAtualizarSelecoes);
+
+        // ============================================================
         // 8. LISTVIEW - Lista repetitiva
         // ============================================================
         ListView<String> listView = new ListView<String>("listaItens", itensLista) {
@@ -472,5 +541,22 @@ public class ComponentesDemoPage extends BasePage {
 
     public void setContador(Integer contador) {
         this.contador = contador;
+    }
+
+    // MÓDULO 4 - ITEM 3: Getters e Setters para seleção múltipla
+    public List<String> getSelecoesCheckbox() {
+        return selecoesCheckbox;
+    }
+
+    public void setSelecoesCheckbox(List<String> selecoesCheckbox) {
+        this.selecoesCheckbox = selecoesCheckbox;
+    }
+
+    public List<String> getSelecoesLista() {
+        return selecoesLista;
+    }
+
+    public void setSelecoesLista(List<String> selecoesLista) {
+        this.selecoesLista = selecoesLista;
     }
 }
