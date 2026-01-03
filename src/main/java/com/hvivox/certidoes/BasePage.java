@@ -1,6 +1,7 @@
 package com.hvivox.certidoes;
 
 import com.hvivox.certidoes.component.FeedbackPanelCustomizado;
+import com.hvivox.certidoes.page.AgrupamentoDemoPage;
 import com.hvivox.certidoes.page.CertidaoFormPage;
 import com.hvivox.certidoes.page.CertidaoListPage;
 import com.hvivox.certidoes.page.ComponentesDemoPage;
@@ -35,5 +36,9 @@ public abstract class BasePage extends WebPage {
         // wicket:id="linkComponentes" no HTML - Link para página de demonstração de
         // componentes
         add(new BookmarkablePageLink<>("linkComponentes", ComponentesDemoPage.class));
+
+        // wicket:id="linkAgrupamento" no HTML - Link para página de demonstração de
+        // agrupamento
+        add(new BookmarkablePageLink<>("linkAgrupamento", AgrupamentoDemoPage.class));
     }
 }
