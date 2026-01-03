@@ -334,6 +334,42 @@
 
     <div class="row mt-4">
         <div class="col-12">
+            
+            <form wicket:id="formSelecaoMultipla">
+                <div class="form-group">
+                    <h4>CheckBoxMultipleChoice - Seleção Múltipla com Checkboxes</h4>
+                    <p>Selecione uma ou mais linguagens de programação:</p>
+                    <div wicket:id="checkboxMultiple" class="form-check-group">
+                        <!-- Os checkboxes serão gerados automaticamente pelo Wicket -->
+                    </div>
+                    <p class="mt-2"><strong>Seleções:</strong> <span wicket:id="selecoesCheckboxLabel">-</span></p>
+                    <small class="text-muted">
+                        <strong>Como usar:</strong> <code>new CheckBoxMultipleChoice&lt;String&gt;("id", model, listaOpcoes)</code><br>
+                        Permite selecionar múltiplas opções usando checkboxes. Útil quando você quer que o usuário veja todas as opções de uma vez.
+                    </small>
+                </div>
+
+                <div class="form-group mt-4">
+                    <h4>ListMultipleChoice - Lista com Seleção Múltipla</h4>
+                    <p>Selecione uma ou mais linguagens (use Ctrl+Click ou Cmd+Click para múltiplas seleções):</p>
+                    <select wicket:id="listMultiple" class="form-control" multiple="multiple" size="5">
+                        <!-- As opções serão geradas automaticamente pelo Wicket -->
+                    </select>
+                    <p class="mt-2"><strong>Seleções:</strong> <span wicket:id="selecoesListaLabel">-</span></p>
+                    <small class="text-muted">
+                        <strong>Como usar:</strong> <code>new ListMultipleChoice&lt;String&gt;("id", model, listaOpcoes)</code><br>
+                        Permite selecionar múltiplas opções em uma lista. Útil quando há muitas opções e você quer economizar espaço na tela.
+                        Use <code>setMaxRows(int)</code> para definir a altura da lista.
+                    </small>
+                </div>
+
+                <button type="submit" wicket:id="botaoAtualizarSelecoes" class="btn btn-primary">Atualizar Seleções</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
             <h2>8. ListView - Lista Repetitiva</h2>
             <table class="table table-striped">
                 <thead>

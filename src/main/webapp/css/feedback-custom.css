@@ -86,6 +86,25 @@
 }
 
 /* ====================================================================
+ * MÓDULO 4 - ITEM 3: Estilização para CheckBoxMultipleChoice
+ * ==================================================================== */
+
+.form-check-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-check-group .form-check {
+  margin-bottom: 0;
+}
+
+/* Lista múltipla com melhor apresentação */
+select[multiple] {
+  min-height: 120px;
+}
+
+/* ====================================================================
  * TOAST NOTIFICATIONS (opcional - para uso futuro)
  * ==================================================================== */
 
