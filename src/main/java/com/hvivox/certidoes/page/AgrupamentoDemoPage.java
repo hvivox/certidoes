@@ -1,7 +1,11 @@
 package com.hvivox.certidoes.page;
 
 import com.hvivox.certidoes.BasePage;
+import com.hvivox.certidoes.component.CertidaoCard;
 import com.hvivox.certidoes.documentacao.AgrupamentoDocumentacao;
+import com.hvivox.certidoes.domain.Certidao;
+import com.hvivox.certidoes.domain.CertidaoStatus;
+import com.hvivox.certidoes.domain.CertidaoTipo;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -11,10 +15,13 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,8 +38,9 @@ import java.util.List;
  * 1. WebMarkupContainer - Agrupamento básico
  * 2. Form - Agrupamento de campos de formulário
  * 3. ListView - Agrupamento repetitivo
- * 4. Controle de visibilidade de grupos
- * 5. Hierarquia de componentes
+ * 4. Hierarquia de componentes
+ * 5. Fragments - Agrupamento condicional (TAREFA #38)
+ * 6. Padrões de Composição com Panel (TAREFA #41)
  * 
  * ACESSE: /agrupamento-demo
  */
@@ -53,6 +61,9 @@ public class AgrupamentoDemoPage extends BasePage {
             new ItemExemplo("Item 2", "Descrição do item 2", "Inativo"),
             new ItemExemplo("Item 3", "Descrição do item 3", "Ativo"),
             new ItemExemplo("Item 4", "Descrição do item 4", "Pendente"));
+
+    // EXEMPLO 5: Modo de visualização (para Fragment)
+    private boolean modoEdicao = false;
 
     public AgrupamentoDemoPage(PageParameters parameters) {
         super();
@@ -207,6 +218,70 @@ public class AgrupamentoDemoPage extends BasePage {
 
         nivel2b.add(new Label("componenteB1", "Componente B1"));
         nivel2b.add(new Label("componenteB2", "Componente B2"));
+
+        // ============================================================
+        // EXEMPLO 5: Fragments - Agrupamento Condicional (TAREFA #38)
+        // ============================================================
+
+        // Container que receberá o Fragment
+        final WebMarkupContainer fragmentContainer = new WebMarkupContainer("fragmentContainer");
+        fragmentContainer.setOutputMarkupId(true);
+        add(fragmentContainer);
+
+        // Adicionar Fragment inicial (modo visualização)
+        fragmentContainer.add(createViewFragment());
+
+        // Link para alternar entre modos
+        add(new AjaxLink<Void>("toggleModo") {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public void onClick(AjaxRequestTarget target) {
+                modoEdicao = !modoEdicao;
+
+                // Substituir Fragment baseado no modo
+                Fragment novoFragment = modoEdicao ? createEditFragment() : createViewFragment();
+                fragmentContainer.replace(novoFragment);
+
+                target.add(fragmentContainer);
+                info("Modo alterado para: " + (modoEdicao ? "Edição" : "Visualização"));
+                target.add(getPage().get("feedback"));
+            }
+        });
+
+        // ============================================================
+        // EXEMPLO 6: Padrões de Composição - Panel Reutilizável (TAREFA #41)
+        // ============================================================
+
+        // Criar certidão de exemplo para demonstrar o padrão Panel
+        Certidao certidaoExemplo = new Certidao();
+        certidaoExemplo.setId(999L);
+        certidaoExemplo.setNumero("CERT-2024-999");
+        certidaoExemplo.setTipo(CertidaoTipo.NEGATIVA);
+        certidaoExemplo.setInteressado("João da Silva Exemplo");
+        certidaoExemplo.setDataEmissao(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        certidaoExemplo.setStatus(CertidaoStatus.EMITIDA);
+
+        // Usar o componente CertidaoCard (Panel reutilizável)
+        add(new CertidaoCard("certidaoCardExemplo", Model.of(certidaoExemplo)));
+    }
+
+    /**
+     * Cria Fragment de visualização
+     */
+    private Fragment createViewFragment() {
+        Fragment fragment = new Fragment("fragment", "viewFragment", this);
+        fragment.add(new Label("valorExemplo", "Este é um valor somente leitura"));
+        return fragment;
+    }
+
+    /**
+     * Cria Fragment de edição
+     */
+    private Fragment createEditFragment() {
+        Fragment fragment = new Fragment("fragment", "editFragment", this);
+        fragment.add(new TextField<>("campoExemplo", Model.of("Valor editável")));
+        return fragment;
     }
 
     /**

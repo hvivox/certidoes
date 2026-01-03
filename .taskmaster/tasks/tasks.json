@@ -668,7 +668,7 @@
       "description": "Implementar e documentar uso de Fragments para agrupamento dinâmico de componentes.",
       "module": "Módulo 5: Composição de Páginas e Componentes",
       "priority": "medium",
-      "status": "pending",
+      "status": "done",
       "dependencies": [
         "36"
       ],
@@ -678,7 +678,8 @@
         "Documentação sobre Fragments",
         "Vantagens documentadas"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-03T23:06:44.125Z"
     },
     {
       "id": "39",
@@ -722,7 +723,7 @@
       "description": "Documentar padrões de composição no Wicket, incluindo melhores práticas e exemplos.",
       "module": "Módulo 5: Composição de Páginas e Componentes",
       "priority": "medium",
-      "status": "pending",
+      "status": "done",
       "dependencies": [
         "40"
       ],
@@ -732,7 +733,8 @@
         "Exemplos práticos",
         "Boas práticas listadas"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-03T23:06:54.920Z"
     },
     {
       "id": "42",
@@ -1064,9 +1066,9 @@
   ],
   "metadata": {
     "version": "1.0.0",
-    "lastModified": "2026-01-03T22:43:42.128Z",
+    "lastModified": "2026-01-03T23:06:54.922Z",
     "taskCount": 60,
-    "completedCount": 40,
+    "completedCount": 42,
     "tags": [
       "master"
     ]
