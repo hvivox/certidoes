@@ -8,7 +8,7 @@
         <div class="form-group">
             <label for="numero">Número <span class="text-danger">*</span></label>
             <input wicket:id="numero" type="text" class="form-control" placeholder="Ex: 0001"/>
-            <span wicket:id="numeroFeedback"></span>
+            <div wicket:id="numeroFeedback" class="invalid-feedback d-block"></div>
         </div>
         
         <div class="form-group">
@@ -16,20 +16,20 @@
             <select wicket:id="tipo" class="form-control">
                 <option value="">Selecione...</option>
             </select>
-            <span wicket:id="tipoFeedback"></span>
+            <div wicket:id="tipoFeedback" class="invalid-feedback d-block"></div>
         </div>
         
         <div class="form-group">
             <label for="interessado">Interessado <span class="text-danger">*</span></label>
             <input wicket:id="interessado" type="text" class="form-control" placeholder="Nome do interessado"/>
-            <span wicket:id="interessadoFeedback"></span>
+            <div wicket:id="interessadoFeedback" class="invalid-feedback d-block"></div>
         </div>
         
         <div class="form-group">
             <label for="dataEmissao">Data de Emissão <span class="text-danger">*</span></label>
             <input wicket:id="dataEmissao" type="text" class="form-control" placeholder="dd/MM/yyyy"/>
             <small class="form-text text-muted">Formato: dd/MM/yyyy (ex: 25/12/2025)</small>
-            <span wicket:id="dataEmissaoFeedback"></span>
+            <div wicket:id="dataEmissaoFeedback" class="invalid-feedback d-block"></div>
         </div>
         
         <div class="form-group">
@@ -37,7 +37,7 @@
             <select wicket:id="status" class="form-control">
                 <option value="">Selecione...</option>
             </select>
-            <span wicket:id="statusFeedback"></span>
+            <div wicket:id="statusFeedback" class="invalid-feedback d-block"></div>
         </div>
         
         <div class="form-group">
