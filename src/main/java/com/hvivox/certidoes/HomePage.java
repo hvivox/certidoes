@@ -17,14 +17,14 @@ public class HomePage extends BasePage {
 
 	public HomePage(final PageParameters parameters) {
 		super();
-		
+
 		add(new Label("titulo", "Home - Certidões ✅"));
 
 		// MÓDULO 2 - ITEM 1: Obter dados da Session customizada
 		CertidoesSession session = CertidoesSession.get();
-		
+
 		// Dashboard: Exibir contador de certidões excluídas
-		add(new Label("certidoesExcluidas", 
+		add(new Label("certidoesExcluidas",
 				String.valueOf(session.getCertidoesExcluidasNestaSessao())));
-    }
+	}
 }
