@@ -1,0 +1,19 @@
+{
+  "name": "certidoes",
+  "version": "1.0.0",
+  "description": "Sistema de gerenciamento de certidões desenvolvido com Apache Wicket",
+  "private": true,
+  "scripts": {
+    "task-master": "task-master"
+  },
+  "keywords": [
+    "wicket",
+    "java",
+    "certidoes"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "task-master-ai": "^0.40.1"
+  }
+}
