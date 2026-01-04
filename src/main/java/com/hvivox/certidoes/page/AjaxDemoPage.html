@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <title>Ajax Demo - Wicket</title>
+</head>
+<body>
+<wicket:extend>
+    <div class="container-fluid mt-4">
+        <!-- Cabeçalho -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2><i class="fas fa-bolt text-warning"></i> Demonstração: Ajax no Wicket</h2>
+                <p class="lead">Exemplos interativos de componentes e behaviors Ajax</p>
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Ajax:</strong> Atualiza partes da página sem reload completo.
+                    Todos os exemplos abaixo usam Ajax para atualização em tempo real!
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de Exemplos -->
+        <div class="row">
+            
+            <!-- EXEMPLO 1: AjaxLink -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-link"></i> 1. AjaxLink - Link Simples
+                    </div>
+                    <div class="card-body">
+                        <p>Link que executa ação sem recarregar a página.</p>
+                        <div class="text-center my-3">
+                            <h1 class="display-4">
+                                <span wicket:id="labelContador" class="badge bg-primary">0</span>
+                            </h1>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <a wicket:id="ajaxLink" class="btn btn-primary" href="#">
+                                <i class="fas fa-plus"></i> Incrementar
+                            </a>
+                            <a wicket:id="resetLink" class="btn btn-outline-secondary" href="#">
+                                <i class="fas fa-redo"></i> Resetar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 2: Toggle com Container -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        <i class="fas fa-eye"></i> 2. Toggle de Visibilidade
+                    </div>
+                    <div class="card-body">
+                        <p>Mostra/oculta conteúdo sem recarregar página.</p>
+                        <div class="d-grid gap-2 mb-3">
+                            <a wicket:id="toggleLink" class="btn btn-success" href="#">
+                                <i class="fas fa-eye-slash"></i> Mostrar/Ocultar
+                            </a>
+                        </div>
+                        <div wicket:id="containerToggle" class="alert alert-success">
+                            <span wicket:id="conteudoToggle">Conteúdo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 3: AjaxButton no Form -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-warning text-dark">
+                        <i class="fas fa-save"></i> 3. AjaxButton - Formulário
+                    </div>
+                    <div class="card-body">
+                        <p>Submete formulário com Ajax.</p>
+                        <form wicket:id="ajaxForm">
+                            <div class="mb-3">
+                                <label class="form-label">Nome:</label>
+                                <input wicket:id="nome" type="text" class="form-control" placeholder="Digite seu nome"/>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email:</label>
+                                <input wicket:id="email" type="text" class="form-control" placeholder="Digite seu email"/>
+                            </div>
+                            <button wicket:id="ajaxSaveButton" type="submit" class="btn btn-warning w-100">
+                                <i class="fas fa-save"></i> Salvar com Ajax
+                            </button>
+                            <div class="mt-3">
+                                <span wicket:id="resultadoForm" class="text-muted">Digite algo...</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 4: IndicatingAjaxButton -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-danger text-white">
+                        <i class="fas fa-spinner"></i> 4. IndicatingAjaxButton
+                    </div>
+                    <div class="card-body">
+                        <p>Botão com indicador de loading automático.</p>
+                        <form wicket:id="indicatingForm">
+                            <div class="d-grid gap-2">
+                                <button wicket:id="indicatingButton" type="submit" class="btn btn-danger">
+                                    <i class="fas fa-cog"></i> Processar (2s)
+                                </button>
+                            </div>
+                            <div class="mt-3 text-center">
+                                <span wicket:id="resultadoIndicating" class="badge bg-secondary">Aguardando...</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 5: AjaxCheckBox -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-info text-white">
+                        <i class="fas fa-check-square"></i> 5. AjaxCheckBox
+                    </div>
+                    <div class="card-body">
+                        <p>Checkbox com atualização instantânea.</p>
+                        <div class="form-check form-switch mb-3">
+                            <input wicket:id="ajaxCheckbox" class="form-check-input" type="checkbox" role="switch"/>
+                            <label class="form-check-label">Ativar/Desativar</label>
+                        </div>
+                        <div class="alert alert-info">
+                            <strong>Status:</strong>
+                            <span wicket:id="statusCheckbox" class="badge bg-primary">false</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 6: AjaxFormComponentUpdatingBehavior -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-secondary text-white">
+                        <i class="fas fa-keyboard"></i> 6. Atualização em Tempo Real
+                    </div>
+                    <div class="card-body">
+                        <p>Campo que atualiza preview enquanto digita.</p>
+                        <div class="mb-3">
+                            <label class="form-label">Digite algo:</label>
+                            <input wicket:id="campoTempoReal" type="text" class="form-control" placeholder="Digite aqui..."/>
+                        </div>
+                        <div class="alert alert-secondary">
+                            <strong>Preview:</strong> <span wicket:id="previewTexto"></span>
+                        </div>
+                        <div class="text-end">
+                            <small class="text-muted">
+                                Caracteres: <span wicket:id="contadorCaracteres" class="badge bg-secondary">0</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 7: AbstractAjaxTimerBehavior -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-dark text-white">
+                        <i class="fas fa-clock"></i> 7. Auto-atualização (Timer)
+                    </div>
+                    <div class="card-body">
+                        <p>Componente que se atualiza automaticamente a cada 2 segundos.</p>
+                        <div class="text-center my-3">
+                            <h2>
+                                <span wicket:id="labelTimer" class="badge bg-dark">0</span>
+                            </h2>
+                            <p class="text-muted">Contador automático</p>
+                        </div>
+                        <div class="alert alert-dark text-center">
+                            <i class="fas fa-clock"></i>
+                            <strong>Hora atual:</strong>
+                            <span wicket:id="horaAtual" class="ms-2"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 8: AjaxFallbackLink -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header" style="background-color: #6c757d; color: white;">
+                        <i class="fas fa-exchange-alt"></i> 8. AjaxFallbackLink
+                    </div>
+                    <div class="card-body">
+                        <p>Funciona com ou sem JavaScript habilitado.</p>
+                        <div class="text-center my-3">
+                            <h3>
+                                <span wicket:id="fallbackLabel" class="badge" style="background-color: #6c757d;">0</span>
+                            </h3>
+                        </div>
+                        <div class="d-grid">
+                            <a wicket:id="fallbackLink" class="btn" style="background-color: #6c757d; color: white;" href="#">
+                                <i class="fas fa-plus"></i> Incrementar (com/sem JS)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 9: IndicatingAjaxLink -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header" style="background-color: #ff6b6b; color: white;">
+                        <i class="fas fa-spinner"></i> 9. IndicatingAjaxLink
+                    </div>
+                    <div class="card-body">
+                        <p>Link com indicador de loading automático.</p>
+                        <div class="d-grid gap-2 mb-3">
+                            <a wicket:id="indicatingLink" class="btn" style="background-color: #ff6b6b; color: white;" href="#">
+                                <i class="fas fa-download"></i> Processar Link (1.5s)
+                            </a>
+                        </div>
+                        <div class="alert" style="background-color: #ffe3e3;">
+                            <span wicket:id="indicatingLinkResult">Clique no link...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 10: AjaxSubmitLink -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header" style="background-color: #4ecdc4; color: white;">
+                        <i class="fas fa-paper-plane"></i> 10. AjaxSubmitLink
+                    </div>
+                    <div class="card-body">
+                        <p>Link que submete formulário com Ajax.</p>
+                        <form wicket:id="submitLinkForm">
+                            <div class="mb-3">
+                                <label class="form-label">Texto:</label>
+                                <input wicket:id="campoSubmitLink" type="text" class="form-control" placeholder="Digite algo..."/>
+                            </div>
+                            <a wicket:id="ajaxSubmitLink" class="btn w-100" style="background-color: #4ecdc4; color: white;" href="#">
+                                <i class="fas fa-paper-plane"></i> Submeter via Link
+                            </a>
+                            <div class="mt-3">
+                                <span wicket:id="resultSubmitLink"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Seção de Documentação -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5><i class="fas fa-book"></i> Documentação Completa</h5>
+                    </div>
+                    <div class="card-body" wicket:id="documentacao">
+                        <!-- Conteúdo da documentação -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</wicket:extend>
+</body>
+</html>
+

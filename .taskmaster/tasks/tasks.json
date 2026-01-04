@@ -848,7 +848,7 @@
       "description": "Implementar e documentar componentes e behaviors Ajax: AjaxButton, AjaxLink, AjaxFormComponentUpdatingBehavior, etc.",
       "module": "Módulo 6: Ajax e Componentes Ricos",
       "priority": "high",
-      "status": "pending",
+      "status": "done",
       "dependencies": [
         "47"
       ],
@@ -858,7 +858,8 @@
         "Exemplos de behaviors Ajax",
         "Funcionalidades implementadas"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-04T00:46:07.300Z"
     },
     {
       "id": "49",
@@ -866,7 +867,7 @@
       "description": "Implementar e documentar Header Contributions, incluindo como adicionar CSS e JavaScript dinamicamente.",
       "module": "Módulo 6: Ajax e Componentes Ricos",
       "priority": "medium",
-      "status": "pending",
+      "status": "done",
       "dependencies": [
         "47"
       ],
@@ -876,7 +877,8 @@
         "Documentação sobre uso",
         "CSS e JavaScript dinâmicos funcionando"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-04T00:51:32.242Z"
     },
     {
       "id": "50",
@@ -1066,9 +1068,9 @@
   ],
   "metadata": {
     "version": "1.0.0",
-    "lastModified": "2026-01-03T23:06:54.922Z",
+    "lastModified": "2026-01-04T00:51:32.244Z",
     "taskCount": 60,
-    "completedCount": 42,
+    "completedCount": 44,
     "tags": [
       "master"
     ]
