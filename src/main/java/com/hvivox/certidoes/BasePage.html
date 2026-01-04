@@ -32,17 +32,25 @@
             <li class="nav-item">
                 <a wicket:id="linkNova" class="nav-link">Nova Certidão</a>
             </li>
-            <li class="nav-item">
-                <a wicket:id="linkComponentes" class="nav-link">Componentes Wicket</a>
-            </li>
-            <li class="nav-item">
-                <a wicket:id="linkAgrupamento" class="nav-link"><i class="fas fa-layer-group"></i> Agrupamento</a>
-            </li>
-            <li class="nav-item">
-                <a wicket:id="linkAjax" class="nav-link"><i class="fas fa-bolt"></i> Ajax</a>
-            </li>
-            <li class="nav-item">
-                <a wicket:id="linkHeaderContributions" class="nav-link"><i class="fas fa-code"></i> Header Contributions</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownExemplos" role="button" 
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-code"></i> Exemplos
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownExemplos">
+                    <a wicket:id="linkComponentes" class="dropdown-item">
+                        <i class="fas fa-puzzle-piece"></i> Componentes Wicket
+                    </a>
+                    <a wicket:id="linkAgrupamento" class="dropdown-item">
+                        <i class="fas fa-layer-group"></i> Agrupamento
+                    </a>
+                    <a wicket:id="linkAjax" class="dropdown-item">
+                        <i class="fas fa-bolt"></i> Ajax
+                    </a>
+                    <a wicket:id="linkHeaderContributions" class="dropdown-item">
+                        <i class="fas fa-file-code"></i> Header Contributions
+                    </a>
+                </div>
             </li>
         </ul>
     </div>
