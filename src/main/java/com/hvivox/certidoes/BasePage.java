@@ -2,9 +2,11 @@ package com.hvivox.certidoes;
 
 import com.hvivox.certidoes.component.FeedbackPanelCustomizado;
 import com.hvivox.certidoes.page.AgrupamentoDemoPage;
+import com.hvivox.certidoes.page.AjaxDemoPage;
 import com.hvivox.certidoes.page.CertidaoFormPage;
 import com.hvivox.certidoes.page.CertidaoListPage;
 import com.hvivox.certidoes.page.ComponentesDemoPage;
+import com.hvivox.certidoes.page.HeaderContributionsDemoPage;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -40,5 +42,13 @@ public abstract class BasePage extends WebPage {
         // wicket:id="linkAgrupamento" no HTML - Link para página de demonstração de
         // agrupamento
         add(new BookmarkablePageLink<>("linkAgrupamento", AgrupamentoDemoPage.class));
+
+        // wicket:id="linkAjax" no HTML - Link para página de demonstração de Ajax
+        add(new BookmarkablePageLink<>("linkAjax", AjaxDemoPage.class));
+
+        // wicket:id="linkHeaderContributions" no HTML - Link para página de
+        // demonstração de
+        // Header Contributions
+        add(new BookmarkablePageLink<>("linkHeaderContributions", HeaderContributionsDemoPage.class));
     }
 }

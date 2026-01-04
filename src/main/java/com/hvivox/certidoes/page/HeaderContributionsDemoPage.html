@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <title>Header Contributions Demo - Wicket</title>
+</head>
+<body>
+<wicket:extend>
+    <div class="container-fluid mt-4">
+        <!-- Cabeçalho -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2><i class="fas fa-code text-primary"></i> Demonstração: Header Contributions</h2>
+                <p class="lead">Como componentes adicionam CSS, JavaScript e outros recursos dinamicamente</p>
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Header Contributions:</strong> Permite que componentes Wicket adicionem seus próprios recursos
+                    (CSS, JavaScript, meta tags) ao <code>&lt;head&gt;</code> da página de forma automática e desacoplada.
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de Exemplos -->
+        <div class="row">
+            
+            <!-- EXEMPLO 1: CSS Inline -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-paint-brush"></i> 1. CSS Inline
+                    </div>
+                    <div class="card-body">
+                        <p><code>CssHeaderItem.forCSS(...)</code></p>
+                        <div wicket:id="inlineCssBox" class="inline-css-box">
+                            <span wicket:id="inlineCssText"></span>
+                        </div>
+                        <small class="text-muted mt-2 d-block">
+                            CSS adicionado diretamente via renderHead()
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 2: JavaScript Inline -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        <i class="fas fa-file-code"></i> 2. JavaScript Inline
+                    </div>
+                    <div class="card-body">
+                        <p><code>JavaScriptHeaderItem.forScript(...)</code></p>
+                        <div wicket:id="inlineJsBox" id="inlineJsBox" class="demo-box">
+                            <span wicket:id="inlineJsText"></span>
+                        </div>
+                        <small class="text-muted mt-2 d-block">
+                            <i class="fas fa-hand-pointer"></i> Clique no box acima!
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 3: CSS Externo -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-warning text-dark">
+                        <i class="fas fa-file-alt"></i> 3. CSS "Externo"
+                    </div>
+                    <div class="card-body">
+                        <p><code>CssResourceReference(...)</code></p>
+                        <div wicket:id="externalCssBox" class="external-css-box">
+                            <span wicket:id="externalCssText"></span>
+                        </div>
+                        <small class="text-muted mt-2 d-block">
+                            Neste exemplo, simulamos CSS externo com inline
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 4: JavaScript Externo -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-danger text-white">
+                        <i class="fas fa-file-code"></i> 4. JavaScript "Externo"
+                    </div>
+                    <div class="card-body">
+                        <p><code>JavaScriptResourceReference(...)</code></p>
+                        <div wicket:id="externalJsBox" id="externalJsBox" class="demo-box">
+                            <span wicket:id="externalJsText"></span>
+                        </div>
+                        <small class="text-muted mt-2 d-block">
+                            <i class="fas fa-mouse-pointer"></i> Passe o mouse sobre o box!
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 5: OnDomReady -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-info text-white">
+                        <i class="fas fa-clock"></i> 5. OnDomReady Script
+                    </div>
+                    <div class="card-body">
+                        <p><code>OnDomReadyHeaderItem.forScript(...)</code></p>
+                        <div wicket:id="domReadyBox" id="domReadyBox" class="demo-box">
+                            <span wicket:id="domReadyText" id="domReadyText"></span>
+                        </div>
+                        <small class="text-muted mt-2 d-block">
+                            Executa quando o DOM está pronto
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 6: OnLoad -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header text-white" style="background-color: #6c757d;">
+                        <i class="fas fa-hourglass-end"></i> 6. OnLoad Script
+                    </div>
+                    <div class="card-body">
+                        <p><code>OnLoadHeaderItem.forScript(...)</code></p>
+                        <div wicket:id="onLoadBox" id="onLoadBox" class="demo-box">
+                            <span wicket:id="onLoadText" id="onLoadText"></span>
+                        </div>
+                        <small class="text-muted mt-2 d-block">
+                            Executa após toda a página carregar
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 7: Meta Tags -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header text-white" style="background-color: #20c997;">
+                        <i class="fas fa-tags"></i> 7. Meta Tags
+                    </div>
+                    <div class="card-body">
+                        <p><code>MetaDataHeaderItem(...)</code></p>
+                        <div class="alert alert-success">
+                            <span wicket:id="metaInfo"></span>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Meta tags adicionadas:</strong><br/>
+                            • description<br/>
+                            • keywords<br/>
+                            • author<br/>
+                            <em>(Veja o código fonte da página)</em>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 8: CDN -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header text-white" style="background-color: #fd7e14;">
+                        <i class="fas fa-cloud"></i> 8. Recursos de CDN
+                    </div>
+                    <div class="card-body">
+                        <p><code>CssHeaderItem.forUrl(...)</code></p>
+                        <div wicket:id="cdnBox" id="cdnBox" class="demo-box">
+                            <span wicket:id="cdnText"></span>
+                        </div>
+                        <small class="text-muted mt-2 d-block">
+                            Usando Animate.css do CDN (animação de pulse)
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 9: Componente Auto-suficiente -->
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-header text-white" style="background-color: #6f42c1;">
+                        <i class="fas fa-puzzle-piece"></i> 9. Componente Auto-suficiente (Panel)
+                    </div>
+                    <div class="card-body">
+                        <p>Este é um <code>Panel</code> que adiciona seus próprios recursos via <code>renderHead()</code>:</p>
+                        <div wicket:id="richPanel" class="rich-panel">
+                        </div>
+                        <small class="text-muted mt-3 d-block">
+                            <i class="fas fa-hand-pointer"></i> Clique no painel para ver a animação!<br/>
+                            O componente é reutilizável e traz seu CSS/JS automaticamente.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 10: Resumo dos Recursos -->
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <i class="fas fa-list"></i> 10. Recursos Carregados
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Recursos adicionados nesta página:</h6>
+                                <span wicket:id="recursosInfo"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Como Verificar:</h6>
+                                <ol>
+                                    <li>Abra as DevTools do navegador (F12)</li>
+                                    <li>Vá na aba "Elements" ou "Inspector"</li>
+                                    <li>Expanda a tag <code>&lt;head&gt;</code></li>
+                                    <li>Você verá todos os recursos adicionados!</li>
+                                </ol>
+                                <div class="alert alert-info mt-2">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <strong>Dica:</strong> Na aba "Network" você pode ver
+                                    quando cada recurso foi carregado.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Seção de Código Fonte -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5><i class="fas fa-code"></i> Exemplo de Código</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Como adicionar recursos no seu componente:</h6>
+                        <pre class="bg-light p-3 rounded"><code>@Override
+public void renderHead(IHeaderResponse response) {
+    super.renderHead(response);
+    
+    // CSS Inline
+    response.render(CssHeaderItem.forCSS(
+        ".my-class { color: red; }", 
+        "my-css-id"
+    ));
+    
+    // JavaScript Inline
+    response.render(JavaScriptHeaderItem.forScript(
+        "console.log('Hello!');", 
+        "my-js-id"
+    ));
+    
+    // CSS de arquivo externo
+    response.render(CssHeaderItem.forReference(
+        new CssResourceReference(MyClass.class, "style.css")
+    ));
+    
+    // JavaScript executado após DOM carregar
+    response.render(OnDomReadyHeaderItem.forScript(
+        "initMyComponent();"
+    ));
+    
+    // Recurso de CDN
+    response.render(CssHeaderItem.forUrl(
+        "https://example.com/style.css"
+    ));
+    
+    // Meta tag
+    response.render(new MetaDataHeaderItem(
+        "description", "Minha descrição"
+    ));
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Documentação -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5><i class="fas fa-book"></i> Documentação Completa</h5>
+                    </div>
+                    <div class="card-body" wicket:id="documentacao">
+                        <!-- Conteúdo da documentação -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</wicket:extend>
+</body>
+</html>
+
