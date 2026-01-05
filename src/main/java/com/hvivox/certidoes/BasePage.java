@@ -6,6 +6,7 @@ import com.hvivox.certidoes.page.AjaxDemoPage;
 import com.hvivox.certidoes.page.CertidaoFormPage;
 import com.hvivox.certidoes.page.CertidaoListPage;
 import com.hvivox.certidoes.page.ComponentesDemoPage;
+import com.hvivox.certidoes.page.ConvertersDemoPage;
 import com.hvivox.certidoes.page.HeaderContributionsDemoPage;
 import com.hvivox.certidoes.page.RecursosCustomizadosDemoPage;
 import org.apache.wicket.markup.html.WebPage;
@@ -56,5 +57,9 @@ public abstract class BasePage extends WebPage {
         // demonstração de
         // Customização de Recursos
         add(new BookmarkablePageLink<>("linkRecursosCustomizados", RecursosCustomizadosDemoPage.class));
+
+        // wicket:id="linkConverters" no HTML - Link para página de demonstração de
+        // Converters
+        add(new BookmarkablePageLink<>("linkConverters", ConvertersDemoPage.class));
     }
 }

@@ -962,7 +962,7 @@
       "description": "Implementar e documentar conversores customizados para tipos de dados específicos.",
       "module": "Módulo 7: Extras",
       "priority": "medium",
-      "status": "pending",
+      "status": "done",
       "dependencies": [
         "24"
       ],
@@ -972,7 +972,8 @@
         "Documentação sobre conversores",
         "Exemplos práticos"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-05T15:39:28.060Z"
     },
     {
       "id": "55",
@@ -980,7 +981,7 @@
       "description": "Implementar 4 testes unitários e 1 teste de integração usando WicketTester.",
       "module": "Módulo 7: Extras",
       "priority": "high",
-      "status": "pending",
+      "status": "done",
       "dependencies": [],
       "testStrategy": "Criar 4 testes unitários e 1 de integração",
       "acceptanceCriteria": [
@@ -988,7 +989,8 @@
         "1 teste de integração criado",
         "Todos os testes passando"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-05T17:58:26.910Z"
     },
     {
       "id": "56",
@@ -1077,9 +1079,9 @@
   ],
   "metadata": {
     "version": "1.0.0",
-    "lastModified": "2026-01-05T14:48:44.354Z",
+    "lastModified": "2026-01-05T17:58:26.913Z",
     "taskCount": 60,
-    "completedCount": 44,
+    "completedCount": 46,
     "tags": [
       "master"
     ]
