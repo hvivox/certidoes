@@ -1052,7 +1052,7 @@
       "description": "Implementar funcionalidade de geração de relatórios de certidões usando Apache POI, permitindo exportar certidões para Excel/Word.",
       "module": "Funcionalidades Adicionais",
       "priority": "high",
-      "status": "pending",
+      "status": "done",
       "dependencies": [],
       "testStrategy": "Testar geração de relatórios e verificar formato",
       "acceptanceCriteria": [
@@ -1060,7 +1060,8 @@
         "Geração de relatório de certidão funcionando",
         "Exportação para Excel/Word implementada"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-05T21:52:11.014Z"
     },
     {
       "id": "60",
@@ -1081,9 +1082,9 @@
   ],
   "metadata": {
     "version": "1.0.0",
-    "lastModified": "2026-01-05T21:26:59.896Z",
+    "lastModified": "2026-01-05T21:52:11.016Z",
     "taskCount": 60,
-    "completedCount": 48,
+    "completedCount": 49,
     "tags": [
       "master"
     ]
