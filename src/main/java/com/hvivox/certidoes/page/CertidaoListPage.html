@@ -2,11 +2,77 @@
 <html xmlns:wicket="http://wicket.apache.org">
 <body>
 <wicket:extend>
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Listar Certidões</h2>
-        <a wicket:id="linkNovaCertidao" class="btn btn-primary">Nova Certidão</a>
+        <a wicket:id="linkNovaCertidao" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Nova Certidão
+        </a>
     </div>
 
+    <!-- ==================== FORMULÁRIO DE BUSCA E FILTROS ==================== -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">
+                <i class="fas fa-search"></i> Busca e Filtros
+            </h5>
+        </div>
+        <div class="card-body">
+            <form wicket:id="formBusca">
+                <div class="row">
+                    <!-- Campo de busca por texto -->
+                    <div class="col-md-6 mb-3">
+                        <label for="textoBusca">Buscar por Número ou Interessado:</label>
+                        <input wicket:id="textoBusca" type="text" class="form-control" 
+                               id="textoBusca" placeholder="Digite para buscar...">
+                    </div>
+                    
+                    <!-- Filtro por Tipo -->
+                    <div class="col-md-3 mb-3">
+                        <label for="tipo">Tipo:</label>
+                        <select wicket:id="tipo" class="form-control" id="tipo">
+                            <option value="">Todos</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Filtro por Status -->
+                    <div class="col-md-3 mb-3">
+                        <label for="status">Status:</label>
+                        <select wicket:id="status" class="form-control" id="status">
+                            <option value="">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <!-- Filtro por Data Início -->
+                    <div class="col-md-3 mb-3">
+                        <label for="dataInicio">Data Início:</label>
+                        <input wicket:id="dataInicio" type="text" class="form-control" 
+                               id="dataInicio" placeholder="dd/MM/yyyy">
+                    </div>
+                    
+                    <!-- Filtro por Data Fim -->
+                    <div class="col-md-3 mb-3">
+                        <label for="dataFim">Data Fim:</label>
+                        <input wicket:id="dataFim" type="text" class="form-control" 
+                               id="dataFim" placeholder="dd/MM/yyyy">
+                    </div>
+                    
+                    <!-- Botões -->
+                    <div class="col-md-6 mb-3 d-flex align-items-end">
+                        <button wicket:id="btnBuscar" type="submit" class="btn btn-primary mr-2">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                        <button wicket:id="btnLimpar" type="button" class="btn btn-secondary">
+                            <i class="fas fa-eraser"></i> Limpar Filtros
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== TABELA DE RESULTADOS ==================== -->
     <div wicket:id="tableContainer">
         <div class="table-responsive">
             <table class="table table-striped table-hover">
@@ -30,9 +96,15 @@
                         <td wicket:id="dataEmissao"></td>
                         <td wicket:id="status"></td>
                         <td>
-                            <a wicket:id="linkVer" class="btn btn-sm btn-info mr-1">Ver</a>
-                            <a wicket:id="linkEditar" class="btn btn-sm btn-warning mr-1">Editar</a>
-                            <a wicket:id="linkExcluir" class="btn btn-sm btn-danger">Excluir</a>
+                            <a wicket:id="linkVer" class="btn btn-sm btn-info mr-1">
+                                <i class="fas fa-eye"></i> Ver
+                            </a>
+                            <a wicket:id="linkEditar" class="btn btn-sm btn-warning mr-1">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <a wicket:id="linkExcluir" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i> Excluir
+                            </a>
                         </td>
                     </tr>
                 </tbody>
@@ -40,8 +112,9 @@
         </div>
     </div>
 
+    <!-- ==================== MENSAGEM QUANDO VAZIO ==================== -->
     <div wicket:id="emptyMessage" class="alert alert-info">
-        Nenhuma certidão cadastrada.
+        <i class="fas fa-info-circle"></i> Nenhuma certidão encontrada com os filtros aplicados.
     </div>
 </wicket:extend>
 </body>
