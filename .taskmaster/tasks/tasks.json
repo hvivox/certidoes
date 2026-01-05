@@ -981,7 +981,7 @@
       "description": "Implementar 4 testes unitários e 1 teste de integração usando WicketTester.",
       "module": "Módulo 7: Extras",
       "priority": "high",
-      "status": "pending",
+      "status": "done",
       "dependencies": [],
       "testStrategy": "Criar 4 testes unitários e 1 de integração",
       "acceptanceCriteria": [
@@ -989,7 +989,8 @@
         "1 teste de integração criado",
         "Todos os testes passando"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-05T17:58:26.910Z"
     },
     {
       "id": "56",
@@ -1078,9 +1079,9 @@
   ],
   "metadata": {
     "version": "1.0.0",
-    "lastModified": "2026-01-05T15:39:28.062Z",
+    "lastModified": "2026-01-05T17:58:26.913Z",
     "taskCount": 60,
-    "completedCount": 45,
+    "completedCount": 46,
     "tags": [
       "master"
     ]
