@@ -962,7 +962,7 @@
       "description": "Implementar e documentar conversores customizados para tipos de dados específicos.",
       "module": "Módulo 7: Extras",
       "priority": "medium",
-      "status": "pending",
+      "status": "done",
       "dependencies": [
         "24"
       ],
@@ -972,7 +972,8 @@
         "Documentação sobre conversores",
         "Exemplos práticos"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-05T15:39:28.060Z"
     },
     {
       "id": "55",
@@ -1077,9 +1078,9 @@
   ],
   "metadata": {
     "version": "1.0.0",
-    "lastModified": "2026-01-05T14:48:44.354Z",
+    "lastModified": "2026-01-05T15:39:28.062Z",
     "taskCount": 60,
-    "completedCount": 44,
+    "completedCount": 45,
     "tags": [
       "master"
     ]
