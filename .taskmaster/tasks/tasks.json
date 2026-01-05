@@ -998,7 +998,7 @@
       "description": "Documentar e implementar bookmarkable pages e URL encoding no Wicket.",
       "module": "Módulo 7: Extras",
       "priority": "medium",
-      "status": "pending",
+      "status": "done",
       "dependencies": [
         "10"
       ],
@@ -1008,7 +1008,8 @@
         "Bookmarkable pages implementadas",
         "URL encoding funcionando"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-05T19:02:04.312Z"
     },
     {
       "id": "57",
@@ -1079,9 +1080,9 @@
   ],
   "metadata": {
     "version": "1.0.0",
-    "lastModified": "2026-01-05T17:58:26.913Z",
+    "lastModified": "2026-01-05T19:02:04.315Z",
     "taskCount": 60,
-    "completedCount": 46,
+    "completedCount": 47,
     "tags": [
       "master"
     ]

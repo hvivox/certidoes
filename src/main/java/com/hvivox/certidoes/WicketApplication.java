@@ -1,6 +1,7 @@
 package com.hvivox.certidoes;
 
 import com.hvivox.certidoes.listener.CertidoesRequestCycleListener;
+import com.hvivox.certidoes.page.*;
 import com.hvivox.certidoes.session.CertidoesSession;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -84,6 +85,9 @@ public class WicketApplication extends WebApplication {
 
 		// MÓDULO 7 - ITEM 53: Configurar carregamento de recursos
 		configurarRecursos();
+		
+		// MÓDULO 7 - ITEM 56: Montar URLs bookmarkable
+		montarURLs();
 	}
 
 	/**
@@ -124,5 +128,43 @@ public class WicketApplication extends WebApplication {
 			// Minificação desabilitada para facilitar debug
 			getResourceSettings().setUseMinifiedResources(false);
 		}
+	}
+	
+	/**
+	 * MÓDULO 7 - ITEM 56: MOUNTED PAGES (URLs BOOKMARKABLE)
+	 * 
+	 * Monta páginas com URLs limpas e amigáveis.
+	 * 
+	 * BENEFÍCIOS:
+	 * - URLs mais legíveis: /certidoes/lista em vez de /wicket/page?0
+	 * - SEO-friendly
+	 * - Fácil de compartilhar
+	 * - Bookmarkable (pode ser marcada nos favoritos)
+	 * 
+	 * SINTAXE:
+	 * - mountPage("/caminho", MinhaPage.class)
+	 * - mountPage("/certidoes/${id}", CertidaoDetailPage.class) - com parâmetro
+	 * 
+	 * EXEMPLOS DE ACESSO:
+	 * - /certidoes/lista
+	 * - /certidoes/nova
+	 * - /certidoes/detalhe?id=123
+	 * - /demos/urls
+	 */
+	private void montarURLs() {
+		// Páginas principais de certidões
+		mountPage("/certidoes/lista", CertidaoListPage.class);
+		mountPage("/certidoes/nova", CertidaoFormPage.class);
+		mountPage("/certidoes/detalhe", CertidaoDetailPage.class);
+		
+		// Páginas de demonstração
+		mountPage("/demos/componentes", ComponentesDemoPage.class);
+		mountPage("/demos/modelos", ModelosDemoPage.class);
+		mountPage("/demos/agrupamento", AgrupamentoDemoPage.class);
+		mountPage("/demos/ajax", AjaxDemoPage.class);
+		mountPage("/demos/header-contributions", HeaderContributionsDemoPage.class);
+		mountPage("/demos/recursos-customizados", RecursosCustomizadosDemoPage.class);
+		mountPage("/demos/converters", ConvertersDemoPage.class);
+		mountPage("/demos/urls", URLsDemoPage.class);
 	}
 }
