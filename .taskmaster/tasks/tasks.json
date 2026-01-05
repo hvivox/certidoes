@@ -928,7 +928,7 @@
       "description": "Implementar internacionalização e localização, suportando Português e Inglês.",
       "module": "Módulo 7: Extras",
       "priority": "medium",
-      "status": "pending",
+      "status": "cancelled",
       "dependencies": [],
       "testStrategy": "Testar mudança de idioma",
       "acceptanceCriteria": [
@@ -936,7 +936,8 @@
         "Arquivos de propriedades criados (pt_BR, en_US)",
         "Mudança de idioma funcionando"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-05T14:48:28.352Z"
     },
     {
       "id": "53",
@@ -944,7 +945,7 @@
       "description": "Documentar e implementar customização de carregamento de recursos (CSS, JS, imagens).",
       "module": "Módulo 7: Extras",
       "priority": "low",
-      "status": "pending",
+      "status": "done",
       "dependencies": [],
       "testStrategy": "Criar exemplo de customização",
       "acceptanceCriteria": [
@@ -952,7 +953,8 @@
         "Exemplo prático",
         "Recursos customizados funcionando"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-05T14:48:44.352Z"
     },
     {
       "id": "54",
@@ -1075,9 +1077,9 @@
   ],
   "metadata": {
     "version": "1.0.0",
-    "lastModified": "2026-01-04T15:47:37.322Z",
+    "lastModified": "2026-01-05T14:48:44.354Z",
     "taskCount": 60,
-    "completedCount": 43,
+    "completedCount": 44,
     "tags": [
       "master"
     ]

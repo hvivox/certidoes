@@ -7,6 +7,10 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
+import org.apache.wicket.request.resource.caching.FilenameWithVersionResourceCachingStrategy;
+import org.apache.wicket.request.resource.caching.NoOpResourceCachingStrategy;
+import org.apache.wicket.request.resource.caching.version.MessageDigestResourceVersion;
+import org.apache.wicket.util.time.Duration;
 
 /**
  * Application object for your web application.
@@ -78,10 +82,47 @@ public class WicketApplication extends WebApplication {
 		// Intercepta o ciclo de requisição para logging e monitoramento
 		getRequestCycleListeners().add(new CertidoesRequestCycleListener());
 
-		// EXEMPLO: Configurar modo de desenvolvimento (útil para debug)
-		// getDebugSettings().setDevelopmentUtilitiesEnabled(true);
+		// MÓDULO 7 - ITEM 53: Configurar carregamento de recursos
+		configurarRecursos();
+	}
 
-		// EXEMPLO: Configurar recursos estáticos
-		// getResourceSettings().setResourcePollFrequency(Duration.seconds(1));
+	/**
+	 * MÓDULO 7 - ITEM 53: CUSTOMIZAÇÃO DO CARREGAMENTO DE RECURSOS
+	 * 
+	 * Configura como recursos (CSS, JS, imagens) são carregados, cacheados e
+	 * otimizados.
+	 * 
+	 * CONFIGURAÇÕES:
+	 * - Cache: estratégia diferente para desenvolvimento vs produção
+	 * - Versionamento: hash MD5 do conteúdo em produção
+	 * - Minificação: automática em produção (.min.js/.min.css)
+	 * - Poll frequency: recarregamento rápido em desenvolvimento
+	 */
+	private void configurarRecursos() {
+		if (usesDeploymentConfig()) {
+			// ==== PRODUÇÃO ====
+			// Cache agressivo com versionamento por MD5
+			// Exemplo: style.css vira style-abc123def456.css
+			// Permite cache infinito no browser, pois nome muda quando conteúdo muda
+			getResourceSettings().setCachingStrategy(
+					new FilenameWithVersionResourceCachingStrategy(
+							new MessageDigestResourceVersion() // MD5 do conteúdo
+					));
+
+			// Habilitar minificação automática
+			// Wicket procurará por arquivos .min.js e .min.css automaticamente
+			getResourceSettings().setUseMinifiedResources(true);
+		} else {
+			// ==== DESENVOLVIMENTO ====
+			// Sem cache - recursos sempre recarregados
+			getResourceSettings().setCachingStrategy(NoOpResourceCachingStrategy.INSTANCE);
+
+			// Recarregar recursos modificados a cada 1 segundo
+			// Útil para ver mudanças em CSS/JS sem reiniciar servidor
+			getResourceSettings().setResourcePollFrequency(Duration.seconds(1));
+
+			// Minificação desabilitada para facilitar debug
+			getResourceSettings().setUseMinifiedResources(false);
+		}
 	}
 }

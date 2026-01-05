@@ -1,0 +1,37 @@
+/**
+ * EXEMPLO DE RECURSO CSS CUSTOMIZADO
+ * Este arquivo demonstra um recurso CSS carregado via CssResourceReference
+ */
+
+.custom-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 30px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.custom-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+}
+
+.custom-box h5 {
+    margin-top: 0;
+    font-weight: 600;
+}
+
+.custom-box p {
+    margin-bottom: 0;
+    opacity: 0.95;
+}
+
+.custom-box code {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+

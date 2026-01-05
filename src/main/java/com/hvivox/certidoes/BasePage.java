@@ -7,6 +7,7 @@ import com.hvivox.certidoes.page.CertidaoFormPage;
 import com.hvivox.certidoes.page.CertidaoListPage;
 import com.hvivox.certidoes.page.ComponentesDemoPage;
 import com.hvivox.certidoes.page.HeaderContributionsDemoPage;
+import com.hvivox.certidoes.page.RecursosCustomizadosDemoPage;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -50,5 +51,10 @@ public abstract class BasePage extends WebPage {
         // demonstração de
         // Header Contributions
         add(new BookmarkablePageLink<>("linkHeaderContributions", HeaderContributionsDemoPage.class));
+
+        // wicket:id="linkRecursosCustomizados" no HTML - Link para página de
+        // demonstração de
+        // Customização de Recursos
+        add(new BookmarkablePageLink<>("linkRecursosCustomizados", RecursosCustomizadosDemoPage.class));
     }
 }

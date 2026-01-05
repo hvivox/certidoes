@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <title>Customização de Recursos - Wicket</title>
+</head>
+<body>
+<wicket:extend>
+    <div class="container-fluid mt-4">
+        
+        <!-- Cabeçalho -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2>
+                    <i class="fas fa-puzzle-piece text-primary"></i> 
+                    <span wicket:id="pageTitle"></span>
+                </h2>
+                <p class="lead" wicket:id="pageSubtitle"></p>
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Objetivo:</strong> Demonstrar diferentes formas de carregar e customizar recursos 
+                    (CSS, JavaScript, imagens) no Apache Wicket de maneira simples e prática.
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de Exemplos -->
+        <div class="row">
+            
+            <!-- EXEMPLO 1: ResourceReference -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-file-code"></i> 1. ResourceReference (Arquivos Externos)
+                    </div>
+                    <div class="card-body">
+                        <div class="custom-resource-box">
+                            <h4>Clique Aqui!</h4>
+                            <p>Este box usa CSS e JS carregados via ResourceReference</p>
+                        </div>
+                        <div class="mt-3 exemplo-box">
+                            <small wicket:id="exemplo1Info" class="text-muted"></small>
+                        </div>
+                        <div class="mt-2">
+                            <strong>Como funciona:</strong>
+                            <pre class="bg-light p-2 rounded mt-1"><code>private static final CssResourceReference CUSTOM_CSS = 
+    new CssResourceReference(MinhaClasse.class, "custom-resource.css");
+
+response.render(CssHeaderItem.forReference(CUSTOM_CSS));</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 2: CSS Inline -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">
+                        <i class="fas fa-code"></i> 2. CSS Inline (Direto no Código)
+                    </div>
+                    <div class="card-body">
+                        <div class="inline-example">
+                            CSS adicionado diretamente no Java!
+                        </div>
+                        <div class="mt-3 exemplo-box">
+                            <small wicket:id="exemplo2Info" class="text-muted"></small>
+                        </div>
+                        <div class="mt-2">
+                            <strong>Como funciona:</strong>
+                            <pre class="bg-light p-2 rounded mt-1"><code>String css = ".my-class { color: red; }";
+response.render(CssHeaderItem.forCSS(css, "my-css-id"));</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 3: JavaScript Inline -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-warning text-dark">
+                        <i class="fas fa-bolt"></i> 3. JavaScript Inline
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-primary btn-lg btn-block" 
+                                onclick="exemploInline(); return false;">
+                            <i class="fas fa-play"></i> Executar Função Inline
+                        </button>
+                        <div class="mt-3 exemplo-box">
+                            <small wicket:id="exemplo3Info" class="text-muted"></small>
+                        </div>
+                        <div class="mt-2">
+                            <strong>Como funciona:</strong>
+                            <pre class="bg-light p-2 rounded mt-1"><code>String js = "function minhaFuncao() { alert('Olá!'); }";
+response.render(JavaScriptHeaderItem.forScript(js, "my-js-id"));</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 4: CDN -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-info text-white">
+                        <i class="fas fa-cloud"></i> 4. Recursos de CDN
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success animate__animated animate__pulse">
+                            <i class="fas fa-check-circle"></i>
+                            <strong>Animação de CDN!</strong><br>
+                            Este box usa Animate.css carregado de CDN
+                        </div>
+                        <div class="mt-3 exemplo-box">
+                            <small wicket:id="exemplo4Info" class="text-muted"></small>
+                        </div>
+                        <div class="mt-2">
+                            <strong>Como funciona:</strong>
+                            <pre class="bg-light p-2 rounded mt-1"><code>response.render(CssHeaderItem.forUrl(
+    "https://cdn.../animate.min.css", 
+    "animate-css"
+));</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXEMPLO 5: Context Relative -->
+            <div class="col-lg-12 mb-4">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <i class="fas fa-folder"></i> 5. Context Relative Resources (webapp/)
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="logo.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
+                                <p class="mt-2">
+                                    <i class="fas fa-arrow-up"></i> Logo carregado de <code>src/main/webapp/logo.png</code>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="exemplo-box">
+                                    <small wicket:id="exemplo5Info" class="text-muted"></small>
+                                </div>
+                                <div class="mt-2">
+                                    <strong>Como funciona:</strong>
+                                    <pre class="bg-light p-2 rounded mt-1"><code>// Para recursos em src/main/webapp/
+new ContextRelativeResourceReference("css/style.css");
+
+// Ou simplesmente use tag HTML normal
+&lt;img src="logo.png" /&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Configurações Atuais -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div wicket:id="configInfo"></div>
+            </div>
+        </div>
+
+        <!-- Dicas Práticas -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-lightbulb"></i> Dicas Práticas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-check text-success"></i> Boas Práticas</h6>
+                                <ul>
+                                    <li>Declare ResourceReferences como <code>static final</code></li>
+                                    <li>Use versionamento em produção</li>
+                                    <li>Coloque recursos ao lado das classes</li>
+                                    <li>Use minificação em produção</li>
+                                    <li>CDN para bibliotecas populares</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><i class="fas fa-times text-danger"></i> Evite</h6>
+                                <ul>
+                                    <li>Criar ResourceReferences em loops</li>
+                                    <li>Carregar recursos desnecessários</li>
+                                    <li>Cache agressivo em desenvolvimento</li>
+                                    <li>Misturar muitos estilos inline</li>
+                                    <li>Esquecer de testar em produção</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documentação -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div wicket:id="docInfo"></div>
+            </div>
+        </div>
+
+    </div>
+</wicket:extend>
+</body>
+</html>
