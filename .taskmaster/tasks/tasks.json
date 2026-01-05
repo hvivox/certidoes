@@ -1033,7 +1033,7 @@
       "description": "Implementar funcionalidade de busca e filtros na página de listagem de certidões, permitindo filtrar por tipo, status, data, etc.",
       "module": "Funcionalidades Adicionais",
       "priority": "high",
-      "status": "pending",
+      "status": "done",
       "dependencies": [
         "28"
       ],
@@ -1043,7 +1043,8 @@
         "Filtros por tipo, status, data funcionando",
         "Interface intuitiva para busca/filtros"
       ],
-      "subtasks": []
+      "subtasks": [],
+      "updatedAt": "2026-01-05T21:26:59.895Z"
     },
     {
       "id": "59",
@@ -1080,9 +1081,9 @@
   ],
   "metadata": {
     "version": "1.0.0",
-    "lastModified": "2026-01-05T19:35:56.888Z",
+    "lastModified": "2026-01-05T21:26:59.896Z",
     "taskCount": 60,
-    "completedCount": 47,
+    "completedCount": 48,
     "tags": [
       "master"
     ]
