@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modo de Produção - Demo</title>
+</head>
+<body>
+<wicket:extend>
+    <div class="container mt-4">
+        <h1>Modo de Produção (Production Mode)</h1>
+        <p class="lead">Demonstração das diferenças entre modos DEVELOPMENT e DEPLOYMENT</p>
+
+        <!-- ==================== MODO ATUAL ==================== -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h4 mb-0">
+                    <i class="fas fa-info-circle"></i> Modo Atual
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Modo de Execução:</h5>
+                        <h3><span wicket:id="modoAtual" class="badge"></span></h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Descrição:</h5>
+                        <p wicket:id="descricaoModo" class="mb-0"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== CONFIGURAÇÕES APLICADAS ==================== -->
+        <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+                <h2 class="h4 mb-0">
+                    <i class="fas fa-cogs"></i> Configurações Aplicadas
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Configuração</th>
+                                <th>Status</th>
+                                <th>Descrição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Compressão de Whitespace -->
+                            <tr>
+                                <td><strong>Compressão de HTML</strong></td>
+                                <td><span wicket:id="comprimirWhitespace" class="badge"></span></td>
+                                <td wicket:id="comprimirWhitespaceDescricao"></td>
+                            </tr>
+                            
+                            <!-- Strip Wicket Tags -->
+                            <tr>
+                                <td><strong>Remoção de Tags Wicket</strong></td>
+                                <td><span wicket:id="stripWicketTags" class="badge"></span></td>
+                                <td wicket:id="stripWicketTagsDescricao"></td>
+                            </tr>
+                            
+                            <!-- Ajax Debug Mode -->
+                            <tr>
+                                <td><strong>Ajax Debug Mode</strong></td>
+                                <td><span wicket:id="ajaxDebug" class="badge"></span></td>
+                                <td wicket:id="ajaxDebugDescricao"></td>
+                            </tr>
+                            
+                            <!-- Development Utilities -->
+                            <tr>
+                                <td><strong>Utilitários de Desenvolvimento</strong></td>
+                                <td><span wicket:id="devUtilities" class="badge"></span></td>
+                                <td wicket:id="devUtilitiesDescricao"></td>
+                            </tr>
+                            
+                            <!-- Minificação -->
+                            <tr>
+                                <td><strong>Minificação Automática</strong></td>
+                                <td><span wicket:id="useMinified" class="badge"></span></td>
+                                <td wicket:id="useMinifiedDescricao"></td>
+                            </tr>
+                            
+                            <!-- Caching Strategy -->
+                            <tr>
+                                <td><strong>Estratégia de Cache</strong></td>
+                                <td><code wicket:id="cachingStrategy"></code></td>
+                                <td wicket:id="cachingStrategyDescricao"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SEÇÃO: DESENVOLVIMENTO ==================== -->
+        <div wicket:id="secaoDesenvolvimento" class="card mb-4 border-warning">
+            <div class="card-header bg-warning">
+                <h2 class="h4 mb-0">
+                    <i class="fas fa-code"></i> Modo Desenvolvimento Ativo
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <h5>⚠️ Otimizações de Produção NÃO estão ativas!</h5>
+                    <p>Este modo é ideal para desenvolvimento local, mas <strong>NÃO deve ser usado em produção</strong>.</p>
+                </div>
+                
+                <h5>Recursos Habilitados:</h5>
+                <ul>
+                    <li>✓ Hot reload de arquivos HTML e recursos</li>
+                    <li>✓ Mensagens de erro detalhadas com stack traces</li>
+                    <li>✓ Ajax Debug Window</li>
+                    <li>✓ HTML legível (não comprimido)</li>
+                    <li>✓ Comentários Wicket visíveis no HTML</li>
+                </ul>
+                
+                <h5>Para Alternar para Produção:</h5>
+                <pre class="bg-light p-3"><code>mvn jetty:run -Dwicket.configuration=deployment</code></pre>
+                
+                <p>Ou configure no <code>web.xml</code> ou via variável de ambiente.</p>
+            </div>
+        </div>
+
+        <!-- ==================== SEÇÃO: PRODUÇÃO ==================== -->
+        <div wicket:id="secaoProducao" class="card mb-4 border-success">
+            <div class="card-header bg-success text-white">
+                <h2 class="h4 mb-0">
+                    <i class="fas fa-rocket"></i> Modo Produção Ativo
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success">
+                    <h5>✓ Otimizações de Produção estão ativas!</h5>
+                    <p>Aplicação configurada para máxima performance e segurança.</p>
+                </div>
+                
+                <h5>Otimizações Aplicadas:</h5>
+                <ul>
+                    <li>✓ HTML comprimido (redução de 20-30% no tamanho)</li>
+                    <li>✓ Comentários Wicket removidos</li>
+                    <li>✓ Cache agressivo com versionamento MD5</li>
+                    <li>✓ Minificação automática de CSS/JS</li>
+                    <li>✓ Debug desabilitado</li>
+                    <li>✓ Segurança aprimorada</li>
+                </ul>
+                
+                <h5>Checklist de Produção:</h5>
+                <ul>
+                    <li>☑ Recursos minificados criados (.min.css, .min.js)</li>
+                    <li>☑ Logs configurados para arquivo</li>
+                    <li>☑ Páginas de erro customizadas</li>
+                    <li>☑ Testes de performance executados</li>
+                    <li>☑ Monitoramento configurado</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ==================== INSTRUÇÕES ==================== -->
+        <div class="card mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h2 class="h4 mb-0">
+                    <i class="fas fa-question-circle"></i> Como Alternar Entre Modos
+                </h2>
+            </div>
+            <div class="card-body">
+                <pre wicket:id="instrucoesModo" class="bg-light p-3"></pre>
+                
+                <div class="alert alert-info mt-3">
+                    <h5>📚 Documentação Completa</h5>
+                    <p class="mb-0">
+                        Para detalhes completos sobre configuração de modo de produção, consulte:<br>
+                        • <code>ModoProducaoDocumentacao.java</code><br>
+                        • <code>WicketApplication.configurarModoProducao()</code>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== DEMONSTRAÇÃO VISUAL ==================== -->
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                <h2 class="h4 mb-0">
+                    <i class="fas fa-eye"></i> Demonstração Visual
+                </h2>
+            </div>
+            <div class="card-body">
+                <h5>Inspecione o HTML desta página no navegador:</h5>
+                <ol>
+                    <li>Abra as ferramentas de desenvolvedor (F12)</li>
+                    <li>Vá para a aba "Elements" ou "Inspector"</li>
+                    <li>Observe o código HTML:</li>
+                </ol>
+                
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <h6>Em DEVELOPMENT você verá:</h6>
+                        <ul>
+                            <li>HTML formatado e legível</li>
+                            <li>Comentários <code>&lt;!-- wicket:id="..." --&gt;</code></li>
+                            <li>Espaços e quebras de linha</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Em DEPLOYMENT você verá:</h6>
+                        <ul>
+                            <li>HTML comprimido (sem espaços extras)</li>
+                            <li>Sem comentários Wicket</li>
+                            <li>Recursos com hash no nome</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Exemplo de comentário Wicket (visível apenas em dev) -->
+                <div class="mt-3 p-3 bg-light border">
+                    <p class="mb-0">
+                        <strong>Teste:</strong> Este parágrafo está dentro de um div com wicket:id.
+                        No modo development, você verá um comentário Wicket no HTML.
+                        No modo deployment, esse comentário será removido.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</wicket:extend>
+</body>
+</html>
+
