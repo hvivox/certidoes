@@ -1,6 +1,7 @@
 package com.hvivox.certidoes;
 
 import com.hvivox.certidoes.listener.CertidoesRequestCycleListener;
+import com.hvivox.certidoes.page.*;
 import com.hvivox.certidoes.session.CertidoesSession;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -15,8 +16,7 @@ import org.apache.wicket.util.time.Duration;
 /**
  * Application object for your web application.
  * If you want to run this application without deploying, run the Start class.
- * 
- * @see com.hvivox.certidoes.Start#main(String[])
+
  */
 public class WicketApplication extends WebApplication {
 	/**
@@ -85,6 +85,9 @@ public class WicketApplication extends WebApplication {
 		// MÓDULO 7 - ITEM 53: Configurar carregamento de recursos
 		configurarRecursos();
 
+		// MÓDULO 7 - ITEM 56: Montar URLs bookmarkable
+		montarURLs();
+
 		// MÓDULO 7 - ITEM 57: Configurar modo de produção
 		configurarModoProducao();
 	}
@@ -130,10 +133,48 @@ public class WicketApplication extends WebApplication {
 	}
 
 	/**
+	 * MÓDULO 7 - ITEM 56: MOUNTED PAGES (URLs BOOKMARKABLE)
+	 *
+	 * Monta páginas com URLs limpas e amigáveis.
+	 *
+	 * BENEFÍCIOS:
+	 * - URLs mais legíveis: /certidoes/lista em vez de /wicket/page?0
+	 * - SEO-friendly
+	 * - Fácil de compartilhar
+	 * - Bookmarkable (pode ser marcada nos favoritos)
+	 *
+	 * SINTAXE:
+	 * - mountPage("/caminho", MinhaPage.class)
+	 * - mountPage("/certidoes/${id}", CertidaoDetailPage.class) - com parâmetro
+	 *
+	 * EXEMPLOS DE ACESSO:
+	 * - /certidoes/lista
+	 * - /certidoes/nova
+	 * - /certidoes/detalhe?id=123
+	 * - /demos/urls
+	 */
+	private void montarURLs() {
+		// Páginas principais de certidões
+		mountPage("/certidoes/lista", CertidaoListPage.class);
+		mountPage("/certidoes/nova", CertidaoFormPage.class);
+		mountPage("/certidoes/detalhe", CertidaoDetailPage.class);
+
+		// Páginas de demonstração
+		mountPage("/demos/componentes", ComponentesDemoPage.class);
+		mountPage("/demos/modelos", ModelosDemoPage.class);
+		mountPage("/demos/agrupamento", AgrupamentoDemoPage.class);
+		mountPage("/demos/ajax", AjaxDemoPage.class);
+		mountPage("/demos/header-contributions", HeaderContributionsDemoPage.class);
+		mountPage("/demos/recursos-customizados", RecursosCustomizadosDemoPage.class);
+		mountPage("/demos/converters", ConvertersDemoPage.class);
+		mountPage("/demos/urls", URLsDemoPage.class);
+	}
+
+	/**
 	 * MÓDULO 7 - ITEM 57: CONFIGURAÇÃO DE MODO DE PRODUÇÃO
-	 * 
+	 *
 	 * Aplica otimizações e configurações de segurança específicas para produção.
-	 * 
+	 *
 	 * OTIMIZAÇÕES APLICADAS:
 	 * 1. Compressão de markup HTML (remove espaços, quebras de linha
 	 * desnecessárias)
@@ -141,17 +182,17 @@ public class WicketApplication extends WebApplication {
 	 * 3. Desabilitação de informações de debug detalhadas
 	 * 4. Configurações de segurança aprimoradas
 	 * 5. Cache de páginas e serialização otimizada
-	 * 
+	 *
 	 * COMO FUNCIONA:
 	 * - Este método verifica o modo atual usando usesDeploymentConfig()
 	 * - Se true = PRODUÇÃO (DEPLOYMENT)
 	 * - Se false = DESENVOLVIMENTO (DEVELOPMENT)
-	 * 
+	 *
 	 * COMO ALTERAR O MODO:
 	 * - Por padrão, Wicket roda em DEVELOPMENT quando executado via Start.java
 	 * - Para produção, defina a propriedade do sistema:
 	 * -Dwicket.configuration=deployment
-	 * 
+	 *
 	 * - Ou configure no web.xml:
 	 * <context-param>
 	 * <param-name>configuration</param-name>
