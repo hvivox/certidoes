@@ -1069,7 +1069,7 @@
       "description": "Criar seção de troubleshooting com problemas comuns e soluções para desenvolvimento com Wicket.",
       "module": "Documentação",
       "priority": "low",
-      "status": "pending",
+      "status": "done",
       "dependencies": [],
       "testStrategy": "Revisar documentação criada",
       "acceptanceCriteria": [
