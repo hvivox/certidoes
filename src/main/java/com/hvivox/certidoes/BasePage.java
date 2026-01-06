@@ -10,6 +10,7 @@ import com.hvivox.certidoes.page.ConvertersDemoPage;
 import com.hvivox.certidoes.page.HeaderContributionsDemoPage;
 import com.hvivox.certidoes.page.ModoProducaoDemoPage;
 import com.hvivox.certidoes.page.RecursosCustomizadosDemoPage;
+import com.hvivox.certidoes.page.TroubleshootingDemoPage;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -66,5 +67,8 @@ public abstract class BasePage extends WebPage {
         // wicket:id="linkModoProducao" no HTML - Link para página de demonstração de
         // Modo de Produção
         add(new BookmarkablePageLink<>("linkModoProducao", ModoProducaoDemoPage.class));
+
+        // wicket:id="linkTroubleshooting" no HTML - Link para página de Troubleshooting
+        add(new BookmarkablePageLink<>("linkTroubleshooting", TroubleshootingDemoPage.class));
     }
 }
