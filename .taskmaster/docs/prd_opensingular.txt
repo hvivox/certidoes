@@ -1,0 +1,787 @@
+# Product Requirements Document (PRD) - OpenSingular Learning Platform
+
+## 1. Overview
+
+Este documento define os requisitos para implementação de uma plataforma completa de aprendizado e integração do framework OpenSingular no projeto Certidões. O objetivo é desenvolver conhecimento progressivo sobre OpenSingular, desde conceitos fundamentais até recursos avançados, incluindo módulos especializados de workflow, gestão de demandas, upload de documentos e integrações externas.
+
+O projeto visa criar um sistema completo de gestão de certidões utilizando OpenSingular integrado com Apache Wicket, permitindo comparação entre abordagens (Wicket puro vs Wicket + OpenSingular) e servindo como material de referência e aprendizado.
+
+**Público-Alvo**: Desenvolvedores Java com conhecimento em Wicket que desejam aprender OpenSingular de forma progressiva e prática.
+
+**Contexto**: O projeto Certidões já possui implementação em Wicket puro, que servirá como baseline para comparação e aprendizado.
+
+---
+
+## 2. Goals
+
+### Objetivos Principais
+
+1. **Aprendizado Progressivo**: Dominar OpenSingular através de módulos incrementais (básico → intermediário → avançado → especialista)
+
+2. **Integração Prática**: Integrar OpenSingular com Wicket existente de forma funcional e comparável
+
+3. **Sistema Completo**: Desenvolver sistema de gestão de certidões com workflow, boxes, upload e integrações
+
+4. **Documentação Rica**: Criar guias, exemplos e material de referência para consultas futuras
+
+5. **Comparação Técnica**: Avaliar trade-offs entre Wicket puro e Wicket + OpenSingular (LOC, manutenibilidade, performance)
+
+### Objetivos Secundários
+
+- Estabelecer boas práticas de desenvolvimento com OpenSingular
+- Criar biblioteca reutilizável de componentes (STypes, validators, views)
+- Preparar sistema para produção com testes, monitoramento e otimizações
+- Documentar casos de uso reais e soluções para problemas comuns
+
+---
+
+## 3. User Stories
+
+### US-01: Como desenvolvedor iniciante em OpenSingular
+**Quero** entender os conceitos fundamentais (SType, SInstance, SPackage)  
+**Para** começar a criar meus primeiros formulários dinâmicos  
+**Critérios de Aceitação**:
+- Criar SType simples com campos básicos
+- Criar SInstance e manipular dados
+- Serializar/deserializar para JSON
+- Executar exemplos práticos com sucesso
+
+### US-02: Como desenvolvedor intermediário
+**Quero** criar formulários complexos com validações e composição  
+**Para** modelar entidades de negócio completas (Certidão, Requerente)  
+**Critérios de Aceitação**:
+- Criar tipos compostos e listas
+- Implementar validadores customizados
+- Criar validações condicionais (dependsOn)
+- Reutilizar tipos entre diferentes contextos
+
+### US-03: Como desenvolvedor de UI
+**Quero** controlar a apresentação dos formulários  
+**Para** criar interfaces profissionais e responsivas  
+**Critérios de Aceitação**:
+- Criar views customizadas com layouts diferentes
+- Agrupar campos em blocos lógicos
+- Aplicar GridLayout, TabLayout, StackLayout
+- Ter múltiplas views para o mesmo SType
+
+### US-04: Como desenvolvedor Wicket
+**Quero** integrar OpenSingular em páginas Wicket existentes  
+**Para** aproveitar o melhor dos dois frameworks  
+**Critérios de Aceitação**:
+- Renderizar formulários Singular em páginas Wicket
+- Processar submit e validação
+- Usar Ajax com componentes Singular
+- Integrar com models Wicket existentes
+
+### US-05: Como analista de certidões
+**Quero** ter uma fila de trabalho organizada  
+**Para** processar solicitações de forma eficiente  
+**Critérios de Aceitação**:
+- Ver box "Para Análise" com certidões pendentes
+- Filtrar por tipo, data, status
+- Ver detalhes e documentos anexados
+- Aprovar/rejeitar/devolver certidões
+
+### US-06: Como requerente
+**Quero** acompanhar minhas solicitações  
+**Para** saber o status das minhas certidões  
+**Critérios de Aceitação**:
+- Solicitar nova certidão via formulário
+- Upload de documentos obrigatórios
+- Ver box "Minhas Certidões"
+- Ver histórico de tramitação
+- Baixar certidões aprovadas
+
+### US-07: Como gestor
+**Quero** ter visão geral do sistema  
+**Para** tomar decisões baseadas em dados  
+**Critérios de Aceitação**:
+- Dashboard com métricas principais
+- Gráficos de certidões por tipo/status
+- Tempo médio de processamento
+- Alertas de SLA
+- Exportar relatórios gerenciais
+
+### US-08: Como arquiteto de software
+**Quero** comparar Wicket puro vs Wicket + OpenSingular  
+**Para** tomar decisões informadas sobre arquitetura  
+**Critérios de Aceitação**:
+- Página comparativa lado a lado
+- Análise de linhas de código
+- Análise de manutenibilidade
+- Métricas de performance
+- Documentação de trade-offs
+
+---
+
+## 4. Features
+
+### Módulo 1: Fundamentos (Priority: CRITICAL)
+- F-1.1: Setup inicial (dependências Maven, estrutura de pacotes)
+- F-1.2: Configuração no WicketApplication
+- F-1.3: Primeiro SType simples (PessoaSimples)
+- F-1.4: Manipulação de SInstance
+- F-1.5: Serialização JSON
+- F-1.6: Exemplos executáveis com console output
+
+### Módulo 2: Sistema de Tipos (Priority: CRITICAL)
+- F-2.1: Tipos simples (String, Integer, Decimal, Date, Boolean, Enum)
+- F-2.2: Tipos compostos (STypeComposite)
+- F-2.3: Listas (STypeList)
+- F-2.4: Atributos (label, required, enabled, visible, etc.)
+- F-2.5: STypeCertidao completo
+- F-2.6: STypeEndereco reutilizável
+- F-2.7: STypeRequerente com composição
+
+### Módulo 3: Validação (Priority: HIGH)
+- F-3.1: Validadores built-in
+- F-3.2: Validadores customizados (CPF, CNPJ, CEP)
+- F-3.3: ValidationResult e mensagens de erro
+- F-3.4: Validação condicional (requiredIf, visibleIf)
+- F-3.5: Dependências entre campos (dependsOn)
+- F-3.6: Regras de negócio (data não futura, número único)
+
+### Módulo 4: Views (Priority: HIGH)
+- F-4.1: Separação dados/apresentação (SType/SView)
+- F-4.2: Layouts (Grid, Stack, Tab, Column)
+- F-4.3: Blocos e agrupamento (createBlock)
+- F-4.4: Seções colapsáveis
+- F-4.5: CertidaoView profissional
+- F-4.6: Views alternativas (simplificada, completa)
+
+### Módulo 5: Integração Wicket (Priority: CRITICAL)
+- F-5.1: Componentes Wicket do Singular (BSFormPanel, BSAutoFormPanel)
+- F-5.2: SInstanceModel
+- F-5.3: CertidaoSingularFormPage funcional
+- F-5.4: Página de comparação (Wicket puro vs Singular)
+- F-5.5: Ajax e validação em tempo real
+- F-5.6: Integração com CertidaoRepository
+
+### Módulo 6: Recursos Avançados (Priority: MEDIUM)
+- F-6.1: Biblioteca de tipos reutilizáveis
+- F-6.2: Versionamento de formulários (V1, V2)
+- F-6.3: Migração entre versões (onMigrate)
+- F-6.4: Persistência em banco (JSON serializado)
+- F-6.5: Geração de PDF a partir de SInstance
+- F-6.6: Internacionalização (pt-BR, en-US)
+
+### Módulo 7: Produção (Priority: HIGH)
+- F-7.1: Otimizações de performance
+- F-7.2: Cache de tipos
+- F-7.3: Validação server-side obrigatória
+- F-7.4: Testes unitários de STypes
+- F-7.5: Testes de integração Wicket + Singular
+- F-7.6: Logs estruturados
+- F-7.7: Métricas básicas (tempo renderização, erros validação)
+
+### Módulo 8.1: Workflow (Priority: MEDIUM)
+- F-8.1.1: ProcessDefinition para certidões
+- F-8.1.2: Estados (SOLICITADA, EM_ANALISE, DEFERIDA, INDEFERIDA)
+- F-8.1.3: Transições (SUBMETER, APROVAR, REJEITAR, DEVOLVER)
+- F-8.1.4: Tasks humanas (análise, aprovação)
+- F-8.1.5: Listeners (onBeforeTransition, onAfterTransition)
+- F-8.1.6: SLA e prazos
+- F-8.1.7: Histórico de tramitação
+
+### Módulo 8.2: Gestão de Demandas (Priority: MEDIUM)
+- F-8.2.1: Boxes customizadas (Minhas Certidões, Para Análise, Aprovadas)
+- F-8.2.2: Filtros avançados (tipo, data, status)
+- F-8.2.3: Paginação e performance
+- F-8.2.4: Dashboard do analista
+- F-8.2.5: Dashboard do gestor
+- F-8.2.6: Contadores e badges em tempo real
+
+### Módulo 8.3: Upload (Priority: MEDIUM)
+- F-8.3.1: Configuração de storage (local/S3)
+- F-8.3.2: Upload múltiplo com drag-and-drop
+- F-8.3.3: Preview de imagens/PDFs
+- F-8.3.4: Documentos obrigatórios por tipo
+- F-8.3.5: Validação de tipo e tamanho
+- F-8.3.6: Download seguro com autenticação
+
+### Módulo 8.4: Integrações (Priority: LOW)
+- F-8.4.1: Serviço de e-mail (SMTP, templates)
+- F-8.4.2: Geração de PDF (iText)
+- F-8.4.3: Códigos de barras/QR codes
+- F-8.4.4: Consulta CEP (ViaCEP)
+- F-8.4.5: Webhooks para sistemas externos
+- F-8.4.6: Listeners em eventos de fluxo
+
+### Módulo 8.5: Monitoramento (Priority: LOW)
+- F-8.5.1: Dashboard gerencial completo
+- F-8.5.2: Gráficos de tendência
+- F-8.5.3: Métricas de performance (SInstances, queries N+1)
+- F-8.5.4: Alertas de SLA
+- F-8.5.5: Exportação de relatórios (Excel/CSV)
+
+### Módulo 8.6: Migração (Priority: LOW)
+- F-8.6.1: Estratégias de versionamento semântico
+- F-8.6.2: Migração lazy vs eager
+- F-8.6.3: Coexistência de múltiplas versões
+- F-8.6.4: Importação de dados legados (ETL)
+- F-8.6.5: Validação pós-migração
+
+### Módulo 9: Casos Práticos (Priority: LOW)
+- F-9.1: Fluxo completo end-to-end
+- F-9.2: Portal do requerente
+- F-9.3: Painel do analista
+- F-9.4: Dashboard gerencial
+- F-9.5: Migração de sistema legado
+- F-9.6: Integração de todos os módulos
+
+---
+
+## 5. Technical Requirements
+
+### 5.1 Stack Tecnológico
+
+**Backend**:
+- Java 8+
+- Apache Wicket 7.18.0
+- OpenSingular 1.8.1 (form-core, form-wicket)
+- Maven 3.x
+
+**Módulos Especializados**:
+- singular-flow-core (workflow engine)
+- singular-requirement (boxes/work lists)
+- singular-form-upload (upload de arquivos)
+- singular-persistence (persistência)
+
+**Bibliotecas Auxiliares**:
+- Jackson (JSON)
+- iText 5.5.13.3 (PDF)
+- JavaMail 1.6.2 (e-mails)
+- Apache POI 5.2.3 (Excel/Word)
+- AWS SDK S3 1.12.400 (storage opcional)
+
+**Frontend**:
+- HTML5/CSS3
+- JavaScript (Wicket Ajax)
+- Bootstrap (via Singular)
+
+**Infraestrutura**:
+- Jetty 9.4.51 (desenvolvimento)
+- Log4j 2.17.1 (logging)
+
+### 5.2 Arquitetura de Pacotes
+
+```
+com.hvivox.certidoes/
+├── singular/
+│   ├── config/              # Configurações
+│   ├── packages/            # SPackages
+│   ├── types/               # STypes (basic, domain, document)
+│   ├── views/               # SViews
+│   ├── validators/          # Validadores reutilizáveis
+│   ├── flow/                # Workflow (states, transitions, tasks)
+│   ├── requirement/         # Boxes e filtros
+│   ├── upload/              # Upload e storage
+│   ├── service/             # Serviços
+│   ├── integration/         # Integrações externas
+│   └── wicket/              # Componentes Wicket (pages, panels, models)
+└── page/                    # Wicket puro (manter para comparação)
+```
+
+### 5.3 Dependências Maven
+
+**Obrigatórias** (Módulos 1-7):
+```xml
+<dependency>
+    <groupId>org.opensingular</groupId>
+    <artifactId>singular-form-core</artifactId>
+    <version>1.8.1</version>
+</dependency>
+<dependency>
+    <groupId>org.opensingular</groupId>
+    <artifactId>singular-form-wicket</artifactId>
+    <version>1.8.1</version>
+</dependency>
+```
+
+**Opcionais** (Módulo 8):
+- singular-flow-core
+- singular-requirement
+- singular-form-upload
+- singular-persistence
+- javax.mail-api / javax.mail
+- itextpdf
+- aws-java-sdk-s3
+
+### 5.4 Configuração no WicketApplication
+
+```java
+@Override
+public void init() {
+    super.init();
+    
+    // Configurar Singular
+    SingularServerConfiguration config = new SingularServerConfiguration();
+    config.registerPackage(CertidoesPackage.class);
+    config.registerPackage(CommonTypesPackage.class);
+    
+    // Configurar persistência (opcional)
+    config.setPersistenceService(new SingularPersistenceService());
+    
+    // Configurar workflow (opcional)
+    config.registerProcessDefinition(CertidaoProcessDefinition.class);
+    
+    // Inicializar
+    SingularServerConfiguration.set(config);
+}
+```
+
+### 5.5 Estrutura de Dados
+
+**Persistência de SInstances**:
+- JSON serializado em coluna TEXT/CLOB
+- Versionamento de schema
+- Migração sob demanda (lazy) ou batch (eager)
+
+**Metadados**:
+- ID do formulário
+- Versão do schema
+- Data criação/modificação
+- Usuário criador/modificador
+- Status do workflow (se aplicável)
+
+---
+
+## 6. Non-Functional Requirements
+
+### 6.1 Performance
+
+- **Renderização de formulário**: < 200ms para formulários médios (até 50 campos)
+- **Validação**: < 100ms para validação completa
+- **Serialização JSON**: < 50ms para instâncias médias
+- **Queries de listagem**: < 500ms com paginação (até 1000 registros)
+- **Upload de arquivo**: Suporte a arquivos de até 10MB
+
+### 6.2 Segurança
+
+- Validação server-side obrigatória (nunca confiar apenas no client)
+- Sanitização de inputs para prevenir XSS/injection
+- Download de anexos com autenticação e autorização
+- Auditoria de mudanças em registros críticos
+- HTTPS obrigatório em produção
+
+### 6.3 Usabilidade
+
+- Formulários responsivos (desktop, tablet, mobile)
+- Feedback visual de erros de validação
+- Mensagens de erro claras e em português
+- Loading indicators para operações demoradas
+- Confirmação para ações destrutivas
+
+### 6.4 Manutenibilidade
+
+- Código comentado e auto-documentado
+- Separação clara de responsabilidades
+- Reutilização de componentes (DRY)
+- Testes automatizados (cobertura mínima 60%)
+- Versionamento semântico de formulários
+
+### 6.5 Escalabilidade
+
+- Suporte a múltiplos usuários simultâneos (pelo menos 50)
+- Cache de STypes em memória
+- Lazy loading de dados quando possível
+- Paginação obrigatória em listagens
+- Storage escalável para anexos (S3 ou similar)
+
+### 6.6 Disponibilidade
+
+- Sistema disponível 99% do tempo (em produção)
+- Logs estruturados para troubleshooting
+- Health checks e monitoramento
+- Backup diário de dados
+- Plano de rollback para migrações
+
+### 6.7 Compatibilidade
+
+- Navegadores: Chrome 90+, Firefox 88+, Edge 90+
+- Java 8 ou superior
+- Wicket 7.x (compatível com 8.x)
+- OpenSingular 1.8.x (verificar compatibilidade com versões futuras)
+
+---
+
+## 7. Dependencies
+
+### 7.1 Dependências Técnicas
+
+**Hard Dependencies**:
+- Java 8+ instalado
+- Maven 3.x instalado
+- Projeto Certidões Wicket existente (como baseline)
+- Apache Wicket 7.18.0 já configurado
+
+**Soft Dependencies**:
+- Servidor SMTP (para e-mails - Módulo 8.4)
+- Storage S3 (para anexos em produção - Módulo 8.3)
+- Banco de dados (para persistência - já existente no projeto)
+
+### 7.2 Dependências de Conhecimento
+
+**Pré-requisitos**:
+- Java intermediário (POJOs, collections, generics)
+- Maven básico (dependências, build)
+- Apache Wicket básico (já coberto no projeto atual)
+- HTML/CSS básico
+- Git (versionamento)
+
+**Desejável**:
+- Padrões de projeto (Builder, Strategy, Composite)
+- BPM/Workflow (para Módulo 8.1)
+- REST APIs (para Módulo 8.4)
+
+### 7.3 Dependências de Projeto
+
+**Ordem de Implementação** (sequencial com dependências):
+1. Módulo 1 (fundamentos) - sem dependências
+2. Módulo 2 (type system) - depende de M1
+3. Módulo 3 (validation) - depende de M2
+4. Módulo 4 (views) - depende de M3
+5. Módulo 5 (wicket integration) - depende de M4
+6. Módulo 6 (advanced) - depende de M5
+7. Módulo 7 (production) - depende de M6
+8. Módulo 8 (specialized) - depende de M7
+   - 8.1 (flow) primeiro
+   - 8.2 (requirements) depende de 8.1
+   - 8.3 (upload) paralelo
+   - 8.4 (integrations) depende de 8.1
+   - 8.5 (monitoring) depende de 8.1-8.4
+   - 8.6 (migration) por último
+9. Módulo 9 (practical cases) - depende de todos anteriores
+
+### 7.4 Dependências Externas
+
+**Documentação**:
+- OpenSingular Docs: https://opensingular.github.io/
+- OpenSingular GitHub: https://github.com/opensingular/singular
+- OpenSingular Samples: https://github.com/opensingular/singular-samples
+- Apache Wicket: https://wicket.apache.org/
+
+**APIs Externas** (Módulo 8.4):
+- ViaCEP: https://viacep.com.br/ (consulta CEP)
+- Receita Federal: APIs públicas (validação CPF/CNPJ)
+
+---
+
+## 8. Success Criteria
+
+### 8.1 Critérios de Sucesso Técnicos
+
+**Módulos 1-5 (Essencial - MVP)**:
+- [ ] Setup completo e funcional
+- [ ] Pelo menos 3 STypes completos (Certidao, Requerente, Endereco)
+- [ ] Sistema de validação funcionando
+- [ ] Views profissionais e responsivas
+- [ ] Formulário Singular integrado em página Wicket
+- [ ] Página de comparação funcional (Wicket vs Singular)
+- [ ] Persistência em banco funcionando
+- [ ] Testes básicos passando
+
+**Módulos 6-7 (Sistema Básico)**:
+- [ ] Versionamento de formulários implementado
+- [ ] Migração V1→V2 testada
+- [ ] Geração de PDF funcionando
+- [ ] Suite de testes com cobertura > 60%
+- [ ] Logs estruturados
+- [ ] Configuração de produção aplicada
+- [ ] Performance dentro dos requisitos
+
+**Módulos 8-9 (Sistema Completo)**:
+- [ ] Workflow completo funcionando
+- [ ] Boxes personalizadas por perfil
+- [ ] Upload e download de anexos
+- [ ] E-mails sendo enviados
+- [ ] Dashboards com métricas
+- [ ] Integração end-to-end funcionando
+- [ ] Sistema pronto para produção
+
+### 8.2 Critérios de Sucesso de Aprendizado
+
+**Conhecimento Básico** (após M1-M2):
+- Conseguir explicar conceitos de SType, SInstance, SPackage
+- Criar tipos simples e compostos sem consultar documentação
+- Manipular SInstances programaticamente
+
+**Conhecimento Intermediário** (após M3-M4):
+- Criar validações customizadas complexas
+- Implementar validações condicionais
+- Criar views profissionais com layouts variados
+- Reutilizar componentes entre diferentes contextos
+
+**Conhecimento Avançado** (após M5-M7):
+- Integrar Singular e Wicket fluentemente
+- Implementar versionamento e migração de formulários
+- Otimizar performance de formulários grandes
+- Decidir quando usar Wicket puro vs Singular
+
+**Conhecimento Especialista** (após M8-M9):
+- Implementar workflows complexos
+- Criar módulos especializados (boxes, upload, integrations)
+- Arquitetar sistemas completos com Singular
+- Treinar outros desenvolvedores
+
+### 8.3 Critérios de Sucesso de Documentação
+
+- [ ] 11 guias de referência criados (GUIA, EXEMPLOS, COMPARACAO, etc.)
+- [ ] Cada módulo com exemplos práticos funcionais
+- [ ] Troubleshooting documentando problemas comuns
+- [ ] Boas práticas documentadas e seguidas
+- [ ] Arquitetura completa documentada
+- [ ] README com instruções de setup
+
+### 8.4 Métricas de Comparação (Wicket vs Singular)
+
+**Linhas de Código**:
+- Redução esperada: 30-50% em formulários complexos
+- Formulário simples (5-10 campos): comparável
+- Formulário médio (20-50 campos): vantagem Singular
+- Formulário complexo (50+ campos): vantagem significativa Singular
+
+**Manutenibilidade**:
+- Adicionar novo campo: < 5 linhas de código (Singular) vs 15-30 (Wicket puro)
+- Modificar validação: centralizado em SType (Singular) vs disperso em múltiplos arquivos (Wicket)
+- Criar nova versão: migração automática (Singular) vs refatoração manual (Wicket)
+
+**Performance**:
+- Renderização: comparável (diferença < 10%)
+- Serialização: vantagem Singular (JSON automático)
+- Tamanho payload: Singular pode ser maior (markup Bootstrap)
+
+### 8.5 Critérios de Aceitação Final
+
+**Requisitos Obrigatórios**:
+1. Sistema funcionando end-to-end
+2. Todos os módulos 1-7 implementados
+3. Pelo menos 2 casos práticos do Módulo 9 funcionando
+4. Documentação completa
+5. Testes passando
+6. Código no repositório com commits organizados
+
+**Requisitos Desejáveis**:
+1. Todos os módulos 8 implementados
+2. Todos os casos práticos do Módulo 9 implementados
+3. Cobertura de testes > 70%
+4. Performance otimizada
+5. Sistema em produção pilot
+
+### 8.6 Marcos de Entrega
+
+**Marco 1 - Fundamentos** (Semana 1-2):
+- Módulos 1-2 completos
+- Exemplos básicos funcionando
+- Conhecimento de conceitos fundamentais
+
+**Marco 2 - Formulários Completos** (Semana 3-4):
+- Módulos 3-4 completos
+- Formulários com validação e views
+- STypes do domínio completos
+
+**Marco 3 - Integração Wicket** (Semana 5-6):
+- Módulo 5 completo
+- Formulários Singular em páginas Wicket
+- Comparação funcional
+
+**Marco 4 - Sistema Funcional** (Semana 7-9):
+- Módulos 6-7 completos
+- Sistema pronto para testes
+- Performance adequada
+
+**Marco 5 - Módulos Especializados** (Semana 10-14 - opcional):
+- Módulo 8 completo ou parcial
+- Workflow e boxes funcionando
+- Integrações implementadas
+
+**Marco 6 - Sistema Completo** (Semana 15-17 - opcional):
+- Módulo 9 completo
+- Sistema end-to-end funcionando
+- Pronto para produção
+
+---
+
+## 9. Timeline Estimado
+
+| Fase | Duração | Esforço | Prioridade |
+|------|---------|---------|------------|
+| Módulo 1 (Fundamentos) | 1-2 dias | 4-8h | CRITICAL |
+| Módulo 2 (Type System) | 2-3 dias | 8-12h | CRITICAL |
+| Módulo 3 (Validation) | 1.5-2 dias | 6-10h | HIGH |
+| Módulo 4 (Views) | 1.5-2 dias | 6-10h | HIGH |
+| Módulo 5 (Wicket Integration) | 2-3 dias | 10-15h | CRITICAL |
+| Módulo 6 (Advanced Features) | 3-4 dias | 12-20h | MEDIUM |
+| Módulo 7 (Production) | 2-3 dias | 8-12h | HIGH |
+| **SUBTOTAL MVP (M1-M5)** | **9-12 dias** | **38-55h** | - |
+| **SUBTOTAL Básico (M1-M7)** | **14-19 dias** | **54-87h** | - |
+| Módulo 8.1 (Flow) | 4-5 dias | 15-25h | MEDIUM |
+| Módulo 8.2 (Requirements) | 2-3 dias | 8-12h | MEDIUM |
+| Módulo 8.3 (Upload) | 1.5-2 dias | 6-10h | MEDIUM |
+| Módulo 8.4 (Integrations) | 2-3 dias | 10-15h | LOW |
+| Módulo 8.5 (Monitoring) | 1.5-2 dias | 6-10h | LOW |
+| Módulo 8.6 (Migration) | 2-3 dias | 8-12h | LOW |
+| Módulo 9 (Practical Cases) | 5-7 dias | 20-30h | LOW |
+| **TOTAL Completo (M1-M9)** | **33-47 dias** | **127-201h** | - |
+
+**Observações**:
+- Tempos consideram dedicação parcial (2-4h/dia)
+- Inclui estudo, implementação e testes
+- Módulos 8 e 9 são opcionais (dependem das necessidades)
+- Tempo pode variar conforme experiência prévia
+
+---
+
+## 10. Risks and Mitigation
+
+### Riscos Técnicos
+
+**R1: Incompatibilidade de versões**
+- **Impacto**: Alto
+- **Probabilidade**: Média
+- **Mitigação**: Usar versões estáveis documentadas (Wicket 7.18, Singular 1.8.1), testar integrações cedo
+
+**R2: Curva de aprendizado de OpenSingular**
+- **Impacto**: Médio
+- **Probabilidade**: Alta
+- **Mitigação**: Abordagem progressiva, documentação rica, exemplos práticos incrementais
+
+**R3: Performance de formulários grandes**
+- **Impacto**: Médio
+- **Probabilidade**: Baixa
+- **Mitigação**: Testes de performance desde cedo, lazy loading, paginação, cache
+
+**R4: Complexidade de workflow**
+- **Impacto**: Alto
+- **Probabilidade**: Média
+- **Mitigação**: Implementar Módulo 8.1 apenas se necessário, começar com fluxos simples
+
+### Riscos de Projeto
+
+**R5: Escopo muito amplo**
+- **Impacto**: Alto
+- **Probabilidade**: Média
+- **Mitigação**: Definir MVP claro (M1-M5), módulos 8-9 são opcionais, implementação incremental
+
+**R6: Falta de documentação oficial**
+- **Impacto**: Médio
+- **Probabilidade**: Média
+- **Mitigação**: Criar documentação própria, estudar código-fonte do Singular quando necessário
+
+**R7: Decisão entre Wicket puro vs Singular**
+- **Impacto**: Alto
+- **Probabilidade**: Baixa
+- **Mitigação**: Comparação objetiva após M5, manter ambas implementações, documentar trade-offs
+
+### Riscos de Negócio
+
+**R8: Sistema muito diferente do atual**
+- **Impacto**: Baixo
+- **Probabilidade**: Baixa
+- **Mitigação**: Manter Wicket puro funcionando, migração gradual, treinamento de equipe
+
+---
+
+## 11. Open Questions
+
+1. **Versão do OpenSingular**: Confirmar se 1.8.1 é a versão estável mais recente ou usar versão mais nova?
+
+2. **Módulos Especializados**: Implementar todos (M8.1-8.6) ou apenas os essenciais para o projeto Certidões?
+
+3. **Storage de Anexos**: Usar storage local (desenvolvimento) ou configurar S3 desde o início?
+
+4. **Banco de Dados**: Usar o mesmo banco do projeto Wicket ou criar schema separado para experimentos Singular?
+
+5. **Workflow Real**: O sistema de Certidões realmente precisa de workflow ou é apenas para aprendizado?
+
+6. **Equipe**: Quantos desenvolvedores estarão trabalhando neste projeto? Individual ou time?
+
+7. **Prazo**: Existe deadline para conclusão ou é projeto de aprendizado contínuo?
+
+8. **Produção**: O objetivo final é colocar em produção ou apenas aprendizado/prototipagem?
+
+9. **Migração**: Existe intenção de migrar formulários Wicket existentes para Singular ou coexistir indefinidamente?
+
+10. **Documentação**: Os 11 guias de referência devem ser criados progressivamente ou ao final?
+
+---
+
+## 12. Appendix
+
+### A. Referências
+
+- OpenSingular Docs: https://opensingular.github.io/
+- OpenSingular GitHub: https://github.com/opensingular/singular
+- OpenSingular Samples: https://github.com/opensingular/singular-samples
+- Apache Wicket: https://wicket.apache.org/
+- Projeto Certidões (Wicket): file://d:/WorkSpaceGeral/WICKET/certidoes/
+
+### B. Glossário
+
+- **SType**: Schema/Type definition - define a estrutura de um formulário
+- **SInstance**: Instance of a type - contém os dados reais de um formulário
+- **SPackage**: Package grouping related types
+- **SView**: Presentation layer for types
+- **BSFormPanel**: Bootstrap Form Panel - componente Wicket do Singular
+- **Box**: Work list - caixa de entrada para gestão de demandas
+- **Requirement**: Solicitação/petição protocolada
+- **ProcessDefinition**: Definição de workflow/processo
+- **Transition**: Transição entre estados de um workflow
+- **Task**: Tarefa humana em um workflow
+
+### C. Materiais de Apoio
+
+1. OPENSINGULAR_GUIA.md - Guia de referência rápida
+2. OPENSINGULAR_EXEMPLOS.md - Exemplos práticos
+3. OPENSINGULAR_COMPARACAO.md - Wicket vs Singular
+4. OPENSINGULAR_TROUBLESHOOTING.md - Problemas e soluções
+5. OPENSINGULAR_BEST_PRACTICES.md - Boas práticas
+6. OPENSINGULAR_FLOW.md - Guia de workflows
+7. OPENSINGULAR_REQUIREMENTS.md - Guia de boxes
+8. OPENSINGULAR_UPLOAD.md - Guia de upload
+9. OPENSINGULAR_INTEGRATIONS.md - Guia de integrações
+10. OPENSINGULAR_MIGRATION.md - Guia de migração
+11. OPENSINGULAR_ARCHITECTURE.md - Arquitetura completa
+
+### D. Estrutura de Pastas Completa
+
+```
+d:/WorkSpaceGeral/WICKET/certidoes/
+├── src/main/java/com/hvivox/certidoes/
+│   ├── singular/                    # Novo - OpenSingular
+│   │   ├── config/
+│   │   ├── packages/
+│   │   ├── types/
+│   │   ├── views/
+│   │   ├── validators/
+│   │   ├── flow/                    # Módulo 8.1
+│   │   ├── requirement/             # Módulo 8.2
+│   │   ├── upload/                  # Módulo 8.3
+│   │   ├── service/
+│   │   ├── integration/             # Módulo 8.4
+│   │   └── wicket/
+│   ├── page/                        # Existente - Wicket puro
+│   ├── domain/                      # Existente
+│   ├── service/                     # Existente
+│   └── ...
+├── file/                            # Documentação
+│   ├── OPENSINGULAR_GUIA.md
+│   ├── opensingular_plano_aprendizagem.md
+│   └── ...
+├── .taskmaster/
+│   ├── docs/
+│   │   ├── prd.txt                  # Existente - Wicket
+│   │   └── prd_opensingular.txt     # Este documento
+│   └── ...
+└── pom.xml                          # Atualizar com dependências Singular
+```
+
+---
+
+**Document Version**: 1.0  
+**Created**: Janeiro 2026  
+**Author**: Sistema de Aprendizado OpenSingular  
+**Status**: DRAFT - Pending Review  
+**Next Review**: Após conclusão Módulo 5 (MVP)
+
+

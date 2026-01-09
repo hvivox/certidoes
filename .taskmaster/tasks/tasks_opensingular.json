@@ -1,0 +1,1546 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Módulo 1: Setup inicial (dependências Maven, estrutura de pacotes)",
+      "description": "Configurar dependências Maven do OpenSingular (singular-form-core, singular-form-wicket) e criar estrutura de pacotes com.hvivox.certidoes.singular.*",
+      "module": "Módulo 1: Fundamentos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [],
+      "testStrategy": "Verificar que dependências foram adicionadas corretamente no pom.xml e estrutura de diretórios criada",
+      "acceptanceCriteria": [
+        "Dependências OpenSingular adicionadas ao pom.xml",
+        "Estrutura de pacotes singular/ criada",
+        "Projeto compila sem erros"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "2",
+      "title": "Módulo 1: Configuração no WicketApplication",
+      "description": "Configurar OpenSingular no WicketApplication, incluindo SingularServerConfiguration e registro de pacotes",
+      "module": "Módulo 1: Fundamentos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "1"
+      ],
+      "testStrategy": "Testar inicialização da aplicação e verificar que Singular está configurado",
+      "acceptanceCriteria": [
+        "SingularServerConfiguration configurado no WicketApplication",
+        "Aplicação inicia sem erros",
+        "Configuração documentada"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "3",
+      "title": "Módulo 1: Primeiro SType simples (PessoaSimples)",
+      "description": "Criar primeiro SType simples com campos básicos (nome, email) para demonstrar conceitos fundamentais",
+      "module": "Módulo 1: Fundamentos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "2"
+      ],
+      "testStrategy": "Criar teste unitário que instancia o SType e verifica estrutura",
+      "acceptanceCriteria": [
+        "STypePessoaSimples criado com campos nome e email",
+        "SType compila e pode ser instanciado",
+        "Exemplo documentado"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "4",
+      "title": "Módulo 1: Manipulação de SInstance",
+      "description": "Criar e manipular SInstance do tipo PessoaSimples, demonstrando getValue e setValue",
+      "module": "Módulo 1: Fundamentos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "3"
+      ],
+      "testStrategy": "Teste unitário que cria SInstance, preenche dados e valida valores",
+      "acceptanceCriteria": [
+        "SInstance criada com sucesso",
+        "Valores podem ser setados e recuperados",
+        "Exemplo prático funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "5",
+      "title": "Módulo 1: Serialização JSON",
+      "description": "Implementar serialização e deserialização de SInstance para/do formato JSON",
+      "module": "Módulo 1: Fundamentos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "4"
+      ],
+      "testStrategy": "Teste que serializa SInstance para JSON e deserializa de volta, validando dados",
+      "acceptanceCriteria": [
+        "Serialização para JSON funcionando",
+        "Deserialização de JSON funcionando",
+        "Dados preservados após round-trip"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "6",
+      "title": "Módulo 1: Exemplos executáveis com console output",
+      "description": "Criar classe executável que demonstra Type + Instance básico com output no console",
+      "module": "Módulo 1: Fundamentos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "5"
+      ],
+      "testStrategy": "Executar classe e verificar output no console",
+      "acceptanceCriteria": [
+        "Classe executável criada",
+        "Output no console mostra Type e Instance",
+        "Exemplo serve como referência"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "7",
+      "title": "Módulo 2: Tipos simples (String, Integer, Decimal, Date, Boolean, Enum)",
+      "description": "Criar exemplos de todos os tipos simples do OpenSingular: STypeString, STypeInteger, STypeDecimal, STypeDate, STypeBoolean, STypeEnum",
+      "module": "Módulo 2: Sistema de Tipos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "6"
+      ],
+      "testStrategy": "Criar testes para cada tipo simples validando criação e manipulação",
+      "acceptanceCriteria": [
+        "Todos os tipos simples implementados",
+        "Cada tipo funciona corretamente",
+        "Exemplos documentados"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "8",
+      "title": "Módulo 2: Tipos compostos (STypeComposite)",
+      "description": "Criar tipos compostos demonstrando composição de múltiplos campos e aninhamento",
+      "module": "Módulo 2: Sistema de Tipos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "7"
+      ],
+      "testStrategy": "Testar criação de tipos compostos e navegação na árvore de instâncias",
+      "acceptanceCriteria": [
+        "STypeComposite criado com sucesso",
+        "Aninhamento funcionando",
+        "Navegação na árvore de instâncias funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "9",
+      "title": "Módulo 2: Listas (STypeList)",
+      "description": "Implementar listas de tipos simples e compostos, com tamanho mínimo/máximo e ordenação",
+      "module": "Módulo 2: Sistema de Tipos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "8"
+      ],
+      "testStrategy": "Testar criação de listas, adição/remoção de itens e validações de tamanho",
+      "acceptanceCriteria": [
+        "STypeList de tipos simples funcionando",
+        "STypeList de tipos compostos funcionando",
+        "Validações de tamanho funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "10",
+      "title": "Módulo 2: Atributos (label, required, enabled, visible, etc.)",
+      "description": "Configurar atributos de campos: label, help, placeholder, required, enabled, visible, maxLength, minLength, default values",
+      "module": "Módulo 2: Sistema de Tipos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "9"
+      ],
+      "testStrategy": "Testar que atributos são aplicados corretamente e afetam comportamento",
+      "acceptanceCriteria": [
+        "Todos os atributos principais configuráveis",
+        "Atributos afetam comportamento dos campos",
+        "Exemplos de uso documentados"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "11",
+      "title": "Módulo 2: STypeCertidao completo",
+      "description": "Criar STypeCertidao completo baseado na entidade Certidao.java existente, com todos os campos necessários",
+      "module": "Módulo 2: Sistema de Tipos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "10"
+      ],
+      "testStrategy": "Comparar STypeCertidao com entidade Certidao e validar que todos os campos estão mapeados",
+      "acceptanceCriteria": [
+        "STypeCertidao criado com todos os campos",
+        "Mapeamento completo com entidade original",
+        "Testes de criação de instância passando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "12",
+      "title": "Módulo 2: STypeEndereco reutilizável",
+      "description": "Criar STypeEndereco como tipo reutilizável que pode ser usado em diferentes contextos",
+      "module": "Módulo 2: Sistema de Tipos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "11"
+      ],
+      "testStrategy": "Testar reutilização do STypeEndereco em diferentes contextos",
+      "acceptanceCriteria": [
+        "STypeEndereco criado e reutilizável",
+        "Pode ser usado em múltiplos lugares",
+        "Documentado como exemplo de reutilização"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "13",
+      "title": "Módulo 2: STypeRequerente com composição",
+      "description": "Criar STypeRequerente usando composição, incluindo STypeEndereco e outros campos relacionados",
+      "module": "Módulo 2: Sistema de Tipos",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "12"
+      ],
+      "testStrategy": "Testar criação de STypeRequerente e validação de composição",
+      "acceptanceCriteria": [
+        "STypeRequerente criado com composição",
+        "Reutiliza STypeEndereco",
+        "Estrutura completa e funcional"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "14",
+      "title": "Módulo 3: Validadores built-in",
+      "description": "Demonstrar uso de validadores built-in do OpenSingular",
+      "module": "Módulo 3: Validação",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "13"
+      ],
+      "testStrategy": "Testar validadores built-in com casos válidos e inválidos",
+      "acceptanceCriteria": [
+        "Validadores built-in funcionando",
+        "Exemplos de uso documentados",
+        "Casos de teste passando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "15",
+      "title": "Módulo 3: Validadores customizados (CPF, CNPJ, CEP)",
+      "description": "Criar validadores customizados reutilizáveis: CPFValidator, CNPJValidator, CEPValidator, reutilizando lógica existente",
+      "module": "Módulo 3: Validação",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "14"
+      ],
+      "testStrategy": "Testar cada validador customizado com casos válidos e inválidos",
+      "acceptanceCriteria": [
+        "CPFValidator criado e funcionando",
+        "CNPJValidator criado e funcionando",
+        "CEPValidator criado e funcionando",
+        "Validadores são reutilizáveis"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "16",
+      "title": "Módulo 3: ValidationResult e mensagens de erro",
+      "description": "Implementar tratamento de ValidationResult e mensagens de erro customizadas",
+      "module": "Módulo 3: Validação",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "15"
+      ],
+      "testStrategy": "Testar que mensagens de erro são exibidas corretamente",
+      "acceptanceCriteria": [
+        "ValidationResult funcionando corretamente",
+        "Mensagens de erro customizadas funcionando",
+        "Erros são exibidos adequadamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "17",
+      "title": "Módulo 3: Validação condicional (requiredIf, visibleIf)",
+      "description": "Implementar validações condicionais onde campos são obrigatórios ou visíveis baseado em outros campos",
+      "module": "Módulo 3: Validação",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "16"
+      ],
+      "testStrategy": "Testar validações condicionais com diferentes estados de campos dependentes",
+      "acceptanceCriteria": [
+        "requiredIf funcionando",
+        "visibleIf funcionando",
+        "Validações condicionais testadas"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "18",
+      "title": "Módulo 3: Dependências entre campos (dependsOn)",
+      "description": "Implementar dependências entre campos usando dependsOn para criar relacionamentos",
+      "module": "Módulo 3: Validação",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "17"
+      ],
+      "testStrategy": "Testar que campos dependentes reagem corretamente a mudanças",
+      "acceptanceCriteria": [
+        "dependsOn funcionando",
+        "Campos dependentes atualizam corretamente",
+        "Exemplos práticos funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "19",
+      "title": "Módulo 3: Regras de negócio (data não futura, número único)",
+      "description": "Implementar regras de negócio específicas: data emissão não pode ser futura, número de certidão deve ser único",
+      "module": "Módulo 3: Validação",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "18"
+      ],
+      "testStrategy": "Testar regras de negócio com casos válidos e inválidos",
+      "acceptanceCriteria": [
+        "Validação de data não futura funcionando",
+        "Validação de número único funcionando",
+        "Regras de negócio documentadas"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "20",
+      "title": "Módulo 4: Separação dados/apresentação (SType/SView)",
+      "description": "Criar SView para demonstrar separação entre estrutura de dados (SType) e apresentação (SView)",
+      "module": "Módulo 4: Views",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "19"
+      ],
+      "testStrategy": "Testar que múltiplas views podem ser criadas para o mesmo SType",
+      "acceptanceCriteria": [
+        "SView criada e funcionando",
+        "Separação dados/apresentação clara",
+        "Múltiplas views para mesmo tipo funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "21",
+      "title": "Módulo 4: Layouts (Grid, Stack, Tab, Column)",
+      "description": "Implementar diferentes layouts: GridLayout, StackLayout, TabLayout, ColumnLayout",
+      "module": "Módulo 4: Views",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "20"
+      ],
+      "testStrategy": "Testar cada layout e verificar renderização correta",
+      "acceptanceCriteria": [
+        "GridLayout funcionando",
+        "StackLayout funcionando",
+        "TabLayout funcionando",
+        "ColumnLayout funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "22",
+      "title": "Módulo 4: Blocos e agrupamento (createBlock)",
+      "description": "Criar blocos lógicos de campos usando createBlock para agrupamento visual",
+      "module": "Módulo 4: Views",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "21"
+      ],
+      "testStrategy": "Testar criação de blocos e agrupamento de campos",
+      "acceptanceCriteria": [
+        "createBlock funcionando",
+        "Campos agrupados corretamente",
+        "Blocos renderizam adequadamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "23",
+      "title": "Módulo 4: Seções colapsáveis",
+      "description": "Implementar seções colapsáveis para melhorar UX em formulários grandes",
+      "module": "Módulo 4: Views",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "22"
+      ],
+      "testStrategy": "Testar funcionalidade de colapsar/expandir seções",
+      "acceptanceCriteria": [
+        "Seções colapsáveis funcionando",
+        "Estado de colapso preservado",
+        "UX melhorada"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "24",
+      "title": "Módulo 4: CertidaoView profissional",
+      "description": "Criar CertidaoView profissional com blocos organizados (Dados Básicos, Requerente, Documentos)",
+      "module": "Módulo 4: Views",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "23"
+      ],
+      "testStrategy": "Testar renderização da view e organização dos blocos",
+      "acceptanceCriteria": [
+        "CertidaoView criada e profissional",
+        "Blocos organizados logicamente",
+        "View renderiza corretamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "25",
+      "title": "Módulo 4: Views alternativas (simplificada, completa)",
+      "description": "Criar views alternativas para o mesmo tipo: CertidaoViewSimplificada e CertidaoViewCompleta",
+      "module": "Módulo 4: Views",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "24"
+      ],
+      "testStrategy": "Testar que diferentes views podem ser aplicadas ao mesmo SType",
+      "acceptanceCriteria": [
+        "View simplificada criada",
+        "View completa criada",
+        "Ambas funcionam com mesmo SType"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "26",
+      "title": "Módulo 5: Componentes Wicket do Singular (BSFormPanel, BSAutoFormPanel)",
+      "description": "Implementar e demonstrar uso de componentes Wicket do Singular: BSFormPanel e BSAutoFormPanel",
+      "module": "Módulo 5: Integração Wicket",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "25"
+      ],
+      "testStrategy": "Testar renderização dos componentes em página Wicket",
+      "acceptanceCriteria": [
+        "BSFormPanel funcionando",
+        "BSAutoFormPanel funcionando",
+        "Componentes renderizam corretamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "27",
+      "title": "Módulo 5: SInstanceModel",
+      "description": "Criar e integrar SInstanceModel com IModel do Wicket para binding de dados",
+      "module": "Módulo 5: Integração Wicket",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "26"
+      ],
+      "testStrategy": "Testar binding de dados entre SInstance e componentes Wicket",
+      "acceptanceCriteria": [
+        "SInstanceModel criado",
+        "Integração com IModel funcionando",
+        "Binding de dados funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "28",
+      "title": "Módulo 5: CertidaoSingularFormPage funcional",
+      "description": "Criar página Wicket completa CertidaoSingularFormPage com formulário Singular funcional",
+      "module": "Módulo 5: Integração Wicket",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "27"
+      ],
+      "testStrategy": "Testar página completa: renderização, submit, validação",
+      "acceptanceCriteria": [
+        "Página criada e funcional",
+        "Formulário renderiza corretamente",
+        "Submit e validação funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "29",
+      "title": "Módulo 5: Página de comparação (Wicket puro vs Singular)",
+      "description": "Criar página que mostra lado a lado formulário Wicket puro e formulário Singular para comparação",
+      "module": "Módulo 5: Integração Wicket",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "28"
+      ],
+      "testStrategy": "Verificar que ambos formulários funcionam e podem ser comparados",
+      "acceptanceCriteria": [
+        "Página de comparação criada",
+        "Ambos formulários funcionando",
+        "Comparação visual possível"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "30",
+      "title": "Módulo 5: Ajax e validação em tempo real",
+      "description": "Implementar Ajax com componentes Singular e validação em tempo real",
+      "module": "Módulo 5: Integração Wicket",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "29"
+      ],
+      "testStrategy": "Testar atualizações Ajax e validação em tempo real",
+      "acceptanceCriteria": [
+        "Ajax funcionando com Singular",
+        "Validação em tempo real funcionando",
+        "UX melhorada com feedback imediato"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "31",
+      "title": "Módulo 5: Integração com CertidaoRepository",
+      "description": "Integrar formulário Singular com CertidaoRepository existente para persistência",
+      "module": "Módulo 5: Integração Wicket",
+      "priority": "critical",
+      "status": "pending",
+      "dependencies": [
+        "30"
+      ],
+      "testStrategy": "Testar persistência de dados do formulário Singular no repositório",
+      "acceptanceCriteria": [
+        "Integração com repositório funcionando",
+        "Dados persistidos corretamente",
+        "CRUD completo funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "32",
+      "title": "Módulo 6: Biblioteca de tipos reutilizáveis",
+      "description": "Criar biblioteca de STypes reutilizáveis (Endereço, Pessoa, Contato) para uso em diferentes contextos",
+      "module": "Módulo 6: Recursos Avançados",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "31"
+      ],
+      "testStrategy": "Testar reutilização dos tipos em diferentes contextos",
+      "acceptanceCriteria": [
+        "Biblioteca de tipos criada",
+        "Tipos são reutilizáveis",
+        "Documentação de uso criada"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "33",
+      "title": "Módulo 6: Versionamento de formulários (V1, V2)",
+      "description": "Implementar versionamento de formulários criando CertidaoFormV1 e CertidaoFormV2",
+      "module": "Módulo 6: Recursos Avançados",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "32"
+      ],
+      "testStrategy": "Testar que múltiplas versões podem coexistir",
+      "acceptanceCriteria": [
+        "Versão V1 criada",
+        "Versão V2 criada",
+        "Ambas versões funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "34",
+      "title": "Módulo 6: Migração entre versões (onMigrate)",
+      "description": "Implementar método onMigrate para migração automática de dados entre versões de formulário",
+      "module": "Módulo 6: Recursos Avançados",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "33"
+      ],
+      "testStrategy": "Testar migração de V1 para V2 com dados reais",
+      "acceptanceCriteria": [
+        "Método onMigrate implementado",
+        "Migração V1→V2 funcionando",
+        "Dados preservados na migração"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "35",
+      "title": "Módulo 6: Persistência em banco (JSON serializado)",
+      "description": "Implementar persistência de SInstances no banco de dados usando serialização JSON",
+      "module": "Módulo 6: Recursos Avançados",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "34"
+      ],
+      "testStrategy": "Testar persistência e recuperação de dados do banco",
+      "acceptanceCriteria": [
+        "Persistência em banco funcionando",
+        "Recuperação de dados funcionando",
+        "JSON serializado corretamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "36",
+      "title": "Módulo 6: Geração de PDF a partir de SInstance",
+      "description": "Implementar geração de PDF a partir de SInstance usando iText ou Apache PDFBox",
+      "module": "Módulo 6: Recursos Avançados",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "35"
+      ],
+      "testStrategy": "Testar geração de PDF e validar conteúdo",
+      "acceptanceCriteria": [
+        "Geração de PDF funcionando",
+        "PDF contém dados corretos",
+        "Template de PDF criado"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "37",
+      "title": "Módulo 6: Internacionalização (pt-BR, en-US)",
+      "description": "Implementar suporte a múltiplos idiomas: português (pt-BR) e inglês (en-US)",
+      "module": "Módulo 6: Recursos Avançados",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "36"
+      ],
+      "testStrategy": "Testar troca de idioma e validação de labels traduzidos",
+      "acceptanceCriteria": [
+        "Suporte a pt-BR funcionando",
+        "Suporte a en-US funcionando",
+        "Troca de idioma funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "38",
+      "title": "Módulo 7: Otimizações de performance",
+      "description": "Aplicar otimizações de performance: cache de tipos, lazy loading, minificação",
+      "module": "Módulo 7: Produção",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "37"
+      ],
+      "testStrategy": "Medir performance antes e depois das otimizações",
+      "acceptanceCriteria": [
+        "Cache de tipos implementado",
+        "Lazy loading funcionando",
+        "Performance melhorada"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "39",
+      "title": "Módulo 7: Cache de tipos",
+      "description": "Implementar cache de STypes em memória para melhorar performance",
+      "module": "Módulo 7: Produção",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "38"
+      ],
+      "testStrategy": "Testar que tipos são cacheados e reutilizados",
+      "acceptanceCriteria": [
+        "Cache de tipos funcionando",
+        "Performance melhorada",
+        "Memória gerenciada adequadamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "40",
+      "title": "Módulo 7: Validação server-side obrigatória",
+      "description": "Garantir que todas as validações são executadas server-side, nunca confiando apenas no client",
+      "module": "Módulo 7: Produção",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "39"
+      ],
+      "testStrategy": "Testar que validações server-side são sempre executadas",
+      "acceptanceCriteria": [
+        "Validações server-side obrigatórias",
+        "Segurança garantida",
+        "Documentação de segurança criada"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "41",
+      "title": "Módulo 7: Testes unitários de STypes",
+      "description": "Criar suite de testes unitários para STypes cobrindo criação, validação e manipulação",
+      "module": "Módulo 7: Produção",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "40"
+      ],
+      "testStrategy": "Criar testes unitários com cobertura mínima de 60%",
+      "acceptanceCriteria": [
+        "Testes unitários criados",
+        "Cobertura mínima de 60%",
+        "Todos os testes passando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "42",
+      "title": "Módulo 7: Testes de integração Wicket + Singular",
+      "description": "Criar testes de integração validando funcionamento completo de Wicket + Singular",
+      "module": "Módulo 7: Produção",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "41"
+      ],
+      "testStrategy": "Criar testes de integração usando WicketTester",
+      "acceptanceCriteria": [
+        "Testes de integração criados",
+        "Testes cobrem fluxos principais",
+        "Todos os testes passando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "43",
+      "title": "Módulo 7: Logs estruturados",
+      "description": "Implementar logging estruturado para facilitar troubleshooting e monitoramento",
+      "module": "Módulo 7: Produção",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "42"
+      ],
+      "testStrategy": "Verificar que logs são gerados corretamente",
+      "acceptanceCriteria": [
+        "Logs estruturados implementados",
+        "Logs contêm informações relevantes",
+        "Configuração de logging documentada"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "44",
+      "title": "Módulo 7: Métricas básicas (tempo renderização, erros validação)",
+      "description": "Implementar coleta de métricas básicas: tempo de renderização e taxa de erros de validação",
+      "module": "Módulo 7: Produção",
+      "priority": "high",
+      "status": "pending",
+      "dependencies": [
+        "43"
+      ],
+      "testStrategy": "Verificar que métricas são coletadas e podem ser visualizadas",
+      "acceptanceCriteria": [
+        "Métricas de renderização coletadas",
+        "Métricas de validação coletadas",
+        "Métricas podem ser visualizadas"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "45",
+      "title": "Módulo 8.1: ProcessDefinition para certidões",
+      "description": "Criar ProcessDefinition completo para workflow de certidões",
+      "module": "Módulo 8.1: Workflow",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "44"
+      ],
+      "testStrategy": "Testar criação e configuração do ProcessDefinition",
+      "acceptanceCriteria": [
+        "ProcessDefinition criado",
+        "Configuração completa",
+        "Documentado"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "46",
+      "title": "Módulo 8.1: Estados (SOLICITADA, EM_ANALISE, DEFERIDA, INDEFERIDA)",
+      "description": "Definir e implementar todos os estados do workflow de certidões",
+      "module": "Módulo 8.1: Workflow",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "45"
+      ],
+      "testStrategy": "Testar transições entre estados",
+      "acceptanceCriteria": [
+        "Todos os estados definidos",
+        "Estados funcionando corretamente",
+        "Enum de estados criado"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "47",
+      "title": "Módulo 8.1: Transições (SUBMETER, APROVAR, REJEITAR, DEVOLVER)",
+      "description": "Implementar todas as transições entre estados do workflow",
+      "module": "Módulo 8.1: Workflow",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "46"
+      ],
+      "testStrategy": "Testar cada transição e validações",
+      "acceptanceCriteria": [
+        "Todas as transições implementadas",
+        "Transições funcionando",
+        "Validações de transição funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "48",
+      "title": "Módulo 8.1: Tasks humanas (análise, aprovação)",
+      "description": "Criar tasks humanas para análise e aprovação de certidões",
+      "module": "Módulo 8.1: Workflow",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "47"
+      ],
+      "testStrategy": "Testar criação e atribuição de tasks",
+      "acceptanceCriteria": [
+        "Tasks de análise criadas",
+        "Tasks de aprovação criadas",
+        "Atribuição de tasks funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "49",
+      "title": "Módulo 8.1: Listeners (onBeforeTransition, onAfterTransition)",
+      "description": "Implementar listeners para eventos de workflow: onBeforeTransition, onAfterTransition",
+      "module": "Módulo 8.1: Workflow",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "48"
+      ],
+      "testStrategy": "Testar que listeners são executados nos momentos corretos",
+      "acceptanceCriteria": [
+        "Listeners implementados",
+        "Listeners executados corretamente",
+        "Exemplos de uso documentados"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "50",
+      "title": "Módulo 8.1: SLA e prazos",
+      "description": "Implementar controle de SLA e prazos para tasks do workflow",
+      "module": "Módulo 8.1: Workflow",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "49"
+      ],
+      "testStrategy": "Testar cálculo de SLA e alertas de prazo",
+      "acceptanceCriteria": [
+        "SLA implementado",
+        "Prazos calculados corretamente",
+        "Alertas de prazo funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "51",
+      "title": "Módulo 8.1: Histórico de tramitação",
+      "description": "Implementar histórico completo de tramitação mostrando todas as transições e mudanças de estado",
+      "module": "Módulo 8.1: Workflow",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "50"
+      ],
+      "testStrategy": "Testar que histórico é registrado e pode ser consultado",
+      "acceptanceCriteria": [
+        "Histórico de tramitação funcionando",
+        "Todas as transições registradas",
+        "Histórico pode ser visualizado"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "52",
+      "title": "Módulo 8.2: Boxes customizadas (Minhas Certidões, Para Análise, Aprovadas)",
+      "description": "Criar boxes customizadas para diferentes perfis: Minhas Certidões (requerente), Para Análise (analista), Aprovadas",
+      "module": "Módulo 8.2: Gestão de Demandas",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "51"
+      ],
+      "testStrategy": "Testar que cada box mostra apenas os registros corretos",
+      "acceptanceCriteria": [
+        "Box Minhas Certidões criada",
+        "Box Para Análise criada",
+        "Box Aprovadas criada",
+        "Boxes funcionando corretamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "53",
+      "title": "Módulo 8.2: Filtros avançados (tipo, data, status)",
+      "description": "Implementar filtros avançados para boxes: por tipo de certidão, data, status",
+      "module": "Módulo 8.2: Gestão de Demandas",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "52"
+      ],
+      "testStrategy": "Testar cada filtro individualmente e em combinação",
+      "acceptanceCriteria": [
+        "Filtro por tipo funcionando",
+        "Filtro por data funcionando",
+        "Filtro por status funcionando",
+        "Filtros combinados funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "54",
+      "title": "Módulo 8.2: Paginação e performance",
+      "description": "Implementar paginação nas listagens e otimizar performance de queries",
+      "module": "Módulo 8.2: Gestão de Demandas",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "53"
+      ],
+      "testStrategy": "Testar paginação com grandes volumes de dados",
+      "acceptanceCriteria": [
+        "Paginação implementada",
+        "Performance adequada",
+        "Queries otimizadas"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "55",
+      "title": "Módulo 8.2: Dashboard do analista",
+      "description": "Criar dashboard personalizado para analistas com tarefas pendentes e prazos",
+      "module": "Módulo 8.2: Gestão de Demandas",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "54"
+      ],
+      "testStrategy": "Testar que dashboard mostra informações corretas",
+      "acceptanceCriteria": [
+        "Dashboard do analista criado",
+        "Tarefas pendentes exibidas",
+        "Prazos exibidos corretamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "56",
+      "title": "Módulo 8.2: Dashboard do gestor",
+      "description": "Criar dashboard gerencial com visão geral, estatísticas e indicadores",
+      "module": "Módulo 8.2: Gestão de Demandas",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "55"
+      ],
+      "testStrategy": "Testar que métricas são calculadas corretamente",
+      "acceptanceCriteria": [
+        "Dashboard do gestor criado",
+        "Estatísticas exibidas",
+        "Indicadores funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "57",
+      "title": "Módulo 8.2: Contadores e badges em tempo real",
+      "description": "Implementar contadores e badges que atualizam em tempo real nas boxes",
+      "module": "Módulo 8.2: Gestão de Demandas",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "56"
+      ],
+      "testStrategy": "Testar atualização em tempo real dos contadores",
+      "acceptanceCriteria": [
+        "Contadores implementados",
+        "Badges funcionando",
+        "Atualização em tempo real funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "58",
+      "title": "Módulo 8.3: Configuração de storage (local/S3)",
+      "description": "Configurar sistema de storage para anexos: local para desenvolvimento, S3 para produção",
+      "module": "Módulo 8.3: Upload",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "44"
+      ],
+      "testStrategy": "Testar upload e armazenamento em ambos os storages",
+      "acceptanceCriteria": [
+        "Storage local configurado",
+        "Storage S3 configurado (opcional)",
+        "Configuração flexível"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "59",
+      "title": "Módulo 8.3: Upload múltiplo com drag-and-drop",
+      "description": "Implementar componente de upload múltiplo com suporte a drag-and-drop",
+      "module": "Módulo 8.3: Upload",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "58"
+      ],
+      "testStrategy": "Testar upload de múltiplos arquivos e drag-and-drop",
+      "acceptanceCriteria": [
+        "Upload múltiplo funcionando",
+        "Drag-and-drop funcionando",
+        "UX melhorada"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "60",
+      "title": "Módulo 8.3: Preview de imagens/PDFs",
+      "description": "Implementar preview de imagens e PDFs após upload",
+      "module": "Módulo 8.3: Upload",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "59"
+      ],
+      "testStrategy": "Testar preview de diferentes tipos de arquivo",
+      "acceptanceCriteria": [
+        "Preview de imagens funcionando",
+        "Preview de PDFs funcionando",
+        "Preview exibe corretamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "61",
+      "title": "Módulo 8.3: Documentos obrigatórios por tipo",
+      "description": "Implementar sistema que define documentos obrigatórios por tipo de certidão",
+      "module": "Módulo 8.3: Upload",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "60"
+      ],
+      "testStrategy": "Testar validação de documentos obrigatórios",
+      "acceptanceCriteria": [
+        "Documentos obrigatórios configuráveis",
+        "Validação funcionando",
+        "Checklist de documentos funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "62",
+      "title": "Módulo 8.3: Validação de tipo e tamanho",
+      "description": "Implementar validação de tipo de arquivo permitido e tamanho máximo",
+      "module": "Módulo 8.3: Upload",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "61"
+      ],
+      "testStrategy": "Testar validações com arquivos válidos e inválidos",
+      "acceptanceCriteria": [
+        "Validação de tipo funcionando",
+        "Validação de tamanho funcionando",
+        "Mensagens de erro adequadas"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "63",
+      "title": "Módulo 8.3: Download seguro com autenticação",
+      "description": "Implementar download de anexos com autenticação e autorização",
+      "module": "Módulo 8.3: Upload",
+      "priority": "medium",
+      "status": "pending",
+      "dependencies": [
+        "62"
+      ],
+      "testStrategy": "Testar download com diferentes níveis de permissão",
+      "acceptanceCriteria": [
+        "Download seguro implementado",
+        "Autenticação funcionando",
+        "Autorização funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "64",
+      "title": "Módulo 8.4: Serviço de e-mail (SMTP, templates)",
+      "description": "Implementar serviço de e-mail com configuração SMTP e templates",
+      "module": "Módulo 8.4: Integrações",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "51"
+      ],
+      "testStrategy": "Testar envio de e-mails com diferentes templates",
+      "acceptanceCriteria": [
+        "Serviço de e-mail funcionando",
+        "Templates funcionando",
+        "E-mails sendo enviados corretamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "65",
+      "title": "Módulo 8.4: Geração de PDF (iText)",
+      "description": "Implementar geração de PDF usando iText com templates de certidões",
+      "module": "Módulo 8.4: Integrações",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "64"
+      ],
+      "testStrategy": "Testar geração de PDF e validar conteúdo",
+      "acceptanceCriteria": [
+        "Geração de PDF funcionando",
+        "Templates de PDF criados",
+        "PDFs gerados corretamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "66",
+      "title": "Módulo 8.4: Códigos de barras/QR codes",
+      "description": "Implementar geração de códigos de barras e QR codes para certidões",
+      "module": "Módulo 8.4: Integrações",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "65"
+      ],
+      "testStrategy": "Testar geração e leitura de códigos",
+      "acceptanceCriteria": [
+        "Códigos de barras funcionando",
+        "QR codes funcionando",
+        "Códigos podem ser lidos"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "67",
+      "title": "Módulo 8.4: Consulta CEP (ViaCEP)",
+      "description": "Implementar integração com ViaCEP para consulta automática de endereço por CEP",
+      "module": "Módulo 8.4: Integrações",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "66"
+      ],
+      "testStrategy": "Testar consulta de CEP e preenchimento automático",
+      "acceptanceCriteria": [
+        "Integração com ViaCEP funcionando",
+        "Consulta automática funcionando",
+        "Preenchimento automático funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "68",
+      "title": "Módulo 8.4: Webhooks para sistemas externos",
+      "description": "Implementar sistema de webhooks para notificar sistemas externos sobre eventos",
+      "module": "Módulo 8.4: Integrações",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "67"
+      ],
+      "testStrategy": "Testar envio de webhooks e recebimento de respostas",
+      "acceptanceCriteria": [
+        "Sistema de webhooks implementado",
+        "Webhooks sendo enviados",
+        "Configuração de webhooks funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "69",
+      "title": "Módulo 8.4: Listeners em eventos de fluxo",
+      "description": "Implementar listeners customizados que executam ações em eventos de fluxo (ex: enviar e-mail ao aprovar)",
+      "module": "Módulo 8.4: Integrações",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "68"
+      ],
+      "testStrategy": "Testar que listeners são executados nos eventos corretos",
+      "acceptanceCriteria": [
+        "Listeners customizados implementados",
+        "Listeners executados corretamente",
+        "Integrações funcionando via listeners"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "70",
+      "title": "Módulo 8.5: Dashboard gerencial completo",
+      "description": "Criar dashboard gerencial completo com todas as métricas e indicadores",
+      "module": "Módulo 8.5: Monitoramento",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "57"
+      ],
+      "testStrategy": "Testar que dashboard exibe todas as métricas corretamente",
+      "acceptanceCriteria": [
+        "Dashboard gerencial criado",
+        "Todas as métricas exibidas",
+        "Dashboard responsivo"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "71",
+      "title": "Módulo 8.5: Gráficos de tendência",
+      "description": "Implementar gráficos de tendência mostrando evolução de métricas ao longo do tempo",
+      "module": "Módulo 8.5: Monitoramento",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "70"
+      ],
+      "testStrategy": "Testar que gráficos são gerados corretamente",
+      "acceptanceCriteria": [
+        "Gráficos de tendência implementados",
+        "Gráficos exibem dados corretos",
+        "Visualização clara"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "72",
+      "title": "Módulo 8.5: Métricas de performance (SInstances, queries N+1)",
+      "description": "Implementar coleta de métricas de performance: tamanho de SInstances, detecção de queries N+1",
+      "module": "Módulo 8.5: Monitoramento",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "71"
+      ],
+      "testStrategy": "Testar coleta e visualização de métricas de performance",
+      "acceptanceCriteria": [
+        "Métricas de SInstances coletadas",
+        "Detecção de queries N+1 funcionando",
+        "Métricas podem ser visualizadas"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "73",
+      "title": "Módulo 8.5: Alertas de SLA",
+      "description": "Implementar sistema de alertas para SLA estourado",
+      "module": "Módulo 8.5: Monitoramento",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "72"
+      ],
+      "testStrategy": "Testar que alertas são disparados quando SLA é estourado",
+      "acceptanceCriteria": [
+        "Sistema de alertas implementado",
+        "Alertas de SLA funcionando",
+        "Notificações sendo enviadas"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "74",
+      "title": "Módulo 8.5: Exportação de relatórios (Excel/CSV)",
+      "description": "Implementar exportação de relatórios gerenciais em Excel e CSV",
+      "module": "Módulo 8.5: Monitoramento",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "73"
+      ],
+      "testStrategy": "Testar exportação e validar conteúdo dos arquivos",
+      "acceptanceCriteria": [
+        "Exportação para Excel funcionando",
+        "Exportação para CSV funcionando",
+        "Arquivos gerados corretamente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "75",
+      "title": "Módulo 8.6: Estratégias de versionamento semântico",
+      "description": "Documentar e implementar estratégias de versionamento semântico para formulários",
+      "module": "Módulo 8.6: Migração",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "34"
+      ],
+      "testStrategy": "Validar que versionamento segue padrão semântico",
+      "acceptanceCriteria": [
+        "Estratégia de versionamento documentada",
+        "Versionamento semântico implementado",
+        "Padrão seguido consistentemente"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "76",
+      "title": "Módulo 8.6: Migração lazy vs eager",
+      "description": "Implementar suporte a migração lazy (sob demanda) e eager (batch)",
+      "module": "Módulo 8.6: Migração",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "75"
+      ],
+      "testStrategy": "Testar ambos os tipos de migração",
+      "acceptanceCriteria": [
+        "Migração lazy funcionando",
+        "Migração eager funcionando",
+        "Ambas estratégias testadas"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "77",
+      "title": "Módulo 8.6: Coexistência de múltiplas versões",
+      "description": "Implementar suporte para múltiplas versões de formulários coexistindo em produção",
+      "module": "Módulo 8.6: Migração",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "76"
+      ],
+      "testStrategy": "Testar que múltiplas versões podem ser usadas simultaneamente",
+      "acceptanceCriteria": [
+        "Múltiplas versões podem coexistir",
+        "Roteamento por versão funcionando",
+        "Compatibilidade garantida"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "78",
+      "title": "Módulo 8.6: Importação de dados legados (ETL)",
+      "description": "Criar scripts ETL para importar dados de sistemas legados para o novo formato Singular",
+      "module": "Módulo 8.6: Migração",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "77"
+      ],
+      "testStrategy": "Testar importação com dados de exemplo",
+      "acceptanceCriteria": [
+        "Scripts ETL criados",
+        "Importação funcionando",
+        "Dados validados após importação"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "79",
+      "title": "Módulo 8.6: Validação pós-migração",
+      "description": "Implementar validação automática de dados após migração para garantir integridade",
+      "module": "Módulo 8.6: Migração",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "78"
+      ],
+      "testStrategy": "Testar validação pós-migração com diferentes cenários",
+      "acceptanceCriteria": [
+        "Validação pós-migração implementada",
+        "Validação detecta problemas",
+        "Relatórios de validação gerados"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "80",
+      "title": "Módulo 9: Fluxo completo end-to-end",
+      "description": "Implementar caso prático completo: Requerente solicita → Analista analisa → Supervisor aprova → PDF gerado → E-mail enviado",
+      "module": "Módulo 9: Casos Práticos",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "69",
+        "63"
+      ],
+      "testStrategy": "Testar fluxo completo end-to-end",
+      "acceptanceCriteria": [
+        "Fluxo completo funcionando",
+        "Todas as etapas integradas",
+        "Sistema end-to-end testado"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "81",
+      "title": "Módulo 9: Portal do requerente",
+      "description": "Criar portal self-service para requerentes: login, solicitar certidão, acompanhar status, baixar documentos",
+      "module": "Módulo 9: Casos Práticos",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "80"
+      ],
+      "testStrategy": "Testar todas as funcionalidades do portal",
+      "acceptanceCriteria": [
+        "Portal do requerente criado",
+        "Todas as funcionalidades funcionando",
+        "UX adequada"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "82",
+      "title": "Módulo 9: Painel do analista",
+      "description": "Criar painel completo para analistas: fila de trabalho, análise de documentos, aprovação/rejeição, parecer técnico",
+      "module": "Módulo 9: Casos Práticos",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "81"
+      ],
+      "testStrategy": "Testar todas as funcionalidades do painel",
+      "acceptanceCriteria": [
+        "Painel do analista criado",
+        "Todas as funcionalidades funcionando",
+        "Workflow integrado"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "83",
+      "title": "Módulo 9: Dashboard gerencial",
+      "description": "Criar dashboard gerencial completo: visão geral, gráficos, relatórios, alertas, reatribuição de tarefas",
+      "module": "Módulo 9: Casos Práticos",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "82"
+      ],
+      "testStrategy": "Testar que dashboard exibe informações corretas",
+      "acceptanceCriteria": [
+        "Dashboard gerencial criado",
+        "Todas as funcionalidades funcionando",
+        "Métricas atualizadas"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "84",
+      "title": "Módulo 9: Migração de sistema legado",
+      "description": "Implementar migração completa de dados de sistema legado (Excel/arquivos físicos) para OpenSingular",
+      "module": "Módulo 9: Casos Práticos",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "79"
+      ],
+      "testStrategy": "Testar migração com dados de exemplo",
+      "acceptanceCriteria": [
+        "Migração implementada",
+        "Dados importados corretamente",
+        "Validação pós-importação funcionando"
+      ],
+      "subtasks": []
+    },
+    {
+      "id": "85",
+      "title": "Módulo 9: Integração de todos os módulos",
+      "description": "Integrar todos os módulos (1-9) em um sistema completo e funcional, validando todas as integrações",
+      "module": "Módulo 9: Casos Práticos",
+      "priority": "low",
+      "status": "pending",
+      "dependencies": [
+        "84"
+      ],
+      "testStrategy": "Testar integração completa de todos os módulos",
+      "acceptanceCriteria": [
+        "Todos os módulos integrados",
+        "Sistema completo funcionando",
+        "Checklist de integração completo"
+      ],
+      "subtasks": []
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "lastModified": "2026-01-05T21:52:11.016Z",
+    "taskCount": 85,
+    "completedCount": 0,
+    "tags": [
+      "opensingular"
+    ]
+  }
+}

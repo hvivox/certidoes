@@ -87,10 +87,8 @@ yarn-error.log*
 .taskmaster/tasks.json
 .taskmaster/.cache/
 
+node_modules
+file/
 # End of .gitignore
 
-file/
-.taskmaster/config.json
-.taskmaster/README.md
-.taskmaster/docs/prd.txt
-.taskmaster/templates/example_prd.txt
+

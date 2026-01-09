@@ -1,0 +1,26 @@
+# Product Requirements Document (PRD) Template
+
+## 1. Overview
+[Descreva o propósito geral do projeto]
+
+## 2. Goals
+[Liste os objetivos principais do projeto]
+
+## 3. User Stories
+[Descreva as histórias de usuário principais]
+
+## 4. Features
+[Liste as funcionalidades principais]
+
+## 5. Technical Requirements
+[Descreva os requisitos técnicos]
+
+## 6. Non-Functional Requirements
+[Descreva requisitos não funcionais como performance, segurança, etc.]
+
+## 7. Dependencies
+[Liste as dependências do projeto]
+
+## 8. Success Criteria
+[Defina os critérios de sucesso]
+

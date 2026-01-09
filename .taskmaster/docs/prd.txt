@@ -1,0 +1,382 @@
+# Product Requirements Document - Curso Completo de Apache Wicket
+
+## 1. Overview
+
+Este projeto visa criar um sistema educacional completo de aprendizado do Apache Wicket 7.18.0, implementando progressivamente todos os conceitos fundamentais e avançados do framework através de 7 módulos sequenciais. O projeto utiliza um sistema de gerenciamento de certidões como caso de uso prático para demonstrar cada conceito do Wicket de forma didática e progressiva.
+
+O objetivo é fornecer uma experiência de aprendizado hands-on, onde cada módulo constrói sobre os anteriores, permitindo que desenvolvedores Java adquiram proficiência completa no Apache Wicket através de exemplos práticos e código bem documentado.
+
+## 2. Goals
+
+### Objetivos Principais
+- Implementar um curso completo e progressivo de Apache Wicket através de 7 módulos sequenciais
+- Demonstrar todos os conceitos fundamentais e avançados do framework de forma prática
+- Criar um sistema funcional de gerenciamento de certidões que evolui com cada módulo
+- Fornecer código bem documentado e exemplos didáticos para cada conceito
+- Garantir que cada módulo seja independente e possa ser estudado separadamente
+- Implementar boas práticas de desenvolvimento com Wicket em cada etapa
+
+### Objetivos Educacionais
+- Ensinar a arquitetura e filosofia do Apache Wicket
+- Demonstrar a separação clara entre HTML e Java
+- Mostrar como criar componentes reutilizáveis
+- Ensinar padrões de design específicos do Wicket (Models, Behaviors, etc.)
+- Preparar desenvolvedores para criar aplicações web profissionais com Wicket
+
+## 3. User Stories
+
+### Como Estudante/Desenvolvedor
+- Como estudante, quero entender os conceitos básicos do Wicket antes de avançar para tópicos complexos
+- Como desenvolvedor, quero ver exemplos práticos de cada conceito implementado
+- Como aprendiz, quero ter código bem documentado que explique o "porquê" além do "como"
+- Como desenvolvedor, quero poder executar e testar cada módulo independentemente
+- Como estudante, quero ver a evolução progressiva do sistema através dos módulos
+
+### Como Usuário Final (Sistema de Certidões)
+- Como usuário, quero criar, visualizar, editar e excluir certidões
+- Como usuário, quero receber feedback visual sobre minhas ações
+- Como usuário, quero uma interface responsiva e intuitiva
+- Como usuário, quero validações de dados que previnam erros
+- Como usuário, quero funcionalidades Ajax para melhor experiência
+
+## 4. Features
+
+### Módulo 1: Primeiros Passos com Wicket (Getting Started)
+- ✅ Visão geral do Wicket e suas características principais
+- ✅ Documentação das vantagens de usar Wicket
+- ✅ Demonstração de componentes básicos do Wicket
+- ✅ Estrutura geral de uma aplicação Wicket
+- ✅ Páginas básicas (HomePage, ListPage, FormPage, DetailPage)
+- ✅ Componentes reutilizáveis básicos
+- ✅ Sistema de navegação entre páginas
+
+### Módulo 2: Arquitetura do Wicket (The Wicket Architecture)
+- Processamento de requisições (Request Processing)
+- Configuração e uso de Application
+- Gerenciamento de Session
+- Implementação de Session Store
+- Outros objetos do Wicket (RequestCycle, Response, etc.)
+- Etapas detalhadas de processamento de uma requisição
+- Segurança de thread (Thread Safety)
+- Revisão e aprofundamento em Componentes do Wicket
+- A "tríade" do componente (Component Triad)
+- Page como componente principal
+- Exemplo de aninhamento de componentes (Component Nesting)
+- MVC do jeito Wicket (MVC - The Wicket Way)
+- Model e sua importância
+- Behavior e seus usos
+
+### Módulo 3: Modelos (Models)
+- Revisão completa de Models
+- Padrões e convenções de Models
+- Usando Model básico
+- Estático vs dinâmico
+- Serialização de Models
+- PropertyModel (abordagem dinâmica)
+- CompoundPropertyModel
+- Modelos destacáveis (Detachable Models)
+- LoadableDetachableModel
+- Exemplos práticos de cada tipo de Model
+
+### Módulo 4: Formulários (Forms)
+- Entrada do usuário e formulários
+- Diferenças entre GET e POST
+- Processamento de submissão (Submission Processing)
+- Entrada de texto (Text Input)
+- Listas (Lists) - DropDownChoice, ListView, etc.
+- Componentes para submeter dados do formulário
+- Validação de dados (validators built-in)
+- Escrevendo validadores customizados
+- Sistema de Feedback
+- FeedbackPanel e suas variações
+- Tratamento de erros de validação
+
+### Módulo 5: Composição de Páginas e Componentes (Page and Component Composition)
+- Agrupamento de componentes
+- Componentes com WebMarkupContainer
+- Container Panel
+- Agrupamento com Fragments
+- Layout consistente (BasePage, herança)
+- Criação de componentes reutilizáveis
+- Padrões de composição
+- Exemplos práticos de cada técnica
+
+### Módulo 6: Ajax e Componentes Ricos (Ajax and Rich Components)
+- O que são RIAs (Rich Internet Applications)
+- Tecnologias de RIA
+- O que é Ajax e sua importância
+- Ajax e JavaScript no Wicket
+- XMLHttpRequest e Wicket
+- Wicket e Ajax (integração nativa)
+- Componentes e behaviors Ajax
+- Contribuições de cabeçalho (Header Contributions)
+- Exemplos práticos de funcionalidades Ajax
+
+### Módulo 7: Extras
+- Autenticação (implementação completa)
+- Implementando autorização
+- I18N e L10N (internacionalização e localização)
+- Customização do carregamento de recursos
+- Converters (conversores customizados)
+- Testes unitários com WicketTester
+- URLs (bookmarkable pages, URL encoding)
+- Modo de produção (Production Mode)
+- Otimizações e boas práticas
+
+## 5. Technical Requirements
+
+### Stack Tecnológica
+- **Java**: 1.8 (JDK 8)
+- **Framework Web**: Apache Wicket 7.18.0
+- **Build Tool**: Maven 3.x
+- **Servidor de Desenvolvimento**: Jetty 9.4.51.v20230217
+- **Logging**: Log4j 2.17.1+
+- **UI Framework**: Bootstrap 4.6.2 (opcional, para melhorar aparência)
+- **Testes**: JUnit 4.12
+
+### Requisitos de Ambiente
+- JDK 8 ou superior instalado
+- Maven 3.x instalado e configurado
+- IDE Java (Eclipse, IntelliJ IDEA, ou VS Code)
+- Navegador web moderno para testes
+- Node.js (apenas para TaskMaster AI, não obrigatório para o projeto)
+
+### Estrutura do Projeto
+- Arquitetura Maven padrão (src/main/java, src/main/resources, src/test/java)
+- Separação clara de responsabilidades (domain, page, component, infra, etc.)
+- Código organizado por módulos/pacotes
+- Recursos web em src/main/webapp
+
+### Padrões de Código
+- Convenções de nomenclatura Java
+- Código bem documentado com comentários explicativos
+- Separação HTML/Java (sem código Java no HTML)
+- Uso de LoadableDetachableModel para otimização
+- Thread-safe em todos os componentes
+
+## 6. Non-Functional Requirements
+
+### Performance
+- Tempo de resposta de páginas < 500ms (desenvolvimento)
+- Carregamento inicial da aplicação < 2s
+- Uso eficiente de memória (detachable models)
+- Otimização de serialização de componentes
+
+### Segurança
+- Validação de todos os dados de entrada
+- Prevenção de XSS (Cross-Site Scripting)
+- Thread-safety em todos os componentes
+- Proteção contra CSRF (Cross-Site Request Forgery) - quando aplicável
+
+### Usabilidade
+- Interface intuitiva e fácil de navegar
+- Feedback visual claro para todas as ações do usuário
+- Mensagens de erro descritivas e úteis
+- Layout responsivo (quando possível com Bootstrap)
+
+### Manutenibilidade
+- Código bem estruturado e organizado
+- Documentação inline explicando conceitos
+- Separação clara de responsabilidades
+- Componentes reutilizáveis e modulares
+
+### Testabilidade
+- Componentes testáveis isoladamente
+- Uso de WicketTester para testes de integração
+- Testes unitários para lógica de negócio
+- Mocks para dependências externas
+
+### Escalabilidade
+- Arquitetura preparada para crescimento
+- Uso de repositórios (facilita migração para banco de dados)
+- Componentes desacoplados
+
+## 7. Dependencies
+
+### Dependências Core
+- `org.apache.wicket:wicket-core:7.18.0` - Framework principal
+- `org.apache.wicket:wicket-extensions:7.18.0` - Extensões e componentes adicionais
+
+### Dependências de Logging
+- `org.apache.logging.log4j:log4j-slf4j-impl:2.17.1` - Bridge SLF4J
+- `org.apache.logging.log4j:log4j-core:2.17.1` - Core do Log4j
+
+### Dependências de Testes
+- `junit:junit:4.12` - Framework de testes
+- `org.eclipse.jetty:jetty-server:9.4.51.v20230217` - Servidor para testes
+- `org.eclipse.jetty:jetty-webapp:9.4.51.v20230217` - Webapp container
+- `org.eclipse.jetty:jetty-util:9.4.51.v20230217` - Utilitários Jetty
+- `org.eclipse.jetty:jetty-jmx:9.4.51.v20230217` - JMX support
+
+### Dependências Opcionais (para UI)
+- Bootstrap 4.6.2 (via CDN ou local)
+
+### Dependências de Desenvolvimento
+- `task-master-ai:^0.40.1` - Para gerenciamento de tarefas (opcional)
+
+## 8. Success Criteria
+
+### Critérios por Módulo
+
+#### Módulo 1: Primeiros Passos
+- ✅ Sistema básico de CRUD funcionando
+- ✅ Páginas principais criadas e funcionais
+- ✅ Componentes básicos demonstrados
+- ✅ Navegação entre páginas implementada
+- ✅ Código documentado explicando conceitos básicos
+
+#### Módulo 2: Arquitetura
+- Request processing implementado e documentado
+- Session management funcionando corretamente
+- Thread-safety garantida em todos os componentes
+- Component Triad compreendida e aplicada
+- MVC pattern implementado corretamente
+
+#### Módulo 3: Modelos
+- Todos os tipos de Models demonstrados
+- LoadableDetachableModel implementado para otimização
+- PropertyModel e CompoundPropertyModel utilizados corretamente
+- Serialização funcionando adequadamente
+
+#### Módulo 4: Formulários
+- Formulários completos com validação
+- Validadores customizados implementados
+- Feedback system funcionando
+- Tratamento de erros de validação
+
+#### Módulo 5: Composição
+- Componentes reutilizáveis criados
+- Fragments implementados
+- Layout consistente através de BasePage
+- Padrões de composição aplicados
+
+#### Módulo 6: Ajax
+- Funcionalidades Ajax implementadas
+- Componentes ricos funcionando
+- Header contributions configuradas
+- Experiência de usuário melhorada com Ajax
+
+#### Módulo 7: Extras
+- Sistema de autenticação implementado
+- I18N configurado (se aplicável)
+- Testes unitários escritos e passando
+- Modo de produção configurado
+- Converters customizados implementados
+
+### Critérios Gerais
+- Todos os módulos implementados e funcionais
+- Código bem documentado e explicativo
+- Sistema de certidões completo e funcional
+- Boas práticas do Wicket aplicadas
+- Projeto pode ser executado e testado localmente
+- README completo com instruções de uso
+
+## 9. Assunções
+
+### Assunções Técnicas 
+1. **Ambiente de Desenvolvimento**: Assume-se que o desenvolvedor tem conhecimento básico de Java e Maven
+2. **Versão do Java**: O projeto usa Java 8, assumindo compatibilidade com essa versão
+3. **Repositório em Memória**: Inicialmente, assume-se uso de repositório em memória (InMemoryCertidaoRepository), podendo evoluir para banco de dados posteriormente
+4. **Servidor de Desenvolvimento**: Assume-se uso do Jetty via Maven para desenvolvimento local
+5. **Navegador**: Assume-se uso de navegadores modernos (Chrome, Firefox, Edge) para testes
+
+### Assunções de Negócio
+1. **Caso de Uso**: O sistema de certidões é usado como exemplo didático, não como sistema de produção real
+2. **Dados**: Não há necessidade inicial de persistência em banco de dados (pode ser adicionado posteriormente)
+3. **Usuários**: Inicialmente, assume-se uso por um único usuário ou sem sistema de autenticação (até o Módulo 7)
+4. **Escalabilidade**: Não há requisitos iniciais de alta escalabilidade ou performance extrema
+
+### Assunções Educacionais
+1. **Progressão**: Assume-se que os módulos serão estudados sequencialmente
+2. **Conhecimento Prévio**: Assume-se conhecimento básico de Java, HTML e conceitos de desenvolvimento web
+3. **Tempo**: Assume-se tempo adequado para implementação e estudo de cada módulo
+4. **Documentação**: Assume-se que código bem documentado é essencial para aprendizado
+
+## 10. Perguntas em Aberto
+
+### Técnicas
+1. **Persistência**: Deve-se implementar persistência em banco de dados (JPA/Hibernate) ou manter apenas em memória para fins educacionais?
+     - Isso será tratado em um proxima etapa ainda não definida
+2. **Autenticação**: Qual sistema de autenticação deve ser usado no Módulo 7? (Spring Security, Wicket Auth, custom?)
+    - Isso será tratado em um proxima etapa ainda não definida
+3. **I18N**: Quais idiomas devem ser suportados na internacionalização? (Português e Inglês são suficientes?)
+    - sim, Português e Inglês são suficientes
+4. **Testes**: Qual nível de cobertura de testes é esperado? (Unitários apenas ou também integração?)
+    - 4 testes unitários e um de integração
+5. **UI Framework**: Deve-se usar Bootstrap ou manter CSS customizado para melhor demonstração dos conceitos do Wicket?
+    - a preferencias é utilizar o Bootstrap, css customizado apenas se precisar
+
+### Funcionais
+1. **Certidões**: Quais campos adicionais podem ser necessários no modelo Certidao além dos já implementados?
+    - até o momento, mantenha apenas os que já estão, incluir novos apenas se for necessário  para proximas implementações
+2. **Validações**: Existem regras de negócio específicas para validação de certidões que devem ser implementadas?
+    - não existem neste momento, matenha apenas as validações que foram implementada
+3. **Relatórios**: Deve-se incluir funcionalidade de relatórios/exportação de dados?
+    - sim, precisa incluir funcionalidade de relátório com o apache poi para representar uma certidão
+
+4. **Busca/Filtros**: Deve-se implementar busca e filtros na listagem de certidões?
+    - sim, deve ser implementado
+
+### Educacionais
+1. **Exercícios**: Deve-se incluir exercícios práticos para cada módulo?
+    - não
+2. **Soluções**: Deve-se fornecer múltiplas soluções para os mesmos problemas (mostrando diferentes abordagens)?
+    -não
+3. **Troubleshooting**: Deve-se incluir seção de problemas comuns e soluções?
+    - interessante! pode incluir
+
+## 11. Roadmap de Implementação
+
+### Fase 1: Fundamentos (Módulos 1-2)
+- Implementar estrutura básica do projeto
+- Criar páginas e componentes fundamentais
+- Documentar arquitetura do Wicket
+- **Status**: Parcialmente completo (Módulo 1 implementado)
+
+### Fase 2: Core Concepts (Módulos 3-4)
+- Implementar todos os tipos de Models
+- Criar formulários completos com validação
+- **Status**: Parcialmente completo (alguns conceitos já implementados)
+
+### Fase 3: Composição e Riqueza (Módulos 5-6)
+- Criar componentes reutilizáveis avançados
+- Implementar funcionalidades Ajax
+- **Status**: Pendente
+
+### Fase 4: Produção (Módulo 7)
+- Implementar autenticação e autorização
+- Configurar modo de produção
+- Adicionar testes completos
+- **Status**: Pendente
+
+## 12. Riscos e Mitigações
+
+### Riscos Técnicos
+1. **Complexidade do Wicket**: Wicket pode ser complexo para iniciantes
+   - **Mitigação**: Documentação detalhada e exemplos progressivos
+
+2. **Compatibilidade de Versões**: Mudanças futuras no Wicket podem quebrar código
+   - **Mitigação**: Usar versão estável (7.18.0) e documentar versão específica
+
+3. **Performance**: Uso incorreto de Models pode causar problemas de performance
+   - **Mitigação**: Ensinar LoadableDetachableModel desde o início
+
+### Riscos de Projeto
+1. **Escopo**: Projeto pode crescer além do planejado
+   - **Mitigação**: Manter foco educacional, evitar feature creep
+
+2. **Tempo**: Implementação completa pode levar mais tempo que esperado
+   - **Mitigação**: Priorizar módulos essenciais, implementar incrementalmente
+
+## 13. Glossário
+
+- **Component**: Unidade básica de construção no Wicket
+- **Model**: Objeto que fornece dados para componentes
+- **Page**: Componente raiz que representa uma página web
+- **Behavior**: Funcionalidade adicional que pode ser anexada a componentes
+- **Request Cycle**: Ciclo de vida de uma requisição HTTP no Wicket
+- **Session**: Armazenamento de estado do usuário
+- **Detachable Model**: Model que pode ser serializado/deserializado
+- **Ajax**: Tecnologia para atualização assíncrona de páginas
+- **Bookmarkable Page**: Página acessível via URL direta
+- **WicketTester**: Ferramenta para testes de componentes Wicket
