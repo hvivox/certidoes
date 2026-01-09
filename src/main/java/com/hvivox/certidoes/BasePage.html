@@ -7,6 +7,12 @@
 
     <!-- Bootstrap (pra ficar com cara de sistema sem sofrer) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS Customizado para FeedbackPanel e Toast Notifications -->
+    <link rel="stylesheet" href="css/feedback-custom.css">
 </head>
 
 <body class="bg-light">
@@ -26,16 +32,334 @@
             <li class="nav-item">
                 <a wicket:id="linkNova" class="nav-link">Nova Certidão</a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownExemplos" role="button" 
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-code"></i> Exemplos
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownExemplos">
+                    <a wicket:id="linkComponentes" class="dropdown-item">
+                        <i class="fas fa-puzzle-piece"></i> Componentes Wicket
+                    </a>
+                    <a wicket:id="linkAgrupamento" class="dropdown-item">
+                        <i class="fas fa-layer-group"></i> Agrupamento
+                    </a>
+                    <a wicket:id="linkAjax" class="dropdown-item">
+                        <i class="fas fa-bolt"></i> Ajax
+                    </a>
+                    <a wicket:id="linkHeaderContributions" class="dropdown-item">
+                        <i class="fas fa-file-code"></i> Header Contributions
+                    </a>
+                    <a wicket:id="linkRecursosCustomizados" class="dropdown-item">
+                        <i class="fas fa-folder-open"></i> Recursos Customizados
+                    </a>
+                    <a wicket:id="linkConverters" class="dropdown-item">
+                        <i class="fas fa-exchange-alt"></i> Converters
+                    </a>
+                    <a wicket:id="linkURLs" class="dropdown-item">
+                        <i class="fas fa-link"></i> URLs Bookmarkable
+                    </a>
+                    <a wicket:id="linkModoProducao" class="dropdown-item">
+                        <i class="fas fa-rocket"></i> Modo de Produção
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a wicket:id="linkTroubleshooting" class="dropdown-item">
+                        <i class="fas fa-wrench"></i> Troubleshooting
+                    </a>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>
 
+<!-- Container para Toast Notifications (alertas que aparecem e somem) -->
+<div class="toast-container" id="toastContainer"></div>
+
 <div class="container mt-4">
+    <div wicket:id="feedback"></div>
     <wicket:child/>
 </div>
 
 <!-- Bootstrap JS (para o menu mobile funcionar) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Modal de Confirmação (reutilizável para ConfirmacaoBehavior) -->
+<div class="modal fade" id="modalConfirmacao" tabindex="-1" role="dialog" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalConfirmacaoLabel">Confirmação</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalConfirmacaoMensagem">
+                <!-- Mensagem será inserida aqui via JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="modalConfirmacaoBtnConfirmar">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript para controlar o modal de confirmação -->
+<script>
+    // Função para abrir modal de confirmação
+    // Usada pelo ConfirmacaoBehavior para exibir confirmações via Modal Bootstrap
+    function abrirModalConfirmacao(mensagem, callbackConfirmar) {
+        // Atualizar mensagem do modal
+        document.getElementById('modalConfirmacaoMensagem').textContent = mensagem;
+        
+        // Remover listeners anteriores para evitar múltiplos handlers
+        var btnConfirmar = document.getElementById('modalConfirmacaoBtnConfirmar');
+        var novoBtn = btnConfirmar.cloneNode(true);
+        btnConfirmar.parentNode.replaceChild(novoBtn, btnConfirmar);
+        
+        // Adicionar listener ao botão confirmar
+        novoBtn.addEventListener('click', function() {
+            // Fechar modal
+            $('#modalConfirmacao').modal('hide');
+            // Executar callback de confirmação após o modal fechar
+            setTimeout(function() {
+                if (callbackConfirmar) {
+                    callbackConfirmar();
+                }
+            }, 300); // Pequeno delay para garantir que o modal fechou
+        });
+        
+        // Abrir modal
+        $('#modalConfirmacao').modal('show');
+    }
+    
+    // Interceptar cliques em links com confirmação (fallback para Links do Wicket)
+    // Isso garante que mesmo se o onclick não funcionar, ainda temos uma camada de proteção
+    $(document).ready(function() {
+        // Usar captura de evento (true) para interceptar antes do Wicket processar
+        document.addEventListener('click', function(e) {
+            var elemento = e.target;
+            // Verificar se é um link ou botão com a classe de confirmação
+            while (elemento && elemento !== document) {
+                if (elemento.classList && elemento.classList.contains('wicket-confirmacao')) {
+                    var mensagem = elemento.getAttribute('data-confirmacao-mensagem');
+                    if (mensagem) {
+                        // Verificar se já foi confirmado (flag para evitar loop)
+                        if (elemento.dataset.confirmado === 'true') {
+                            elemento.dataset.confirmado = 'false';
+                            return true; // Deixa o Wicket processar
+                        }
+                        
+                        e.preventDefault();
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+                        
+                        var elementoLink = elemento;
+                        var callbackConfirmar = function() {
+                            // Marcar como confirmado
+                            elementoLink.dataset.confirmado = 'true';
+                            // Fazer o link clicar programaticamente
+                            // Isso vai fazer o Wicket processar corretamente
+                            var clickEvent = new MouseEvent('click', {
+                                view: window,
+                                bubbles: true,
+                                cancelable: true,
+                                buttons: 1
+                            });
+                            elementoLink.dispatchEvent(clickEvent);
+                        };
+                        abrirModalConfirmacao(mensagem, callbackConfirmar);
+                        return false;
+                    }
+                }
+                elemento = elemento.parentElement;
+            }
+        }, true); // true = usar captura (antes da fase de bubbling)
+    });
+    
+    // Inicializar alerts do Bootstrap para dismiss automático
+    // O Bootstrap já cuida do dismiss quando o botão close é clicado
+    $(document).ready(function() {
+        // Inicializar plugin de alert do Bootstrap (já incluído no bootstrap.bundle.min.js)
+        // Não é necessário código adicional - o Bootstrap já faz tudo automaticamente
+        // quando usa data-dismiss="alert" no botão
+    });
+    
+    // ====================================================================
+    // TOAST NOTIFICATIONS - Alertas que aparecem e somem automaticamente
+    // ====================================================================
+    
+    /**
+     * Exibe um toast notification (alerta que aparece e some automaticamente)
+     * 
+     * @param {string} tipo - 'error', 'warning', 'info', 'success'
+     * @param {string} titulo - Título do toast
+     * @param {string} mensagem - Mensagem do toast
+     * @param {number} duracao - Duração em milissegundos (padrão: 5000ms = 5 segundos)
+     */
+    function exibirToast(tipo, titulo, mensagem, duracao) {
+        duracao = duracao || 5000; // Padrão: 5 segundos
+        
+        var container = document.getElementById('toastContainer');
+        if (!container) {
+            console.error('Container de toast não encontrado!');
+            return;
+        }
+        
+        // Criar ID único para o toast
+        var toastId = 'toast-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        
+        // Determinar ícone baseado no tipo
+        var icone = '';
+        switch(tipo) {
+            case 'error':
+                icone = '⚠';
+                break;
+            case 'warning':
+                icone = '⚠';
+                break;
+            case 'info':
+                icone = 'ℹ';
+                break;
+            case 'success':
+                icone = '✓';
+                break;
+            default:
+                icone = 'ℹ';
+        }
+        
+        // Criar HTML do toast
+        var toastHtml = '<div id="' + toastId + '" class="toast-custom toast-' + tipo + '">' +
+            '<div class="toast-header-custom">' +
+            '<span class="toast-icon"></span>' +
+            '<span class="toast-title">' + titulo + '</span>' +
+            '<button type="button" class="toast-close" onclick="fecharToast(\'' + toastId + '\')" aria-label="Fechar">&times;</button>' +
+            '</div>' +
+            '<div class="toast-body-custom">' + mensagem + '</div>' +
+            '</div>';
+        
+        // Adicionar ao container
+        container.insertAdjacentHTML('beforeend', toastHtml);
+        
+        // Obter elemento do toast
+        var toastElement = document.getElementById(toastId);
+        
+        // Trigger reflow para garantir que a animação funcione
+        toastElement.offsetHeight;
+        
+        // Mostrar toast com animação
+        setTimeout(function() {
+            toastElement.classList.add('show');
+        }, 10);
+        
+        // Fechar automaticamente após a duração especificada
+        setTimeout(function() {
+            fecharToast(toastId);
+        }, duracao);
+    }
+    
+    /**
+     * Fecha um toast específico
+     * 
+     * @param {string} toastId - ID do toast a ser fechado
+     */
+    function fecharToast(toastId) {
+        var toast = document.getElementById(toastId);
+        if (!toast) {
+            return;
+        }
+        
+        // Adicionar classe de animação de saída
+        toast.classList.add('hiding');
+        toast.classList.remove('show');
+        
+        // Remover do DOM após a animação
+        setTimeout(function() {
+            if (toast && toast.parentNode) {
+                toast.parentNode.removeChild(toast);
+            }
+        }, 300);
+    }
+    
+    /**
+     * Converte mensagens do FeedbackPanel em toasts
+     * Esta função está DESABILITADA por padrão para evitar duplicação
+     * 
+     * Para habilitar toasts automáticos, descomente o código abaixo
+     * e comente a linha que desabilita a conversão
+     */
+    function converterFeedbackParaToast() {
+        // CONVERSÃO AUTOMÁTICA DESABILITADA
+        // Para habilitar, descomente o código abaixo:
+        /*
+        $('.feedback-container li').each(function() {
+            var $li = $(this);
+            
+            // Se já foi convertido, pular
+            if ($li.data('convertido-para-toast')) {
+                return;
+            }
+            
+            // Marcar como convertido
+            $li.data('convertido-para-toast', true);
+            
+            // Determinar tipo e mensagem
+            var tipo = 'info';
+            var titulo = 'Informação';
+            
+            if ($li.hasClass('feedbackPanelERROR')) {
+                tipo = 'error';
+                titulo = 'Erro';
+            } else if ($li.hasClass('feedbackPanelWARNING')) {
+                tipo = 'warning';
+                titulo = 'Aviso';
+            } else if ($li.hasClass('feedbackPanelINFO')) {
+                tipo = 'info';
+                titulo = 'Informação';
+            } else if ($li.hasClass('feedbackPanelSUCCESS')) {
+                tipo = 'success';
+                titulo = 'Sucesso';
+            }
+            
+            // Obter mensagem (remover HTML se houver)
+            var mensagem = $li.text().trim();
+            
+            // Exibir toast
+            exibirToast(tipo, titulo, mensagem, 5000);
+        });
+        */
+    }
+    
+    // CONVERSÃO AUTOMÁTICA DESABILITADA
+    // Para habilitar toasts automáticos, descomente o código abaixo:
+    /*
+    $(document).ready(function() {
+        // Aguardar um pouco para garantir que o FeedbackPanel foi renderizado
+        setTimeout(function() {
+            converterFeedbackParaToast();
+        }, 500);
+        
+        // Observar mudanças no container de feedback para converter novas mensagens
+        var feedbackContainer = document.querySelector('.feedback-container');
+        if (feedbackContainer) {
+            var observer = new MutationObserver(function(mutations) {
+                setTimeout(function() {
+                    converterFeedbackParaToast();
+                }, 100);
+            });
+            
+            observer.observe(feedbackContainer, {
+                childList: true,
+                subtree: true
+            });
+        }
+    });
+    */
+    
+    // Tornar funções globais para uso em outras partes do código
+    window.exibirToast = exibirToast;
+    window.fecharToast = fecharToast;
+</script>
 </body>
 </html>

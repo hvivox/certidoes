@@ -42,8 +42,11 @@
 	</licenses>
 	<properties>
 		<wicket.version>7.18.0</wicket.version>
-		<jetty9.version>9.2.19.v20160908</jetty9.version>
-		<log4j.version>2.6.2</log4j.version>
+		<!-- Atualizado para Jetty 9.4.x que suporta multi-release JARs (Java 9+) -->
+		<!-- Necessário para compatibilidade com Log4j 2.17.1+ que usa recursos do Java 9+ -->
+		<jetty9.version>9.4.51.v20230217</jetty9.version>
+		<!-- Bumped to a secure Log4j 2.x release to mitigate critical CVEs (CVE-2021-44228, CVE-2021-45046, CVE-2021-45105, etc.) -->
+		<log4j.version>2.17.1</log4j.version>
 		<junit.version>4.12</junit.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
@@ -56,13 +59,36 @@
 			<artifactId>wicket-core</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-		<!-- OPTIONAL DEPENDENCY
+		<!-- OPTIONAL DEPENDENCY -->
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-extensions</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-		-->
+		
+		<!-- APACHE POI - Para geração de relatórios Excel e Word -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>5.2.3</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.2.3</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 		<!-- LOGGING DEPENDENCIES - LOG4J -->
 		<dependency>
@@ -85,9 +111,28 @@
 		</dependency>
 
 		<!--  JETTY DEPENDENCIES FOR TESTING  -->
+		<!-- Dependências necessárias para Start.java (classe de inicialização standalone) -->
 		<dependency>
-			<groupId>org.eclipse.jetty.aggregate</groupId>
-			<artifactId>jetty-all</artifactId>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>${jetty9.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>${jetty9.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util</artifactId>
+			<version>${jetty9.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-jmx</artifactId>
 			<version>${jetty9.version}</version>
 			<scope>test</scope>
 		</dependency>
@@ -152,6 +197,9 @@
 						</systemProperty>
 					</systemProperties>
 					<jettyXml>${project.basedir}/src/test/jetty/jetty.xml,${project.basedir}/src/test/jetty/jetty-ssl.xml,${project.basedir}/src/test/jetty/jetty-http.xml,${project.basedir}/src/test/jetty/jetty-https.xml</jettyXml>
+					<!-- Configuração para evitar problemas com multi-release JARs -->
+					<scanIntervalSeconds>0</scanIntervalSeconds>
+					<reload>manual</reload>
 				</configuration>
 			</plugin>
 			<plugin>

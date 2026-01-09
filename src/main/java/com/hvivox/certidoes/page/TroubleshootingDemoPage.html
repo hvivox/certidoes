@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:extend>
+    <style>
+        .troubleshooting-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .categoria-card {
+            background: white;
+            border-left: 4px solid #667eea;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .categoria-header {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid #e9ecef;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #495057;
+        }
+        .problema-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .problema-item:last-child {
+            border-bottom: none;
+        }
+        .problema-titulo {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .problema-titulo::before {
+            content: "⚠️";
+            margin-right: 0.5rem;
+            font-size: 1.3rem;
+        }
+        .problema-causa {
+            background: #fff3cd;
+            border-left: 3px solid #ffc107;
+            padding: 0.75rem;
+            margin: 0.75rem 0;
+            border-radius: 4px;
+        }
+        .problema-causa::before {
+            content: "🔍 Causa: ";
+            font-weight: bold;
+            color: #856404;
+        }
+        .problema-solucao {
+            background: #d4edda;
+            border-left: 3px solid #28a745;
+            padding: 0.75rem;
+            margin: 0.75rem 0;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        .problema-solucao::before {
+            content: "✅ Solução: ";
+            font-weight: bold;
+            color: #155724;
+            font-family: Arial, sans-serif;
+        }
+        .info-box {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .info-box h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .info-box h4::before {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        .info-box.boas-praticas h4::before {
+            content: "✨";
+        }
+        .info-box.ferramentas h4::before {
+            content: "🔧";
+        }
+        .info-box.comandos h4::before {
+            content: "💻";
+        }
+        .info-content {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .alert-info-custom {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+    </style>
+
+    <!-- Header -->
+    <div class="troubleshooting-header">
+        <h1 wicket:id="titulo" style="margin: 0; font-size: 2rem;">
+            🔧 Troubleshooting - Apache Wicket
+        </h1>
+        <p style="margin: 0.5rem 0 0 0; opacity: 0.9;">
+            Guia completo de problemas comuns e suas soluções práticas
+        </p>
+    </div>
+
+    <div class="alert-info-custom">
+        <strong>💡 Dica:</strong> Use Ctrl+F para buscar rapidamente um problema específico nesta página.
+        Todos os problemas estão baseados em situações reais encontradas durante o desenvolvimento.
+    </div>
+
+    <!-- Categorias e Problemas -->
+    <div wicket:id="categorias">
+        <div class="categoria-card">
+            <div class="categoria-header" wicket:id="nomeCategoria">
+                Categoria de Problemas
+            </div>
+            <div wicket:id="problemas">
+                <div class="problema-item">
+                    <div class="problema-titulo" wicket:id="titulo">
+                        Título do Problema
+                    </div>
+                    <div class="problema-causa" wicket:id="causa">
+                        Causa do problema
+                    </div>
+                    <div class="problema-solucao" wicket:id="solucao">
+                        Solução do problema
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de Boas Práticas -->
+    <div class="info-box boas-praticas">
+        <h4>Boas Práticas</h4>
+        <div class="info-content" wicket:id="boasPraticas">
+            Lista de boas práticas
+        </div>
+    </div>
+
+    <!-- Seção de Ferramentas Úteis -->
+    <div class="info-box ferramentas">
+        <h4>Ferramentas Úteis</h4>
+        <div class="info-content" wicket:id="ferramentasUteis">
+            Lista de ferramentas
+        </div>
+    </div>
+
+    <!-- Seção de Comandos Úteis -->
+    <div class="info-box comandos">
+        <h4>Comandos Maven Úteis</h4>
+        <div class="info-content" wicket:id="comandosUteis">
+            Lista de comandos
+        </div>
+    </div>
+
+    <!-- Footer com recursos adicionais -->
+    <div class="alert alert-secondary">
+        <h5>📚 Recursos Adicionais</h5>
+        <ul style="margin-bottom: 0;">
+            <li><strong>Documentação Oficial:</strong> <a href="https://wicket.apache.org/" target="_blank">https://wicket.apache.org/</a></li>
+            <li><strong>Wiki do Wicket:</strong> <a href="https://cwiki.apache.org/confluence/display/WICKET" target="_blank">Apache Wicket Wiki</a></li>
+            <li><strong>Stack Overflow:</strong> Tag [apache-wicket]</li>
+            <li><strong>Mailing List:</strong> users@wicket.apache.org</li>
+        </ul>
+    </div>
+
+</wicket:extend>
+</body>
+</html>
+
+

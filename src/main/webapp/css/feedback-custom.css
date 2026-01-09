@@ -1,0 +1,313 @@
+/* ====================================================================
+ * CSS CUSTOMIZADO PARA FEEDBACK PANEL
+ * ====================================================================
+ * 
+ * MÓDULO 4 - ITEM 7: Feedback Avançado
+ * 
+ * Usa componentes nativos do Bootstrap 4.6.2
+ * Apenas ajustes mínimos para melhor apresentação
+ * 
+ * Referência: https://getbootstrap.com/docs/4.0/components/alerts/
+ */
+
+/* Container de feedback */
+.feedback-container {
+  margin-bottom: 1rem;
+}
+
+/* Remover estilos padrão de lista */
+.feedback-container {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+/* Espaçamento entre múltiplas mensagens */
+.feedback-container > li {
+  margin-bottom: 0.5rem;
+}
+
+.feedback-container > li:last-child {
+  margin-bottom: 0;
+}
+
+/* Garantir que o alert tenha largura total e remova padding da lista */
+.feedback-container .alert {
+  margin-bottom: 0;
+  display: block;
+}
+
+/* ====================================================================
+ * FEEDBACK INLINE POR COMPONENTE
+ * ====================================================================
+ * 
+ * MÓDULO 4 - ITEM 7: Feedback Avançado
+ * 
+ * Estilização para feedback inline usando classes do Bootstrap 4
+ * Referência: https://getbootstrap.com/docs/4.0/components/forms/#validation
+ */
+
+/* Feedback inline usando classes Bootstrap nativas */
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #dc3545;
+}
+
+.invalid-feedback.d-block {
+  display: block !important;
+}
+
+/* Quando há erro, destacar o campo com borda vermelha */
+.form-control.is-invalid {
+  border-color: #dc3545;
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* FeedbackPanel inline customizado */
+.invalid-feedback ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.invalid-feedback li {
+  margin-bottom: 0.25rem;
+}
+
+.invalid-feedback li:last-child {
+  margin-bottom: 0;
+}
+
+/* ====================================================================
+ * MÓDULO 4 - ITEM 3: Estilização para CheckBoxMultipleChoice
+ * ==================================================================== */
+
+.form-check-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-check-group .form-check {
+  margin-bottom: 0;
+}
+
+/* Lista múltipla com melhor apresentação */
+select[multiple] {
+  min-height: 120px;
+}
+
+/* ====================================================================
+ * TOAST NOTIFICATIONS (opcional - para uso futuro)
+ * ==================================================================== */
+
+/* Container fixo no topo da tela para toasts */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+/* Toast individual */
+.toast-custom {
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateX(400px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.toast-custom.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast-custom.hiding {
+  opacity: 0;
+  transform: translateX(400px);
+}
+
+/* Cabeçalho do Toast */
+.toast-header-custom {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px 4px 0 0;
+}
+
+/* Toast de Erro */
+.toast-error .toast-header-custom {
+  background-color: #dc3545;
+  color: #ffffff;
+  border-bottom: none;
+}
+
+.toast-error {
+  border-left: 4px solid #dc3545;
+}
+
+/* Toast de Aviso */
+.toast-warning .toast-header-custom {
+  background-color: #ffc107;
+  color: #212529;
+  border-bottom: none;
+}
+
+.toast-warning {
+  border-left: 4px solid #ffc107;
+}
+
+/* Toast de Informação */
+.toast-info .toast-header-custom {
+  background-color: #17a2b8;
+  color: #ffffff;
+  border-bottom: none;
+}
+
+.toast-info {
+  border-left: 4px solid #17a2b8;
+}
+
+/* Toast de Sucesso */
+.toast-success .toast-header-custom {
+  background-color: #28a745;
+  color: #ffffff;
+  border-bottom: none;
+}
+
+.toast-success {
+  border-left: 4px solid #28a745;
+}
+
+/* Ícone do Toast */
+.toast-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.toast-error .toast-icon {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+}
+
+.toast-error .toast-icon::before {
+  content: "⚠";
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.toast-warning .toast-icon {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.toast-warning .toast-icon::before {
+  content: "⚠";
+  font-size: 16px;
+  color: #212529;
+  font-weight: bold;
+}
+
+.toast-info .toast-icon {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+}
+
+.toast-info .toast-icon::before {
+  content: "ℹ";
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.toast-success .toast-icon {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+}
+
+.toast-success .toast-icon::before {
+  content: "✓";
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Título do Toast */
+.toast-title {
+  flex: 1;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Botão de fechar do Toast */
+.toast-close {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  margin-left: 10px;
+}
+
+.toast-close:hover {
+  opacity: 1;
+}
+
+/* Corpo do Toast */
+.toast-body-custom {
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #212529;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+  .toast-container {
+    left: 10px;
+    right: 10px;
+    min-width: auto;
+    max-width: none;
+  }
+
+  .toast-custom {
+    transform: translateY(-100px);
+  }
+
+  .toast-custom.show {
+    transform: translateY(0);
+  }
+
+  .toast-custom.hiding {
+    transform: translateY(-100px);
+  }
+}

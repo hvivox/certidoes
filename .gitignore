@@ -79,6 +79,16 @@ desktop.ini
 # Optional: ignore local scripts/build artifacts
 deploy-run.bat
 
-# End of .gitignore
+# TaskMaster AI
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.taskmaster/tasks.json
+.taskmaster/.cache/
 
 node_modules
+file/
+# End of .gitignore
+
+

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<wicket:extend>
+    <div class="row">
+        <div class="col-12">
+            <h1 wicket:id="tituloDemoPage">Demonstração Prática de Models (Módulo 3)</h1>
+            <p wicket:id="subtitulo">Esta página demonstra exemplos práticos de uso de Models.</p>
+        </div>
+    </div>
+
+    <!-- EXEMPLOS PRÁTICOS: MODEL.OF() -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2 wicket:id="exemploModelOfTitulo">Exemplos Práticos: Model.of()</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h6>1. String Simples:</h6>
+                    <p>Valor: <strong wicket:id="exemploString">-</strong></p>
+
+                    <h6>2. Número:</h6>
+                    <p>Valor: <strong wicket:id="exemploNumero">-</strong></p>
+
+                    <h6>3. Valor Calculado:</h6>
+                    <p>Valor: <strong wicket:id="exemploSoma">-</strong></p>
+
+                    <h6>4. Propriedade Extraída do Objeto:</h6>
+                    <p>Número da Certidão: <strong wicket:id="exemploPropriedadeExtraida">-</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXEMPLOS PRÁTICOS: PROPERTYMODEL -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2 wicket:id="exemploPropertyModelTitulo">Exemplos Práticos: PropertyModel</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h6>1. Propriedade Simples (numero):</h6>
+                    <p>Número: <strong wicket:id="exemploPropertyNumero">-</strong></p>
+
+                    <h6>2. Propriedade Simples (interessado):</h6>
+                    <p>Interessado: <strong wicket:id="exemploPropertyInteressado">-</strong></p>
+
+                    <h6>3. Propriedade de Enum (tipo):</h6>
+                    <p>Tipo: <strong wicket:id="exemploPropertyTipo">-</strong></p>
+
+                    <h6>4. PropertyModel Dinâmico (atualiza quando objeto muda):</h6>
+                    <p>Número (dinâmico): <strong wicket:id="exemploPropertyDinamico">-</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXEMPLOS PRÁTICOS: COMPOUNDPROPERTYMODEL -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2 wicket:id="exemploCompoundTitulo">Exemplos Práticos: CompoundPropertyModel</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>CompoundPropertyModel</strong> permite bind automático de propriedades em formulários.</p>
+                    <p>Os campos se vinculam automaticamente pelo <code>wicket:id</code> que deve corresponder ao nome da propriedade.</p>
+                    
+                    <form wicket:id="formExemplo">
+                        <div class="form-group">
+                            <label>Nome (wicket:id="nomeExemplo"):</label>
+                            <input type="text" wicket:id="nomeExemplo" class="form-control" placeholder="Digite o nome"/>
+                            <small class="form-text text-muted">Valor atual: <strong wicket:id="labelNome">-</strong></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email (wicket:id="emailExemplo"):</label>
+                            <input type="text" wicket:id="emailExemplo" class="form-control" placeholder="Digite o email"/>
+                            <small class="form-text text-muted">Valor atual: <strong wicket:id="labelEmail">-</strong></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Idade (wicket:id="idadeExemplo"):</label>
+                            <input type="text" wicket:id="idadeExemplo" class="form-control" placeholder="Digite a idade"/>
+                            <small class="form-text text-muted">Valor atual: <strong wicket:id="labelIdade">-</strong></small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPARAÇÃO: MODEL.OF() VS PROPERTYMODEL -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2 wicket:id="comparacaoTitulo">Comparação: Model.of() vs PropertyModel</h2>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Model.of() - Valor Estático</h6>
+                            <p>O valor é capturado no momento da criação e <strong>não atualiza</strong> se o objeto mudar:</p>
+                            <p><strong wicket:id="comparacaoModelOf">-</strong></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>PropertyModel - Valor Dinâmico</h6>
+                            <p>O valor é acessado dinamicamente e <strong>atualiza automaticamente</strong> se o objeto mudar:</p>
+                            <p><strong wicket:id="comparacaoPropertyModel">-</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEMONSTRAÇÃO: MODEL COM OBJETO COMPLETO -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2 wicket:id="modeloCompletoTitulo">Model com Objeto Completo</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p>Demonstração de como usar um <code>Model</code> com objeto completo e acessar suas propriedades:</p>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Propriedade</th>
+                                <th>Valor (usando PropertyModel no Model)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Número</strong></td>
+                                <td wicket:id="modeloCompletoNumero">-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interessado</strong></td>
+                                <td wicket:id="modeloCompletoInteressado">-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tipo</strong></td>
+                                <td wicket:id="modeloCompletoTipo">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXEMPLOS PRÁTICOS: LOADABLEDETACHABLEMODEL -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2 wicket:id="exemploLoadableDetachableTitulo">Exemplos Práticos: LoadableDetachableModel</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>LoadableDetachableModel</strong> carrega objetos sob demanda e os libera da memória automaticamente.</p>
+                    <p>Este exemplo carrega uma Certidão do repositório usando apenas o ID (ID=1).</p>
+                    
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Propriedade</th>
+                                <th>Valor (carregado do repositório)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Número</strong></td>
+                                <td wicket:id="exemploLoadableNumero">-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interessado</strong></td>
+                                <td wicket:id="exemploLoadableInteressado">-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tipo</strong></td>
+                                <td wicket:id="exemploLoadableTipo">-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data Emissão</strong></td>
+                                <td wicket:id="exemploLoadableDataEmissao">-</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Status</strong></td>
+                                <td wicket:id="exemploLoadableStatus">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="alert alert-info mt-3">
+                        <strong>💡 Como funciona:</strong>
+                        <ul class="mb-0">
+                            <li>O Model armazena apenas o ID (1L)</li>
+                            <li>O objeto Certidão é carregado do repositório quando necessário</li>
+                            <li>Após o uso, o objeto é liberado da memória (detach)</li>
+                            <li>Na próxima requisição, o objeto será recarregado (sempre atualizado)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPARAÇÃO: MODEL.OF() VS LOADABLEDETACHABLEMODEL -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2 wicket:id="comparacaoLoadableTitulo">Comparação: Model.of() vs LoadableDetachableModel</h2>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Model.of() - Objeto em Memória</h6>
+                            <p>O objeto é mantido em memória e serializado completamente:</p>
+                            <p><strong>Número:</strong> <span wicket:id="comparacaoModelOfNumero">-</span></p>
+                            <div class="alert alert-warning">
+                                <small><strong>⚠️ Desvantagens:</strong></small>
+                                <ul class="mb-0">
+                                    <li>Serializa o objeto completo</li>
+                                    <li>Mantém objeto em memória</li>
+                                    <li>Pode ficar desatualizado</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>LoadableDetachableModel - Carregamento Sob Demanda</h6>
+                            <p>O objeto é carregado do repositório quando necessário:</p>
+                            <p><strong>Número:</strong> <span wicket:id="comparacaoLoadableNumero">-</span></p>
+                            <div class="alert alert-success">
+                                <small><strong>✅ Vantagens:</strong></small>
+                                <ul class="mb-0">
+                                    <li>Serializa apenas o ID</li>
+                                    <li>Libera memória após uso</li>
+                                    <li>Sempre atualizado (recarrega)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESUMO E BOAS PRÁTICAS -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="alert alert-info">
+                <h5>📝 Resumo dos Conceitos Demonstrados</h5>
+                <ul>
+                    <li><strong>Model.of()</strong>: Use para valores simples, imutáveis ou que não mudam</li>
+                    <li><strong>PropertyModel</strong>: Use para acessar propriedades de objetos de forma dinâmica</li>
+                    <li><strong>CompoundPropertyModel</strong>: Use em formulários para bind automático de propriedades</li>
+                    <li><strong>LoadableDetachableModel</strong>: Use para objetos pesados ou de banco de dados</li>
+                    <li><strong>IModel&lt;T&gt;</strong>: Interface base que todos os Models implementam</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+</html>
+

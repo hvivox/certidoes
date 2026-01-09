@@ -1,0 +1,25 @@
+---
+alwaysApply: true
+---
+## REGRAS DO PROJETO (IA segura)
+- Não refatorar “por estética”.
+- Não mudar lógica sem justificativa explícita.
+- Após o termino de cada etapa da implementação, faça os testes necessário antes de continuar para a proxima etapa
+- Após mudanças: rodar lint + build (e testes se existirem).
+
+## Proteção de regra de negócio (evitar ajuste silencioso)
+- Proibido mudar regras de negócio, validações, cálculos, fluxos de status, integrações, descontos, arredondamentos, datas e condições sem solicitação explícita.
+- Se você suspeitar que existe bug de regra de negócio, não corrija automaticamente:
+  - aponte o risco,
+  - mostre o trecho,
+  - proponha a correção,
+  - e pergunte se pode aplicar.
+- Se o pedido for “refatorar/limpar”, a regra de negócio deve permanecer 100% equivalente (mesmas entradas → mesmas saídas).
+
+## Dúvida (Se qualquer ponto for ambíguo):
+- faça perguntas objetivas antes de implementar, especialmente sobre:
+  - regra de negócio,
+  - arredondamento/BigDecimal,
+  - datas/fuso,
+  - validações,
+  - integrações externas.

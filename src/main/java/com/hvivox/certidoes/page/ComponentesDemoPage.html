@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<wicket:extend>
+    <div class="row">
+        <div class="col-12">
+            <h1 wicket:id="tituloDemoPage">Demonstração de Componentes</h1>
+            <p wicket:id="subtitulo">Descrição</p>
+        </div>
+    </div>
+
+    <!-- MÓDULO 2 - ITEM 3: Documentações -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="accordion" id="accordionDocumentacoes">
+                <div class="card">
+                    <div class="card-header" id="headingDocumentacoes">
+                        <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseDocumentacoes" 
+                                        aria-expanded="false" aria-controls="collapseDocumentacoes">
+                                <strong>📚 Documentações - Módulo 2: Arquitetura | Módulo 3: Modelos</strong>
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseDocumentacoes" class="collapse" aria-labelledby="headingDocumentacoes" data-parent="#accordionDocumentacoes">
+                        <div class="card-body">
+                            <div class="accordion" id="accordionSubDocumentacoes">
+                                
+                                <!-- Documentação: Session Store -->
+                                <div class="card">
+                                    <div class="card-header" id="headingSessionStore">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseSessionStore" aria-expanded="false" aria-controls="collapseSessionStore">
+                                                Session Store
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseSessionStore" class="collapse" aria-labelledby="headingSessionStore" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docSessionStore">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documentação: Segurança de Thread -->
+                                <div class="card">
+                                    <div class="card-header" id="headingSegurancaThread">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseSegurancaThread" aria-expanded="false" aria-controls="collapseSegurancaThread">
+                                                Segurança de Thread
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseSegurancaThread" class="collapse" aria-labelledby="headingSegurancaThread" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docSegurancaThread">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documentação: MVC do jeito Wicket -->
+                                <div class="card">
+                                    <div class="card-header" id="headingMVC">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseMVC" aria-expanded="false" aria-controls="collapseMVC">
+                                                MVC do jeito Wicket
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseMVC" class="collapse" aria-labelledby="headingMVC" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docMVC">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documentação: Arquitetura do Wicket -->
+                                <div class="card">
+                                    <div class="card-header" id="headingArquitetura">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseArquitetura" aria-expanded="false" aria-controls="collapseArquitetura">
+                                                Arquitetura do Wicket
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseArquitetura" class="collapse" aria-labelledby="headingArquitetura" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docArquitetura">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documentação: Revisão de Models (Módulo 3) -->
+                                <div class="card">
+                                    <div class="card-header" id="headingRevisaoModels">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseRevisaoModels" aria-expanded="false" aria-controls="collapseRevisaoModels">
+                                                Módulo 3: Revisão de Models
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseRevisaoModels" class="collapse" aria-labelledby="headingRevisaoModels" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docRevisaoModels">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documentação: Padrões de Models (Módulo 3) -->
+                                <div class="card">
+                                    <div class="card-header" id="headingPadroesModels">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapsePadroesModels" aria-expanded="false" aria-controls="collapsePadroesModels">
+                                                Módulo 3: Padrões (Standards) de Models
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapsePadroesModels" class="collapse" aria-labelledby="headingPadroesModels" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docPadroesModels">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documentação: LoadableDetachableModel (Módulo 3) -->
+                                <div class="card">
+                                    <div class="card-header" id="headingLoadableDetachableModel">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseLoadableDetachableModel" aria-expanded="false" aria-controls="collapseLoadableDetachableModel">
+                                                Módulo 3: LoadableDetachableModel
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseLoadableDetachableModel" class="collapse" aria-labelledby="headingLoadableDetachableModel" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docLoadableDetachableModel">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documentação: Detachable Models (Módulo 3) -->
+                                <div class="card">
+                                    <div class="card-header" id="headingDetachableModels">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseDetachableModels" aria-expanded="false" aria-controls="collapseDetachableModels">
+                                                Módulo 3: Modelos Destacáveis
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseDetachableModels" class="collapse" aria-labelledby="headingDetachableModels" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docDetachableModels">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documentação: Serialização (Módulo 3) -->
+                                <div class="card">
+                                    <div class="card-header" id="headingSerializacao">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseSerializacao" aria-expanded="false" aria-controls="collapseSerializacao">
+                                                Módulo 3: Serialização de Models
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseSerializacao" class="collapse" aria-labelledby="headingSerializacao" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docSerializacao">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documentação: Usando Model - Conceitos Avançados (Módulo 3) -->
+                                <div class="card">
+                                    <div class="card-header" id="headingUsandoModel">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseUsandoModel" aria-expanded="false" aria-controls="collapseUsandoModel">
+                                                Módulo 3: Usando Model (Conceitos Avançados)
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseUsandoModel" class="collapse" aria-labelledby="headingUsandoModel" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docUsandoModel">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Documentação: Estático vs Dinâmico (Módulo 3) -->
+                                <div class="card">
+                                    <div class="card-header" id="headingEstaticoDinamico">
+                                        <h6 class="mb-0">
+                                            <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" 
+                                                    data-target="#collapseEstaticoDinamico" aria-expanded="false" aria-controls="collapseEstaticoDinamico">
+                                                Módulo 3: Estático vs Dinâmico
+                                            </button>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseEstaticoDinamico" class="collapse" aria-labelledby="headingEstaticoDinamico" 
+                                         data-parent="#accordionSubDocumentacoes">
+                                        <div class="card-body" wicket:id="docEstaticoDinamico">
+                                            <!-- Conteúdo será adicionado via Java -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                            <!-- Link para página de exemplos práticos de Models -->
+                            <div class="mt-3 pt-3 border-top">
+                                <p class="mb-2"><strong>📖 Exemplos Práticos:</strong></p>
+                                <p>
+                                    <a wicket:id="linkModelosDemo" class="btn btn-outline-primary btn-sm">
+                                        Ver Exemplos Práticos de Models
+                                    </a>
+                                </p>
+                                <small class="text-muted">
+                                    Acesse a página com exemplos interativos de uso de Model.of(), PropertyModel, CompoundPropertyModel e LoadableDetachableModel.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>1. Label - Exibição de Texto</h2>
+            <p>Label estático: <strong >Título</strong></p>
+            <p>Label dinâmico (contador): <strong wicket:id="labelDinamico">0</strong></p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>2. TextField - Campo de Texto</h2>
+            <div class="form-group">
+                <label>Digite algo (mínimo 3 caracteres):</label>
+                <input type="text" wicket:id="campoTexto" class="form-control" placeholder="Digite aqui..."/>
+            </div>
+            <p>Valor digitado: <strong wicket:id="valorDigitado">-</strong></p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>3. TextField com Validação de Email</h2>
+            <div class="form-group">
+                <label>Email (obrigatório e válido):</label>
+                <input type="text" wicket:id="campoEmail" class="form-control" placeholder="email@exemplo.com"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>4. TextArea - Área de Texto Multilinha</h2>
+            <div class="form-group">
+                <label>Texto longo:</label>
+                <textarea wicket:id="areaTexto" class="form-control" rows="4" placeholder="Digite um texto longo..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>5. CheckBox - Caixa de Seleção</h2>
+            <div class="form-check">
+                <input type="checkbox" wicket:id="checkbox" class="form-check-input"/>
+                <label class="form-check-label" for="checkbox">Aceito os termos</label>
+            </div>
+            <p>Status: <strong wicket:id="statusCheckbox">false</strong></p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>6. RadioGroup - Botões de Opção</h2>
+            <div wicket:id="radioGroup">
+                <div class="form-check">
+                    <input type="radio" wicket:id="opcao1" class="form-check-input" name="radioGroup"/>
+                    <label class="form-check-label" wicket:for="opcao1">Opção 1</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" wicket:id="opcao2" class="form-check-input" name="radioGroup"/>
+                    <label class="form-check-label" wicket:for="opcao2">Opção 2</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" wicket:id="opcao3" class="form-check-input" name="radioGroup"/>
+                    <label class="form-check-label" wicket:for="opcao3">Opção 3</label>
+                </div>
+            </div>
+            <p>Opção selecionada: <strong wicket:id="opcaoSelecionadaLabel">-</strong></p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>7. DropDownChoice - Lista Suspensa</h2>
+            <div class="form-group">
+                <label>Selecione uma linguagem:</label>
+                <select wicket:id="dropdown" class="form-control">
+                    <option>Selecione...</option>
+                </select>
+            </div>
+            <p>Item selecionado: <strong wicket:id="itemSelecionadoLabel">-</strong></p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            
+            <form wicket:id="formSelecaoMultipla">
+                <div class="form-group">
+                    <h4>CheckBoxMultipleChoice - Seleção Múltipla com Checkboxes</h4>
+                    <p>Selecione uma ou mais linguagens de programação:</p>
+                    <div wicket:id="checkboxMultiple" class="form-check-group">
+                        <!-- Os checkboxes serão gerados automaticamente pelo Wicket -->
+                    </div>
+                    <p class="mt-2"><strong>Seleções:</strong> <span wicket:id="selecoesCheckboxLabel">-</span></p>
+                    <small class="text-muted">
+                        <strong>Como usar:</strong> <code>new CheckBoxMultipleChoice&lt;String&gt;("id", model, listaOpcoes)</code><br>
+                        Permite selecionar múltiplas opções usando checkboxes. Útil quando você quer que o usuário veja todas as opções de uma vez.
+                    </small>
+                </div>
+
+                <div class="form-group mt-4">
+                    <h4>ListMultipleChoice - Lista com Seleção Múltipla</h4>
+                    <p>Selecione uma ou mais linguagens (use Ctrl+Click ou Cmd+Click para múltiplas seleções):</p>
+                    <select wicket:id="listMultiple" class="form-control" multiple="multiple" size="5">
+                        <!-- As opções serão geradas automaticamente pelo Wicket -->
+                    </select>
+                    <p class="mt-2"><strong>Seleções:</strong> <span wicket:id="selecoesListaLabel">-</span></p>
+                    <small class="text-muted">
+                        <strong>Como usar:</strong> <code>new ListMultipleChoice&lt;String&gt;("id", model, listaOpcoes)</code><br>
+                        Permite selecionar múltiplas opções em uma lista. Útil quando há muitas opções e você quer economizar espaço na tela.
+                        Use <code>setMaxRows(int)</code> para definir a altura da lista.
+                    </small>
+                </div>
+
+                <button type="submit" wicket:id="botaoAtualizarSelecoes" class="btn btn-primary">Atualizar Seleções</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>8. ListView - Lista Repetitiva</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Item</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr wicket:id="listaItens">
+                        <td wicket:id="indice">1</td>
+                        <td wicket:id="item">Item</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>9. Links - Navegação</h2>
+            <p>
+                <a wicket:id="linkAmigavelHome" class="btn btn-link">Voltar para Home</a> |
+                <a wicket:id="linkExterno" target="_blank">Site do Wicket</a> | 
+                <a wicket:id="linkAcao" class="btn btn-primary btn-sm">Incrementar Contador</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>10. Form - Formulário com Validação</h2>
+            <form wicket:id="formDemo">
+                <div class="form-group">
+                    <label>Campo obrigatório (mínimo 5 caracteres):</label>
+                    <input type="text" wicket:id="formCampoTexto" class="form-control"/>
+                </div>
+                <button type="submit" wicket:id="botaoSubmit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>11. WebMarkupContainer - Container Condicional</h2>
+            <div wicket:id="container">
+                <div class="alert alert-info" wicket:id="mensagemContainer">
+                    Mensagem do container
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>12. FeedbackPanel</h2>
+            <p>O FeedbackPanel está na BasePage e exibe mensagens de sucesso, erro, aviso e informação.</p>
+            <p>Use <code>getSession().info()</code>, <code>error()</code>, <code>success()</code>, <code>warn()</code> para adicionar mensagens.</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>13. Componente Customizado - CertidaoCard (Tríade do Wicket)</h2>
+            <p>
+                <strong>MÓDULO 2 - ITEM 1:</strong> Este exemplo demonstra a <strong>TRÍADE DO WICKET</strong>:
+            </p>
+            <ul>
+                <li><strong>COMPONENT:</strong> <code>CertidaoCard.java</code> - Classe Java que define a lógica</li>
+                <li><strong>MARKUP:</strong> <code>CertidaoCard.html</code> - Arquivo HTML que define a estrutura visual</li>
+                <li><strong>MODEL:</strong> <code>IModel&lt;Certidao&gt;</code> - Fornece os dados da certidão</li>
+            </ul>
+            <p>
+                <strong>Como usar:</strong> <code>add(new CertidaoCard("id", Model.of(certidao)));</code>
+            </p>
+            <div wicket:id="componenteContainer">
+                <div wicket:id="certidaoCardExemplo"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <h2>14. Behavior Customizado - ConfirmacaoBehavior</h2>
+            <p>
+                <strong>MÓDULO 2 - ITEM 2:</strong> Este exemplo demonstra como criar e usar um <strong>BEHAVIOR</strong> customizado:
+            </p>
+            <ul>
+                <li><strong>Behavior:</strong> Adiciona comportamento a componentes sem modificar sua classe</li>
+                <li><strong>Reutilizável:</strong> Pode ser usado em qualquer componente (Link, Button, etc.)</li>
+                <li><strong>Encapsulado:</strong> Lógica separada do componente</li>
+                <li><strong>Flexível:</strong> Mensagem de confirmação customizável</li>
+            </ul>
+            <p>
+                <strong>Como usar:</strong> <code>link.add(new ConfirmacaoBehavior("Mensagem?"));</code>
+            </p>
+            <p>
+                <a wicket:id="linkComConfirmacao" class="btn btn-warning">Ação com Confirmação Customizada</a>
+                <a wicket:id="linkComConfirmacaoPadrao" class="btn btn-secondary ml-2">Ação com Confirmação Padrão</a>
+            </p>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+</html>
+
+
