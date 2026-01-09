@@ -1,0 +1,3743 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Módulo 2: Processamento de Requisições (Request Processing)",
+        "description": "Implementar e documentar o processamento de requisições no Wicket, incluindo RequestCycle, Request, Response e as etapas do ciclo de vida de uma requisição.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Criar testes unitários usando WicketTester para verificar o processamento de requisições",
+        "acceptanceCriteria": [
+          "RequestCycleListener implementado e funcionando",
+          "Documentação explicando as etapas de processamento",
+          "Exemplo prático demonstrando o ciclo de requisição"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Módulo 2: Configuração e uso de Application",
+        "description": "Aprofundar a configuração do WicketApplication, incluindo configurações avançadas, recursos, páginas e inicialização.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Testar configurações da aplicação e verificar inicialização correta",
+        "acceptanceCriteria": [
+          "WicketApplication configurado com todas as opções necessárias",
+          "Documentação sobre configurações disponíveis",
+          "Recursos e páginas configurados corretamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Módulo 2: Gerenciamento de Session",
+        "description": "Implementar e documentar o gerenciamento de Session no Wicket, incluindo Session customizada, armazenamento de dados e ciclo de vida.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Testar criação, uso e serialização de Session",
+        "acceptanceCriteria": [
+          "Session customizada implementada (já existe CertidoesSession)",
+          "Documentação sobre uso de Session",
+          "Exemplos práticos de armazenamento de dados na Session"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Módulo 2: Implementação de Session Store",
+        "description": "Implementar e documentar Session Store, incluindo diferentes tipos de armazenamento (memória, disco, banco de dados) e configuração.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "3"
+        ],
+        "testStrategy": "Testar diferentes tipos de Session Store e verificar persistência",
+        "acceptanceCriteria": [
+          "Session Store configurado e documentado",
+          "Exemplo de uso de diferentes tipos de store",
+          "Documentação sobre quando usar cada tipo"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Módulo 2: Outros objetos do Wicket (RequestCycle, Response, etc.)",
+        "description": "Documentar e demonstrar o uso de outros objetos importantes do Wicket como RequestCycle, Response, WebRequest, WebResponse, etc.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "1"
+        ],
+        "testStrategy": "Criar exemplos práticos usando cada objeto",
+        "acceptanceCriteria": [
+          "Documentação sobre cada objeto importante",
+          "Exemplos práticos de uso",
+          "Casos de uso comuns documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Módulo 2: Etapas detalhadas de processamento de uma requisição",
+        "description": "Criar documentação detalhada e exemplos práticos das etapas de processamento de uma requisição no Wicket (onBeginRequest, onEndRequest, etc.).",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "1"
+        ],
+        "testStrategy": "Criar RequestCycleListener que demonstre cada etapa",
+        "acceptanceCriteria": [
+          "Documentação completa das etapas",
+          "Exemplo prático demonstrando cada etapa",
+          "RequestCycleListener implementado mostrando o fluxo"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Módulo 2: Segurança de thread (Thread Safety)",
+        "description": "Documentar e demonstrar thread safety no Wicket, incluindo boas práticas, armadilhas comuns e como garantir thread safety em componentes.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Criar testes que verifiquem thread safety",
+        "acceptanceCriteria": [
+          "Documentação sobre thread safety no Wicket",
+          "Exemplos de código thread-safe",
+          "Armadilhas comuns documentadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Módulo 2: Revisão e aprofundamento em Componentes do Wicket",
+        "description": "Revisar e aprofundar conhecimentos sobre componentes do Wicket, incluindo hierarquia, ciclo de vida e métodos importantes.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Expandir ComponentesDemoPage com exemplos avançados",
+        "acceptanceCriteria": [
+          "ComponentesDemoPage expandida com exemplos avançados",
+          "Documentação sobre hierarquia de componentes",
+          "Ciclo de vida de componentes documentado"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Módulo 2: A 'tríade' do componente (Component Triad)",
+        "description": "Implementar e documentar a tríade do componente: Markup, Component e Model, demonstrando como trabalham juntos.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "8"
+        ],
+        "testStrategy": "Criar exemplos práticos demonstrando cada parte da tríade",
+        "acceptanceCriteria": [
+          "Documentação sobre Component Triad",
+          "Exemplos práticos demonstrando cada parte",
+          "Componente customizado que demonstre a tríade"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Módulo 2: Page como componente principal",
+        "description": "Documentar e demonstrar Page como componente principal, incluindo ciclo de vida, renderização e métodos importantes.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "8"
+        ],
+        "testStrategy": "Criar página de exemplo que demonstre ciclo de vida",
+        "acceptanceCriteria": [
+          "Documentação sobre ciclo de vida de Page",
+          "Exemplo prático demonstrando métodos do ciclo de vida",
+          "BasePage documentada com explicações"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 11,
+        "title": "Módulo 2: Exemplo de aninhamento de componentes (Component Nesting)",
+        "description": "Criar exemplos práticos de aninhamento de componentes, demonstrando hierarquia e composição.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "9"
+        ],
+        "testStrategy": "Criar componente composto que demonstre aninhamento",
+        "acceptanceCriteria": [
+          "Exemplo de componente aninhado criado",
+          "Documentação sobre aninhamento",
+          "Demonstração prática funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 12,
+        "title": "Módulo 2: MVC do jeito Wicket (MVC - The Wicket Way)",
+        "description": "Documentar e demonstrar como o Wicket implementa o padrão MVC de forma única, diferente de outros frameworks.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "9",
+          "10"
+        ],
+        "testStrategy": "Criar exemplo completo demonstrando MVC no Wicket",
+        "acceptanceCriteria": [
+          "Documentação sobre MVC no Wicket",
+          "Comparação com outros frameworks",
+          "Exemplo prático completo"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 13,
+        "title": "Módulo 2: Model e sua importância",
+        "description": "Documentar a importância do Model no Wicket, incluindo separação de dados e apresentação.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "9"
+        ],
+        "testStrategy": "Criar exemplos demonstrando uso de Models",
+        "acceptanceCriteria": [
+          "Documentação sobre importância do Model",
+          "Exemplos práticos",
+          "Boas práticas documentadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 14,
+        "title": "Módulo 2: Behavior e seus usos",
+        "description": "Implementar e documentar Behaviors no Wicket, incluindo quando usar, como criar e exemplos práticos.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "8"
+        ],
+        "testStrategy": "Criar Behavior customizado e testá-lo",
+        "acceptanceCriteria": [
+          "Behavior customizado criado (já existe ConfirmacaoBehavior)",
+          "Documentação sobre Behaviors",
+          "Exemplos práticos de uso"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 15,
+        "title": "Módulo 3: Revisão completa de Models",
+        "description": "Revisar todos os tipos de Models do Wicket, incluindo Model, IModel, PropertyModel, CompoundPropertyModel, etc.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "13"
+        ],
+        "testStrategy": "Criar exemplos práticos de cada tipo de Model",
+        "acceptanceCriteria": [
+          "Documentação completa sobre todos os tipos de Models",
+          "Exemplos práticos de cada tipo",
+          "Comparação entre diferentes tipos"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 16,
+        "title": "Módulo 3: Padrões e convenções de Models",
+        "description": "Documentar padrões e convenções de uso de Models no Wicket, incluindo boas práticas e anti-padrões.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "15"
+        ],
+        "testStrategy": "Aplicar padrões em exemplos práticos",
+        "acceptanceCriteria": [
+          "Documentação sobre padrões de Models",
+          "Boas práticas listadas",
+          "Anti-padrões documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 17,
+        "title": "Módulo 3: Usando Model básico",
+        "description": "Demonstrar uso do Model básico (Model.of(), Model.ofNullable(), etc.) com exemplos práticos.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "15"
+        ],
+        "testStrategy": "Criar exemplos usando Model básico",
+        "acceptanceCriteria": [
+          "Exemplos práticos de Model básico",
+          "Documentação sobre quando usar",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 18,
+        "title": "Módulo 3: Estático vs dinâmico",
+        "description": "Documentar diferenças entre Models estáticos e dinâmicos, quando usar cada um e exemplos práticos.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "15"
+        ],
+        "testStrategy": "Criar exemplos comparando estático vs dinâmico",
+        "acceptanceCriteria": [
+          "Documentação sobre diferenças",
+          "Exemplos práticos de cada tipo",
+          "Guia de quando usar cada um"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 19,
+        "title": "Módulo 3: Serialização de Models",
+        "description": "Documentar serialização de Models no Wicket, incluindo como funciona, quando é necessário e boas práticas.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "15"
+        ],
+        "testStrategy": "Testar serialização de diferentes tipos de Models",
+        "acceptanceCriteria": [
+          "Documentação sobre serialização",
+          "Exemplos de Models serializáveis",
+          "Boas práticas documentadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 20,
+        "title": "Módulo 3: PropertyModel (abordagem dinâmica)",
+        "description": "Implementar e documentar PropertyModel, demonstrando acesso dinâmico a propriedades de objetos.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "15",
+          "18"
+        ],
+        "testStrategy": "Criar exemplos usando PropertyModel",
+        "acceptanceCriteria": [
+          "Exemplos práticos de PropertyModel",
+          "Documentação sobre uso",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 21,
+        "title": "Módulo 3: CompoundPropertyModel",
+        "description": "Implementar e documentar CompoundPropertyModel, demonstrando bind automático de propriedades.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "15",
+          "20"
+        ],
+        "testStrategy": "Refatorar formulários para usar CompoundPropertyModel",
+        "acceptanceCriteria": [
+          "Exemplos práticos de CompoundPropertyModel",
+          "Formulários refatorados usando CompoundPropertyModel",
+          "Documentação sobre vantagens"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 22,
+        "title": "Módulo 3: Modelos destacáveis (Detachable Models)",
+        "description": "Documentar e implementar Detachable Models, explicando quando e por que usar.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "15",
+          "19"
+        ],
+        "testStrategy": "Criar exemplos de Detachable Models",
+        "acceptanceCriteria": [
+          "Documentação sobre Detachable Models",
+          "Exemplos práticos",
+          "Vantagens documentadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 23,
+        "title": "Módulo 3: LoadableDetachableModel",
+        "description": "Implementar LoadableDetachableModel em componentes existentes para otimização, substituindo Models que carregam dados desnecessariamente.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "22"
+        ],
+        "testStrategy": "Refatorar CertidaoLoadableDetachableModel e criar novos exemplos",
+        "acceptanceCriteria": [
+          "LoadableDetachableModel implementado em componentes principais",
+          "Documentação sobre otimização",
+          "Performance melhorada"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 24,
+        "title": "Módulo 4: Entrada do usuário e formulários",
+        "description": "Revisar e documentar entrada de dados do usuário em formulários, incluindo diferentes tipos de campos.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "21"
+        ],
+        "testStrategy": "Expandir exemplos de formulários",
+        "acceptanceCriteria": [
+          "Documentação sobre entrada de dados",
+          "Exemplos de diferentes tipos de campos",
+          "Boas práticas documentadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 25,
+        "title": "Módulo 4: Diferenças entre GET e POST",
+        "description": "Documentar diferenças entre GET e POST no Wicket, quando usar cada um e exemplos práticos.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Criar exemplos usando GET e POST",
+        "acceptanceCriteria": [
+          "Documentação sobre GET vs POST",
+          "Exemplos práticos",
+          "Guia de quando usar cada um"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 26,
+        "title": "Módulo 4: Processamento de submissão (Submission Processing)",
+        "description": "Documentar e demonstrar processamento de submissão de formulários, incluindo onSubmit, onError, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Expandir CertidaoFormPage com exemplos de processamento",
+        "acceptanceCriteria": [
+          "Documentação sobre processamento de submissão",
+          "Exemplos práticos em CertidaoFormPage",
+          "Tratamento de erros documentado"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 27,
+        "title": "Módulo 4: Entrada de texto (Text Input)",
+        "description": "Documentar e demonstrar diferentes tipos de entrada de texto: TextField, TextArea, PasswordTextField, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Expandir ComponentesDemoPage com exemplos de texto",
+        "acceptanceCriteria": [
+          "Exemplos de todos os tipos de entrada de texto",
+          "Documentação sobre cada tipo",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 28,
+        "title": "Módulo 4: Listas (Lists) - DropDownChoice, ListView, etc.",
+        "description": "Implementar e documentar componentes de lista: DropDownChoice, ListView, RadioChoice, CheckBoxMultipleChoice, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Criar exemplos de cada tipo de lista",
+        "acceptanceCriteria": [
+          "Exemplos de todos os tipos de lista",
+          "Documentação sobre cada tipo",
+          "Uso prático em formulários"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 29,
+        "title": "Módulo 4: Componentes para submeter dados do formulário",
+        "description": "Documentar e demonstrar componentes de submissão: Button, SubmitLink, AjaxButton, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "26"
+        ],
+        "testStrategy": "Criar exemplos de cada tipo de botão",
+        "acceptanceCriteria": [
+          "Exemplos de todos os tipos de botão",
+          "Documentação sobre cada tipo",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 30,
+        "title": "Módulo 4: Validação de dados (validators built-in)",
+        "description": "Documentar e demonstrar validadores built-in do Wicket: RequiredValidator, StringValidator, NumberValidator, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Criar exemplos usando cada validador built-in",
+        "acceptanceCriteria": [
+          "Exemplos de todos os validadores built-in",
+          "Documentação sobre cada validador",
+          "Uso prático em formulários"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 31,
+        "title": "Módulo 4: Escrevendo validadores customizados",
+        "description": "Expandir validadores customizados existentes e criar novos, documentando como criar validadores customizados.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "30"
+        ],
+        "testStrategy": "Expandir DataFormatadaValidator e NumeroUnicoValidator, criar novos exemplos",
+        "acceptanceCriteria": [
+          "Validadores customizados documentados",
+          "Novos validadores criados se necessário",
+          "Guia de como criar validadores"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 32,
+        "title": "Módulo 4: Sistema de Feedback",
+        "description": "Documentar e expandir sistema de feedback, incluindo diferentes tipos de mensagens e quando usar cada um.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "26"
+        ],
+        "testStrategy": "Expandir FeedbackPanelCustomizado com mais exemplos",
+        "acceptanceCriteria": [
+          "Documentação sobre sistema de feedback",
+          "Exemplos de todos os tipos de mensagem",
+          "FeedbackPanelCustomizado expandido"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 33,
+        "title": "Módulo 4: FeedbackPanel e suas variações",
+        "description": "Documentar FeedbackPanel e suas variações, incluindo FeedbackPanel, ComponentFeedbackMessageFilter, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "32"
+        ],
+        "testStrategy": "Criar exemplos de diferentes tipos de FeedbackPanel",
+        "acceptanceCriteria": [
+          "Documentação sobre FeedbackPanel",
+          "Exemplos de variações",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 34,
+        "title": "Módulo 4: Tratamento de erros de validação",
+        "description": "Documentar e implementar tratamento completo de erros de validação, incluindo exibição e recuperação.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "31",
+          "32"
+        ],
+        "testStrategy": "Testar cenários de erro e verificar tratamento",
+        "acceptanceCriteria": [
+          "Tratamento de erros implementado",
+          "Mensagens de erro claras",
+          "Recuperação de erros funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 35,
+        "title": "Módulo 5: Agrupamento de componentes",
+        "description": "Documentar e demonstrar técnicas de agrupamento de componentes no Wicket.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "11"
+        ],
+        "testStrategy": "Criar exemplos de agrupamento",
+        "acceptanceCriteria": [
+          "Documentação sobre agrupamento",
+          "Exemplos práticos",
+          "Técnicas documentadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-03T22:43:42.126Z"
+      },
+      {
+        "id": 36,
+        "title": "Módulo 5: Componentes com WebMarkupContainer",
+        "description": "Documentar e demonstrar uso de WebMarkupContainer para agrupar e gerenciar componentes.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "35"
+        ],
+        "testStrategy": "Criar exemplos usando WebMarkupContainer",
+        "acceptanceCriteria": [
+          "Documentação sobre WebMarkupContainer",
+          "Exemplos práticos",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 37,
+        "title": "Módulo 5: Container Panel",
+        "description": "Documentar e demonstrar uso de Panel para criar containers reutilizáveis.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "36"
+        ],
+        "testStrategy": "Criar Panel customizado reutilizável",
+        "acceptanceCriteria": [
+          "Panel customizado criado",
+          "Documentação sobre Panel",
+          "Exemplos de reutilização"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 38,
+        "title": "Módulo 5: Agrupamento com Fragments",
+        "description": "Implementar e documentar uso de Fragments para agrupamento dinâmico de componentes.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "36"
+        ],
+        "testStrategy": "Criar exemplo usando Fragments",
+        "acceptanceCriteria": [
+          "Exemplo de Fragment criado",
+          "Documentação sobre Fragments",
+          "Vantagens documentadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-03T23:06:44.125Z"
+      },
+      {
+        "id": 39,
+        "title": "Módulo 5: Layout consistente (BasePage, herança)",
+        "description": "Expandir e documentar BasePage, demonstrando herança de layout e reutilização.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "10"
+        ],
+        "testStrategy": "Verificar que todas as páginas usam BasePage corretamente",
+        "acceptanceCriteria": [
+          "BasePage documentada completamente",
+          "Herança funcionando corretamente",
+          "Exemplos de uso"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 40,
+        "title": "Módulo 5: Criação de componentes reutilizáveis",
+        "description": "Expandir componentes reutilizáveis existentes e criar novos, documentando padrões de reutilização.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "37"
+        ],
+        "testStrategy": "Criar novos componentes reutilizáveis",
+        "acceptanceCriteria": [
+          "Componentes reutilizáveis expandidos",
+          "Novos componentes criados",
+          "Padrões de reutilização documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 41,
+        "title": "Módulo 5: Padrões de composição",
+        "description": "Documentar padrões de composição no Wicket, incluindo melhores práticas e exemplos.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "40"
+        ],
+        "testStrategy": "Aplicar padrões em exemplos práticos",
+        "acceptanceCriteria": [
+          "Padrões documentados",
+          "Exemplos práticos",
+          "Boas práticas listadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-03T23:06:54.920Z"
+      },
+      {
+        "id": 42,
+        "title": "Módulo 6: O que são RIAs (Rich Internet Applications)",
+        "description": "Documentar conceitos de RIAs e sua importância em aplicações web modernas.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "low",
+        "status": "cancelled",
+        "dependencies": [],
+        "testStrategy": "Documentação teórica",
+        "acceptanceCriteria": [
+          "Documentação sobre RIAs",
+          "Conceitos explicados",
+          "Importância documentada"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:46:42.872Z"
+      },
+      {
+        "id": 43,
+        "title": "Módulo 6: Tecnologias de RIA",
+        "description": "Documentar diferentes tecnologias de RIA e como o Wicket se encaixa.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "low",
+        "status": "cancelled",
+        "dependencies": [
+          "42"
+        ],
+        "testStrategy": "Documentação comparativa",
+        "acceptanceCriteria": [
+          "Documentação sobre tecnologias",
+          "Comparação com Wicket",
+          "Vantagens do Wicket documentadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:46:53.591Z"
+      },
+      {
+        "id": 44,
+        "title": "Módulo 6: O que é Ajax e sua importância",
+        "description": "Documentar conceitos de Ajax e sua importância em aplicações web.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "medium",
+        "status": "cancelled",
+        "dependencies": [
+          "42"
+        ],
+        "testStrategy": "Documentação teórica",
+        "acceptanceCriteria": [
+          "Documentação sobre Ajax",
+          "Conceitos explicados",
+          "Importância documentada"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:47:04.834Z"
+      },
+      {
+        "id": 45,
+        "title": "Módulo 6: Ajax e JavaScript no Wicket",
+        "description": "Documentar como o Wicket integra Ajax e JavaScript, incluindo como funciona internamente.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "medium",
+        "status": "cancelled",
+        "dependencies": [
+          "44"
+        ],
+        "testStrategy": "Criar exemplos básicos de Ajax",
+        "acceptanceCriteria": [
+          "Documentação sobre integração",
+          "Exemplos básicos",
+          "Como funciona documentado"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:47:16.010Z"
+      },
+      {
+        "id": 46,
+        "title": "Módulo 6: XMLHttpRequest e Wicket",
+        "description": "Documentar como o Wicket usa XMLHttpRequest internamente e como isso é abstraído.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "low",
+        "status": "cancelled",
+        "dependencies": [
+          "45"
+        ],
+        "testStrategy": "Documentação técnica",
+        "acceptanceCriteria": [
+          "Documentação sobre XMLHttpRequest",
+          "Abstração do Wicket explicada",
+          "Detalhes técnicos documentados"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:47:25.866Z"
+      },
+      {
+        "id": 47,
+        "title": "Módulo 6: Wicket e Ajax (integração nativa)",
+        "description": "Documentar e demonstrar integração nativa de Ajax no Wicket, incluindo componentes Ajax built-in.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "high",
+        "status": "cancelled",
+        "dependencies": [
+          "45"
+        ],
+        "testStrategy": "Criar exemplos usando componentes Ajax",
+        "acceptanceCriteria": [
+          "Documentação sobre integração nativa",
+          "Exemplos de componentes Ajax",
+          "Funcionalidades Ajax implementadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:47:37.320Z"
+      },
+      {
+        "id": 48,
+        "title": "Módulo 6: Componentes e behaviors Ajax",
+        "description": "Implementar e documentar componentes e behaviors Ajax: AjaxButton, AjaxLink, AjaxFormComponentUpdatingBehavior, etc.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "47"
+        ],
+        "testStrategy": "Criar exemplos de cada tipo de componente/behavior Ajax",
+        "acceptanceCriteria": [
+          "Exemplos de componentes Ajax",
+          "Exemplos de behaviors Ajax",
+          "Funcionalidades implementadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T00:46:07.300Z"
+      },
+      {
+        "id": 49,
+        "title": "Módulo 6: Contribuições de cabeçalho (Header Contributions)",
+        "description": "Implementar e documentar Header Contributions, incluindo como adicionar CSS e JavaScript dinamicamente.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "47"
+        ],
+        "testStrategy": "Criar exemplos de Header Contributions",
+        "acceptanceCriteria": [
+          "Exemplos de Header Contributions",
+          "Documentação sobre uso",
+          "CSS e JavaScript dinâmicos funcionando"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T00:51:32.242Z"
+      },
+      {
+        "id": 50,
+        "title": "Módulo 7: Autenticação (implementação completa)",
+        "description": "Implementar sistema completo de autenticação no Wicket, incluindo login, logout e gerenciamento de sessão autenticada.",
+        "module": "Módulo 7: Extras",
+        "priority": "high",
+        "status": "cancelled",
+        "dependencies": [],
+        "testStrategy": "Criar testes de autenticação",
+        "acceptanceCriteria": [
+          "Sistema de autenticação implementado",
+          "Páginas de login/logout criadas",
+          "Proteção de páginas funcionando"
+        ],
+        "updatedAt": "2026-01-04T15:45:13.938Z",
+        "subtasks": []
+      },
+      {
+        "id": 51,
+        "title": "Módulo 7: Implementando autorização",
+        "description": "Implementar sistema de autorização, incluindo roles e permissões.",
+        "module": "Módulo 7: Extras",
+        "priority": "high",
+        "status": "cancelled",
+        "dependencies": [
+          "50"
+        ],
+        "testStrategy": "Criar testes de autorização",
+        "acceptanceCriteria": [
+          "Sistema de autorização implementado",
+          "Roles e permissões funcionando",
+          "Proteção baseada em roles"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:45:30.314Z"
+      },
+      {
+        "id": 52,
+        "title": "Módulo 7: I18N e L10N (internacionalização e localização)",
+        "description": "Implementar internacionalização e localização, suportando Português e Inglês.",
+        "module": "Módulo 7: Extras",
+        "priority": "medium",
+        "status": "cancelled",
+        "dependencies": [],
+        "testStrategy": "Testar mudança de idioma",
+        "acceptanceCriteria": [
+          "I18N configurado",
+          "Arquivos de propriedades criados (pt_BR, en_US)",
+          "Mudança de idioma funcionando"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T14:48:28.352Z"
+      },
+      {
+        "id": 53,
+        "title": "Módulo 7: Customização do carregamento de recursos",
+        "description": "Documentar e implementar customização de carregamento de recursos (CSS, JS, imagens).",
+        "module": "Módulo 7: Extras",
+        "priority": "low",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Criar exemplo de customização",
+        "acceptanceCriteria": [
+          "Documentação sobre customização",
+          "Exemplo prático",
+          "Recursos customizados funcionando"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T14:48:44.352Z"
+      },
+      {
+        "id": 54,
+        "title": "Módulo 7: Converters (conversores customizados)",
+        "description": "Implementar e documentar conversores customizados para tipos de dados específicos.",
+        "module": "Módulo 7: Extras",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Criar conversor customizado e testá-lo",
+        "acceptanceCriteria": [
+          "Conversor customizado criado",
+          "Documentação sobre conversores",
+          "Exemplos práticos"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T15:39:28.060Z"
+      },
+      {
+        "id": 55,
+        "title": "Módulo 7: Testes unitários com WicketTester",
+        "description": "Implementar 4 testes unitários e 1 teste de integração usando WicketTester.",
+        "module": "Módulo 7: Extras",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Criar 4 testes unitários e 1 de integração",
+        "acceptanceCriteria": [
+          "4 testes unitários criados",
+          "1 teste de integração criado",
+          "Todos os testes passando"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T17:58:26.910Z"
+      },
+      {
+        "id": 56,
+        "title": "Módulo 7: URLs (bookmarkable pages, URL encoding)",
+        "description": "Documentar e implementar bookmarkable pages e URL encoding no Wicket.",
+        "module": "Módulo 7: Extras",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "10"
+        ],
+        "testStrategy": "Criar exemplos de bookmarkable pages",
+        "acceptanceCriteria": [
+          "Documentação sobre URLs",
+          "Bookmarkable pages implementadas",
+          "URL encoding funcionando"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T19:02:04.312Z"
+      },
+      {
+        "id": 57,
+        "title": "Módulo 7: Modo de produção (Production Mode)",
+        "description": "Configurar e documentar modo de produção, incluindo otimizações e configurações necessárias.",
+        "module": "Módulo 7: Extras",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Testar aplicação em modo de produção",
+        "acceptanceCriteria": [
+          "Modo de produção configurado",
+          "Documentação sobre configuração",
+          "Otimizações aplicadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T19:35:56.887Z"
+      },
+      {
+        "id": 58,
+        "title": "Funcionalidade: Busca e Filtros na listagem de certidões",
+        "description": "Implementar funcionalidade de busca e filtros na página de listagem de certidões, permitindo filtrar por tipo, status, data, etc.",
+        "module": "Funcionalidades Adicionais",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "28"
+        ],
+        "testStrategy": "Testar busca e filtros com diferentes critérios",
+        "acceptanceCriteria": [
+          "Campo de busca implementado",
+          "Filtros por tipo, status, data funcionando",
+          "Interface intuitiva para busca/filtros"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T21:26:59.895Z"
+      },
+      {
+        "id": 59,
+        "title": "Funcionalidade: Relatórios com Apache POI",
+        "description": "Implementar funcionalidade de geração de relatórios de certidões usando Apache POI, permitindo exportar certidões para Excel/Word.",
+        "module": "Funcionalidades Adicionais",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Testar geração de relatórios e verificar formato",
+        "acceptanceCriteria": [
+          "Apache POI integrado ao projeto",
+          "Geração de relatório de certidão funcionando",
+          "Exportação para Excel/Word implementada"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T21:52:11.014Z"
+      },
+      {
+        "id": 60,
+        "title": "Documentação: Seção de Troubleshooting",
+        "description": "Criar seção de troubleshooting com problemas comuns e soluções para desenvolvimento com Wicket.",
+        "module": "Documentação",
+        "priority": "low",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Revisar documentação criada",
+        "acceptanceCriteria": [
+          "Seção de troubleshooting criada",
+          "Problemas comuns documentados",
+          "Soluções práticas fornecidas"
+        ],
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "version": "1.0.0",
+      "lastModified": "2026-01-05T21:52:11.016Z",
+      "taskCount": 60,
+      "completedCount": 49,
+      "tags": [
+        "master"
+      ],
+      "created": "2026-01-07T18:17:24.499Z",
+      "description": "Tasks for master context",
+      "updated": "2026-01-07T18:17:24.499Z"
+    }
+  },
+  "singular": {
+    "tasks": [
+      {
+        "id": "1",
+        "title": "Módulo 1: Setup inicial (dependências Maven, estrutura de pacotes)",
+        "description": "Configurar dependências Maven do OpenSingular (singular-form-core, singular-form-wicket) e criar estrutura de pacotes com.hvivox.certidoes.singular.*",
+        "module": "Módulo 1: Fundamentos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [],
+        "testStrategy": "Verificar que dependências foram adicionadas corretamente no pom.xml e estrutura de diretórios criada",
+        "acceptanceCriteria": [
+          "Dependências OpenSingular adicionadas ao pom.xml",
+          "Estrutura de pacotes singular/ criada",
+          "Projeto compila sem erros"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "2",
+        "title": "Módulo 1: Configuração no WicketApplication",
+        "description": "Configurar OpenSingular no WicketApplication, incluindo SingularServerConfiguration e registro de pacotes",
+        "module": "Módulo 1: Fundamentos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "1"
+        ],
+        "testStrategy": "Testar inicialização da aplicação e verificar que Singular está configurado",
+        "acceptanceCriteria": [
+          "SingularServerConfiguration configurado no WicketApplication",
+          "Aplicação inicia sem erros",
+          "Configuração documentada"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "3",
+        "title": "Módulo 1: Primeiro SType simples (PessoaSimples)",
+        "description": "Criar primeiro SType simples com campos básicos (nome, email) para demonstrar conceitos fundamentais",
+        "module": "Módulo 1: Fundamentos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "2"
+        ],
+        "testStrategy": "Criar teste unitário que instancia o SType e verifica estrutura",
+        "acceptanceCriteria": [
+          "STypePessoaSimples criado com campos nome e email",
+          "SType compila e pode ser instanciado",
+          "Exemplo documentado"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "4",
+        "title": "Manipulação de SInstance",
+        "description": "Criar e manipular SInstance do tipo PessoaSimples, demonstrando getValue e setValue",
+        "module": "Módulo 1: Fundamentos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "3"
+        ],
+        "testStrategy": "Teste unitário que cria SInstance, preenche dados e valida valores",
+        "acceptanceCriteria": [
+          "SInstance criada com sucesso",
+          "Valores podem ser setados e recuperados",
+          "Exemplo prático funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "5",
+        "title": "Módulo 1: Serialização JSON",
+        "description": "Implementar serialização e deserialização de SInstance para/do formato JSON",
+        "module": "Módulo 1: Fundamentos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "4"
+        ],
+        "testStrategy": "Teste que serializa SInstance para JSON e deserializa de volta, validando dados",
+        "acceptanceCriteria": [
+          "Serialização para JSON funcionando",
+          "Deserialização de JSON funcionando",
+          "Dados preservados após round-trip"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "6",
+        "title": "Módulo 1: Exemplos executáveis com console output",
+        "description": "Criar classe executável que demonstra Type + Instance básico com output no console",
+        "module": "Módulo 1: Fundamentos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "5"
+        ],
+        "testStrategy": "Executar classe e verificar output no console",
+        "acceptanceCriteria": [
+          "Classe executável criada",
+          "Output no console mostra Type e Instance",
+          "Exemplo serve como referência"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "7",
+        "title": "Módulo 2: Tipos simples (String, Integer, Decimal, Date, Boolean, Enum)",
+        "description": "Criar exemplos de todos os tipos simples do OpenSingular: STypeString, STypeInteger, STypeDecimal, STypeDate, STypeBoolean, STypeEnum",
+        "module": "Módulo 2: Sistema de Tipos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "6"
+        ],
+        "testStrategy": "Criar testes para cada tipo simples validando criação e manipulação",
+        "acceptanceCriteria": [
+          "Todos os tipos simples implementados",
+          "Cada tipo funciona corretamente",
+          "Exemplos documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "8",
+        "title": "Módulo 2: Tipos compostos (STypeComposite)",
+        "description": "Criar tipos compostos demonstrando composição de múltiplos campos e aninhamento",
+        "module": "Módulo 2: Sistema de Tipos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "7"
+        ],
+        "testStrategy": "Testar criação de tipos compostos e navegação na árvore de instâncias",
+        "acceptanceCriteria": [
+          "STypeComposite criado com sucesso",
+          "Aninhamento funcionando",
+          "Navegação na árvore de instâncias funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "9",
+        "title": "Módulo 2: Listas (STypeList)",
+        "description": "Implementar listas de tipos simples e compostos, com tamanho mínimo/máximo e ordenação",
+        "module": "Módulo 2: Sistema de Tipos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "8"
+        ],
+        "testStrategy": "Testar criação de listas, adição/remoção de itens e validações de tamanho",
+        "acceptanceCriteria": [
+          "STypeList de tipos simples funcionando",
+          "STypeList de tipos compostos funcionando",
+          "Validações de tamanho funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "10",
+        "title": "Módulo 2: Atributos (label, required, enabled, visible, etc.)",
+        "description": "Configurar atributos de campos: label, help, placeholder, required, enabled, visible, maxLength, minLength, default values",
+        "module": "Módulo 2: Sistema de Tipos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "9"
+        ],
+        "testStrategy": "Testar que atributos são aplicados corretamente e afetam comportamento",
+        "acceptanceCriteria": [
+          "Todos os atributos principais configuráveis",
+          "Atributos afetam comportamento dos campos",
+          "Exemplos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "11",
+        "title": "Módulo 2: STypeCertidao completo",
+        "description": "Criar STypeCertidao completo baseado na entidade Certidao.java existente, com todos os campos necessários",
+        "module": "Módulo 2: Sistema de Tipos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "10"
+        ],
+        "testStrategy": "Comparar STypeCertidao com entidade Certidao e validar que todos os campos estão mapeados",
+        "acceptanceCriteria": [
+          "STypeCertidao criado com todos os campos",
+          "Mapeamento completo com entidade original",
+          "Testes de criação de instância passando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "12",
+        "title": "Módulo 2: STypeEndereco reutilizável",
+        "description": "Criar STypeEndereco como tipo reutilizável que pode ser usado em diferentes contextos",
+        "module": "Módulo 2: Sistema de Tipos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "11"
+        ],
+        "testStrategy": "Testar reutilização do STypeEndereco em diferentes contextos",
+        "acceptanceCriteria": [
+          "STypeEndereco criado e reutilizável",
+          "Pode ser usado em múltiplos lugares",
+          "Documentado como exemplo de reutilização"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "13",
+        "title": "Módulo 2: STypeRequerente com composição",
+        "description": "Criar STypeRequerente usando composição, incluindo STypeEndereco e outros campos relacionados",
+        "module": "Módulo 2: Sistema de Tipos",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "12"
+        ],
+        "testStrategy": "Testar criação de STypeRequerente e validação de composição",
+        "acceptanceCriteria": [
+          "STypeRequerente criado com composição",
+          "Reutiliza STypeEndereco",
+          "Estrutura completa e funcional"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "14",
+        "title": "Módulo 3: Validadores built-in",
+        "description": "Demonstrar uso de validadores built-in do OpenSingular",
+        "module": "Módulo 3: Validação",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "13"
+        ],
+        "testStrategy": "Testar validadores built-in com casos válidos e inválidos",
+        "acceptanceCriteria": [
+          "Validadores built-in funcionando",
+          "Exemplos de uso documentados",
+          "Casos de teste passando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "15",
+        "title": "Módulo 3: Validadores customizados (CPF, CNPJ, CEP)",
+        "description": "Criar validadores customizados reutilizáveis: CPFValidator, CNPJValidator, CEPValidator, reutilizando lógica existente",
+        "module": "Módulo 3: Validação",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "14"
+        ],
+        "testStrategy": "Testar cada validador customizado com casos válidos e inválidos",
+        "acceptanceCriteria": [
+          "CPFValidator criado e funcionando",
+          "CNPJValidator criado e funcionando",
+          "CEPValidator criado e funcionando",
+          "Validadores são reutilizáveis"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "16",
+        "title": "Módulo 3: ValidationResult e mensagens de erro",
+        "description": "Implementar tratamento de ValidationResult e mensagens de erro customizadas",
+        "module": "Módulo 3: Validação",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "15"
+        ],
+        "testStrategy": "Testar que mensagens de erro são exibidas corretamente",
+        "acceptanceCriteria": [
+          "ValidationResult funcionando corretamente",
+          "Mensagens de erro customizadas funcionando",
+          "Erros são exibidos adequadamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "17",
+        "title": "Módulo 3: Validação condicional (requiredIf, visibleIf)",
+        "description": "Implementar validações condicionais onde campos são obrigatórios ou visíveis baseado em outros campos",
+        "module": "Módulo 3: Validação",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "16"
+        ],
+        "testStrategy": "Testar validações condicionais com diferentes estados de campos dependentes",
+        "acceptanceCriteria": [
+          "requiredIf funcionando",
+          "visibleIf funcionando",
+          "Validações condicionais testadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "18",
+        "title": "Módulo 3: Dependências entre campos (dependsOn)",
+        "description": "Implementar dependências entre campos usando dependsOn para criar relacionamentos",
+        "module": "Módulo 3: Validação",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "17"
+        ],
+        "testStrategy": "Testar que campos dependentes reagem corretamente a mudanças",
+        "acceptanceCriteria": [
+          "dependsOn funcionando",
+          "Campos dependentes atualizam corretamente",
+          "Exemplos práticos funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "19",
+        "title": "Módulo 3: Regras de negócio (data não futura, número único)",
+        "description": "Implementar regras de negócio específicas: data emissão não pode ser futura, número de certidão deve ser único",
+        "module": "Módulo 3: Validação",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "18"
+        ],
+        "testStrategy": "Testar regras de negócio com casos válidos e inválidos",
+        "acceptanceCriteria": [
+          "Validação de data não futura funcionando",
+          "Validação de número único funcionando",
+          "Regras de negócio documentadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "20",
+        "title": "Módulo 4: Separação dados/apresentação (SType/SView)",
+        "description": "Criar SView para demonstrar separação entre estrutura de dados (SType) e apresentação (SView)",
+        "module": "Módulo 4: Views",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "19"
+        ],
+        "testStrategy": "Testar que múltiplas views podem ser criadas para o mesmo SType",
+        "acceptanceCriteria": [
+          "SView criada e funcionando",
+          "Separação dados/apresentação clara",
+          "Múltiplas views para mesmo tipo funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "21",
+        "title": "Módulo 4: Layouts (Grid, Stack, Tab, Column)",
+        "description": "Implementar diferentes layouts: GridLayout, StackLayout, TabLayout, ColumnLayout",
+        "module": "Módulo 4: Views",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "20"
+        ],
+        "testStrategy": "Testar cada layout e verificar renderização correta",
+        "acceptanceCriteria": [
+          "GridLayout funcionando",
+          "StackLayout funcionando",
+          "TabLayout funcionando",
+          "ColumnLayout funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "22",
+        "title": "Módulo 4: Blocos e agrupamento (createBlock)",
+        "description": "Criar blocos lógicos de campos usando createBlock para agrupamento visual",
+        "module": "Módulo 4: Views",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "21"
+        ],
+        "testStrategy": "Testar criação de blocos e agrupamento de campos",
+        "acceptanceCriteria": [
+          "createBlock funcionando",
+          "Campos agrupados corretamente",
+          "Blocos renderizam adequadamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "23",
+        "title": "Módulo 4: Seções colapsáveis",
+        "description": "Implementar seções colapsáveis para melhorar UX em formulários grandes",
+        "module": "Módulo 4: Views",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "22"
+        ],
+        "testStrategy": "Testar funcionalidade de colapsar/expandir seções",
+        "acceptanceCriteria": [
+          "Seções colapsáveis funcionando",
+          "Estado de colapso preservado",
+          "UX melhorada"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "24",
+        "title": "Módulo 4: CertidaoView profissional",
+        "description": "Criar CertidaoView profissional com blocos organizados (Dados Básicos, Requerente, Documentos)",
+        "module": "Módulo 4: Views",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "23"
+        ],
+        "testStrategy": "Testar renderização da view e organização dos blocos",
+        "acceptanceCriteria": [
+          "CertidaoView criada e profissional",
+          "Blocos organizados logicamente",
+          "View renderiza corretamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "25",
+        "title": "Módulo 4: Views alternativas (simplificada, completa)",
+        "description": "Criar views alternativas para o mesmo tipo: CertidaoViewSimplificada e CertidaoViewCompleta",
+        "module": "Módulo 4: Views",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Testar que diferentes views podem ser aplicadas ao mesmo SType",
+        "acceptanceCriteria": [
+          "View simplificada criada",
+          "View completa criada",
+          "Ambas funcionam com mesmo SType"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "26",
+        "title": "Módulo 5: Componentes Wicket do Singular (BSFormPanel, BSAutoFormPanel)",
+        "description": "Implementar e demonstrar uso de componentes Wicket do Singular: BSFormPanel e BSAutoFormPanel",
+        "module": "Módulo 5: Integração Wicket",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "25"
+        ],
+        "testStrategy": "Testar renderização dos componentes em página Wicket",
+        "acceptanceCriteria": [
+          "BSFormPanel funcionando",
+          "BSAutoFormPanel funcionando",
+          "Componentes renderizam corretamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "27",
+        "title": "Módulo 5: SInstanceModel",
+        "description": "Criar e integrar SInstanceModel com IModel do Wicket para binding de dados",
+        "module": "Módulo 5: Integração Wicket",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "26"
+        ],
+        "testStrategy": "Testar binding de dados entre SInstance e componentes Wicket",
+        "acceptanceCriteria": [
+          "SInstanceModel criado",
+          "Integração com IModel funcionando",
+          "Binding de dados funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "28",
+        "title": "Módulo 5: CertidaoSingularFormPage funcional",
+        "description": "Criar página Wicket completa CertidaoSingularFormPage com formulário Singular funcional",
+        "module": "Módulo 5: Integração Wicket",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "27"
+        ],
+        "testStrategy": "Testar página completa: renderização, submit, validação",
+        "acceptanceCriteria": [
+          "Página criada e funcional",
+          "Formulário renderiza corretamente",
+          "Submit e validação funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "29",
+        "title": "Módulo 5: Página de comparação (Wicket puro vs Singular)",
+        "description": "Criar página que mostra lado a lado formulário Wicket puro e formulário Singular para comparação",
+        "module": "Módulo 5: Integração Wicket",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "28"
+        ],
+        "testStrategy": "Verificar que ambos formulários funcionam e podem ser comparados",
+        "acceptanceCriteria": [
+          "Página de comparação criada",
+          "Ambos formulários funcionando",
+          "Comparação visual possível"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "30",
+        "title": "Módulo 5: Ajax e validação em tempo real",
+        "description": "Implementar Ajax com componentes Singular e validação em tempo real",
+        "module": "Módulo 5: Integração Wicket",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "29"
+        ],
+        "testStrategy": "Testar atualizações Ajax e validação em tempo real",
+        "acceptanceCriteria": [
+          "Ajax funcionando com Singular",
+          "Validação em tempo real funcionando",
+          "UX melhorada com feedback imediato"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "31",
+        "title": "Módulo 5: Integração com CertidaoRepository",
+        "description": "Integrar formulário Singular com CertidaoRepository existente para persistência",
+        "module": "Módulo 5: Integração Wicket",
+        "priority": "critical",
+        "status": "pending",
+        "dependencies": [
+          "30"
+        ],
+        "testStrategy": "Testar persistência de dados do formulário Singular no repositório",
+        "acceptanceCriteria": [
+          "Integração com repositório funcionando",
+          "Dados persistidos corretamente",
+          "CRUD completo funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "32",
+        "title": "Módulo 6: Biblioteca de tipos reutilizáveis",
+        "description": "Criar biblioteca de STypes reutilizáveis (Endereço, Pessoa, Contato) para uso em diferentes contextos",
+        "module": "Módulo 6: Recursos Avançados",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "31"
+        ],
+        "testStrategy": "Testar reutilização dos tipos em diferentes contextos",
+        "acceptanceCriteria": [
+          "Biblioteca de tipos criada",
+          "Tipos são reutilizáveis",
+          "Documentação de uso criada"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "33",
+        "title": "Módulo 6: Versionamento de formulários (V1, V2)",
+        "description": "Implementar versionamento de formulários criando CertidaoFormV1 e CertidaoFormV2",
+        "module": "Módulo 6: Recursos Avançados",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "32"
+        ],
+        "testStrategy": "Testar que múltiplas versões podem coexistir",
+        "acceptanceCriteria": [
+          "Versão V1 criada",
+          "Versão V2 criada",
+          "Ambas versões funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "34",
+        "title": "Migração entre versões (onMigrate)",
+        "description": "Implementar método onMigrate para migração automática de dados entre versões de formulário",
+        "module": "Módulo 6: Recursos Avançados",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "33"
+        ],
+        "testStrategy": "Testar migração de V1 para V2 com dados reais",
+        "acceptanceCriteria": [
+          "Método onMigrate implementado",
+          "Migração V1→V2 funcionando",
+          "Dados preservados na migração"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "35",
+        "title": "Módulo 6: Persistência em banco (JSON serializado)",
+        "description": "Implementar persistência de SInstances no banco de dados usando serialização JSON",
+        "module": "Módulo 6: Recursos Avançados",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "34"
+        ],
+        "testStrategy": "Testar persistência e recuperação de dados do banco",
+        "acceptanceCriteria": [
+          "Persistência em banco funcionando",
+          "Recuperação de dados funcionando",
+          "JSON serializado corretamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "36",
+        "title": "Módulo 6: Geração de PDF a partir de SInstance",
+        "description": "Implementar geração de PDF a partir de SInstance usando iText ou Apache PDFBox",
+        "module": "Módulo 6: Recursos Avançados",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "35"
+        ],
+        "testStrategy": "Testar geração de PDF e validar conteúdo",
+        "acceptanceCriteria": [
+          "Geração de PDF funcionando",
+          "PDF contém dados corretos",
+          "Template de PDF criado"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "37",
+        "title": "Módulo 6: Internacionalização (pt-BR, en-US)",
+        "description": "Implementar suporte a múltiplos idiomas: português (pt-BR) e inglês (en-US)",
+        "module": "Módulo 6: Recursos Avançados",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "36"
+        ],
+        "testStrategy": "Testar troca de idioma e validação de labels traduzidos",
+        "acceptanceCriteria": [
+          "Suporte a pt-BR funcionando",
+          "Suporte a en-US funcionando",
+          "Troca de idioma funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "38",
+        "title": "Módulo 7: Otimizações de performance",
+        "description": "Aplicar otimizações de performance: cache de tipos, lazy loading, minificação",
+        "module": "Módulo 7: Produção",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "37"
+        ],
+        "testStrategy": "Medir performance antes e depois das otimizações",
+        "acceptanceCriteria": [
+          "Cache de tipos implementado",
+          "Lazy loading funcionando",
+          "Performance melhorada"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "39",
+        "title": "Módulo 7: Cache de tipos",
+        "description": "Implementar cache de STypes em memória para melhorar performance",
+        "module": "Módulo 7: Produção",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "38"
+        ],
+        "testStrategy": "Testar que tipos são cacheados e reutilizados",
+        "acceptanceCriteria": [
+          "Cache de tipos funcionando",
+          "Performance melhorada",
+          "Memória gerenciada adequadamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "40",
+        "title": "Módulo 7: Validação server-side obrigatória",
+        "description": "Garantir que todas as validações são executadas server-side, nunca confiando apenas no client",
+        "module": "Módulo 7: Produção",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "39"
+        ],
+        "testStrategy": "Testar que validações server-side são sempre executadas",
+        "acceptanceCriteria": [
+          "Validações server-side obrigatórias",
+          "Segurança garantida",
+          "Documentação de segurança criada"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "41",
+        "title": "Módulo 7: Testes unitários de STypes",
+        "description": "Criar suite de testes unitários para STypes cobrindo criação, validação e manipulação",
+        "module": "Módulo 7: Produção",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "40"
+        ],
+        "testStrategy": "Criar testes unitários com cobertura mínima de 60%",
+        "acceptanceCriteria": [
+          "Testes unitários criados",
+          "Cobertura mínima de 60%",
+          "Todos os testes passando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "42",
+        "title": "Módulo 7: Testes de integração Wicket + Singular",
+        "description": "Criar testes de integração validando funcionamento completo de Wicket + Singular",
+        "module": "Módulo 7: Produção",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "41"
+        ],
+        "testStrategy": "Criar testes de integração usando WicketTester",
+        "acceptanceCriteria": [
+          "Testes de integração criados",
+          "Testes cobrem fluxos principais",
+          "Todos os testes passando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "43",
+        "title": "Módulo 7: Logs estruturados",
+        "description": "Implementar logging estruturado para facilitar troubleshooting e monitoramento",
+        "module": "Módulo 7: Produção",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "42"
+        ],
+        "testStrategy": "Verificar que logs são gerados corretamente",
+        "acceptanceCriteria": [
+          "Logs estruturados implementados",
+          "Logs contêm informações relevantes",
+          "Configuração de logging documentada"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "44",
+        "title": "Métricas básicas (tempo renderização, erros validação)",
+        "description": "Implementar coleta de métricas básicas: tempo de renderização e taxa de erros de validação",
+        "module": "Módulo 7: Produção",
+        "priority": "high",
+        "status": "pending",
+        "dependencies": [
+          "43"
+        ],
+        "testStrategy": "Verificar que métricas são coletadas e podem ser visualizadas",
+        "acceptanceCriteria": [
+          "Métricas de renderização coletadas",
+          "Métricas de validação coletadas",
+          "Métricas podem ser visualizadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "45",
+        "title": "Módulo 8.1: ProcessDefinition para certidões",
+        "description": "Criar ProcessDefinition completo para workflow de certidões",
+        "module": "Módulo 8.1: Workflow",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "44"
+        ],
+        "testStrategy": "Testar criação e configuração do ProcessDefinition",
+        "acceptanceCriteria": [
+          "ProcessDefinition criado",
+          "Configuração completa",
+          "Documentado"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "46",
+        "title": "Módulo 8.1: Estados (SOLICITADA, EM_ANALISE, DEFERIDA, INDEFERIDA)",
+        "description": "Definir e implementar todos os estados do workflow de certidões",
+        "module": "Módulo 8.1: Workflow",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "45"
+        ],
+        "testStrategy": "Testar transições entre estados",
+        "acceptanceCriteria": [
+          "Todos os estados definidos",
+          "Estados funcionando corretamente",
+          "Enum de estados criado"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "47",
+        "title": "Módulo 8.1: Transições (SUBMETER, APROVAR, REJEITAR, DEVOLVER)",
+        "description": "Implementar todas as transições entre estados do workflow",
+        "module": "Módulo 8.1: Workflow",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "46"
+        ],
+        "testStrategy": "Testar cada transição e validações",
+        "acceptanceCriteria": [
+          "Todas as transições implementadas",
+          "Transições funcionando",
+          "Validações de transição funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "48",
+        "title": "Módulo 8.1: Tasks humanas (análise, aprovação)",
+        "description": "Criar tasks humanas para análise e aprovação de certidões",
+        "module": "Módulo 8.1: Workflow",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "47"
+        ],
+        "testStrategy": "Testar criação e atribuição de tasks",
+        "acceptanceCriteria": [
+          "Tasks de análise criadas",
+          "Tasks de aprovação criadas",
+          "Atribuição de tasks funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "49",
+        "title": "Módulo 8.1: Listeners (onBeforeTransition, onAfterTransition)",
+        "description": "Implementar listeners para eventos de workflow: onBeforeTransition, onAfterTransition",
+        "module": "Módulo 8.1: Workflow",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "48"
+        ],
+        "testStrategy": "Testar que listeners são executados nos momentos corretos",
+        "acceptanceCriteria": [
+          "Listeners implementados",
+          "Listeners executados corretamente",
+          "Exemplos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "50",
+        "title": "Módulo 8.1: SLA e prazos",
+        "description": "Implementar controle de SLA e prazos para tasks do workflow",
+        "module": "Módulo 8.1: Workflow",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "49"
+        ],
+        "testStrategy": "Testar cálculo de SLA e alertas de prazo",
+        "acceptanceCriteria": [
+          "SLA implementado",
+          "Prazos calculados corretamente",
+          "Alertas de prazo funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "51",
+        "title": "Módulo 8.1: Histórico de tramitação",
+        "description": "Implementar histórico completo de tramitação mostrando todas as transições e mudanças de estado",
+        "module": "Módulo 8.1: Workflow",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "50"
+        ],
+        "testStrategy": "Testar que histórico é registrado e pode ser consultado",
+        "acceptanceCriteria": [
+          "Histórico de tramitação funcionando",
+          "Todas as transições registradas",
+          "Histórico pode ser visualizado"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "52",
+        "title": "Módulo 8.2: Boxes customizadas (Minhas Certidões, Para Análise, Aprovadas)",
+        "description": "Criar boxes customizadas para diferentes perfis: Minhas Certidões (requerente), Para Análise (analista), Aprovadas",
+        "module": "Módulo 8.2: Gestão de Demandas",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "51"
+        ],
+        "testStrategy": "Testar que cada box mostra apenas os registros corretos",
+        "acceptanceCriteria": [
+          "Box Minhas Certidões criada",
+          "Box Para Análise criada",
+          "Box Aprovadas criada",
+          "Boxes funcionando corretamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "53",
+        "title": "Módulo 8.2: Filtros avançados (tipo, data, status)",
+        "description": "Implementar filtros avançados para boxes: por tipo de certidão, data, status",
+        "module": "Módulo 8.2: Gestão de Demandas",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "52"
+        ],
+        "testStrategy": "Testar cada filtro individualmente e em combinação",
+        "acceptanceCriteria": [
+          "Filtro por tipo funcionando",
+          "Filtro por data funcionando",
+          "Filtro por status funcionando",
+          "Filtros combinados funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "54",
+        "title": "Módulo 8.2: Paginação e performance",
+        "description": "Implementar paginação nas listagens e otimizar performance de queries",
+        "module": "Módulo 8.2: Gestão de Demandas",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "53"
+        ],
+        "testStrategy": "Testar paginação com grandes volumes de dados",
+        "acceptanceCriteria": [
+          "Paginação implementada",
+          "Performance adequada",
+          "Queries otimizadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "55",
+        "title": "Módulo 8.2: Dashboard do analista",
+        "description": "Criar dashboard personalizado para analistas com tarefas pendentes e prazos",
+        "module": "Módulo 8.2: Gestão de Demandas",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "54"
+        ],
+        "testStrategy": "Testar que dashboard mostra informações corretas",
+        "acceptanceCriteria": [
+          "Dashboard do analista criado",
+          "Tarefas pendentes exibidas",
+          "Prazos exibidos corretamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "56",
+        "title": "Módulo 8.2: Dashboard do gestor",
+        "description": "Criar dashboard gerencial com visão geral, estatísticas e indicadores",
+        "module": "Módulo 8.2: Gestão de Demandas",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "55"
+        ],
+        "testStrategy": "Testar que métricas são calculadas corretamente",
+        "acceptanceCriteria": [
+          "Dashboard do gestor criado",
+          "Estatísticas exibidas",
+          "Indicadores funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "57",
+        "title": "Módulo 8.2: Contadores e badges em tempo real",
+        "description": "Implementar contadores e badges que atualizam em tempo real nas boxes",
+        "module": "Módulo 8.2: Gestão de Demandas",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "56"
+        ],
+        "testStrategy": "Testar atualização em tempo real dos contadores",
+        "acceptanceCriteria": [
+          "Contadores implementados",
+          "Badges funcionando",
+          "Atualização em tempo real funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "58",
+        "title": "Módulo 8.3: Configuração de storage (local/S3)",
+        "description": "Configurar sistema de storage para anexos: local para desenvolvimento, S3 para produção",
+        "module": "Módulo 8.3: Upload",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "44"
+        ],
+        "testStrategy": "Testar upload e armazenamento em ambos os storages",
+        "acceptanceCriteria": [
+          "Storage local configurado",
+          "Storage S3 configurado (opcional)",
+          "Configuração flexível"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "59",
+        "title": "Módulo 8.3: Upload múltiplo com drag-and-drop",
+        "description": "Implementar componente de upload múltiplo com suporte a drag-and-drop",
+        "module": "Módulo 8.3: Upload",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "58"
+        ],
+        "testStrategy": "Testar upload de múltiplos arquivos e drag-and-drop",
+        "acceptanceCriteria": [
+          "Upload múltiplo funcionando",
+          "Drag-and-drop funcionando",
+          "UX melhorada"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "60",
+        "title": "Módulo 8.3: Preview de imagens/PDFs",
+        "description": "Implementar preview de imagens e PDFs após upload",
+        "module": "Módulo 8.3: Upload",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "59"
+        ],
+        "testStrategy": "Testar preview de diferentes tipos de arquivo",
+        "acceptanceCriteria": [
+          "Preview de imagens funcionando",
+          "Preview de PDFs funcionando",
+          "Preview exibe corretamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "61",
+        "title": "Módulo 8.3: Documentos obrigatórios por tipo",
+        "description": "Implementar sistema que define documentos obrigatórios por tipo de certidão",
+        "module": "Módulo 8.3: Upload",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "60"
+        ],
+        "testStrategy": "Testar validação de documentos obrigatórios",
+        "acceptanceCriteria": [
+          "Documentos obrigatórios configuráveis",
+          "Validação funcionando",
+          "Checklist de documentos funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "62",
+        "title": "Módulo 8.3: Validação de tipo e tamanho",
+        "description": "Implementar validação de tipo de arquivo permitido e tamanho máximo",
+        "module": "Módulo 8.3: Upload",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "61"
+        ],
+        "testStrategy": "Testar validações com arquivos válidos e inválidos",
+        "acceptanceCriteria": [
+          "Validação de tipo funcionando",
+          "Validação de tamanho funcionando",
+          "Mensagens de erro adequadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "63",
+        "title": "Módulo 8.3: Download seguro com autenticação",
+        "description": "Implementar download de anexos com autenticação e autorização",
+        "module": "Módulo 8.3: Upload",
+        "priority": "medium",
+        "status": "pending",
+        "dependencies": [
+          "62"
+        ],
+        "testStrategy": "Testar download com diferentes níveis de permissão",
+        "acceptanceCriteria": [
+          "Download seguro implementado",
+          "Autenticação funcionando",
+          "Autorização funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "64",
+        "title": "Módulo 8.4: Serviço de e-mail (SMTP, templates)",
+        "description": "Implementar serviço de e-mail com configuração SMTP e templates",
+        "module": "Módulo 8.4: Integrações",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "51"
+        ],
+        "testStrategy": "Testar envio de e-mails com diferentes templates",
+        "acceptanceCriteria": [
+          "Serviço de e-mail funcionando",
+          "Templates funcionando",
+          "E-mails sendo enviados corretamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "65",
+        "title": "Módulo 8.4: Geração de PDF (iText)",
+        "description": "Implementar geração de PDF usando iText com templates de certidões",
+        "module": "Módulo 8.4: Integrações",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "64"
+        ],
+        "testStrategy": "Testar geração de PDF e validar conteúdo",
+        "acceptanceCriteria": [
+          "Geração de PDF funcionando",
+          "Templates de PDF criados",
+          "PDFs gerados corretamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "66",
+        "title": "Módulo 8.4: Códigos de barras/QR codes",
+        "description": "Implementar geração de códigos de barras e QR codes para certidões",
+        "module": "Módulo 8.4: Integrações",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "65"
+        ],
+        "testStrategy": "Testar geração e leitura de códigos",
+        "acceptanceCriteria": [
+          "Códigos de barras funcionando",
+          "QR codes funcionando",
+          "Códigos podem ser lidos"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "67",
+        "title": "Módulo 8.4: Consulta CEP (ViaCEP)",
+        "description": "Implementar integração com ViaCEP para consulta automática de endereço por CEP",
+        "module": "Módulo 8.4: Integrações",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "66"
+        ],
+        "testStrategy": "Testar consulta de CEP e preenchimento automático",
+        "acceptanceCriteria": [
+          "Integração com ViaCEP funcionando",
+          "Consulta automática funcionando",
+          "Preenchimento automático funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "68",
+        "title": "Módulo 8.4: Webhooks para sistemas externos",
+        "description": "Implementar sistema de webhooks para notificar sistemas externos sobre eventos",
+        "module": "Módulo 8.4: Integrações",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "67"
+        ],
+        "testStrategy": "Testar envio de webhooks e recebimento de respostas",
+        "acceptanceCriteria": [
+          "Sistema de webhooks implementado",
+          "Webhooks sendo enviados",
+          "Configuração de webhooks funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "69",
+        "title": "Módulo 8.4: Listeners em eventos de fluxo",
+        "description": "Implementar listeners customizados que executam ações em eventos de fluxo (ex: enviar e-mail ao aprovar)",
+        "module": "Módulo 8.4: Integrações",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "68"
+        ],
+        "testStrategy": "Testar que listeners são executados nos eventos corretos",
+        "acceptanceCriteria": [
+          "Listeners customizados implementados",
+          "Listeners executados corretamente",
+          "Integrações funcionando via listeners"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "70",
+        "title": "Módulo 8.5: Dashboard gerencial completo",
+        "description": "Criar dashboard gerencial completo com todas as métricas e indicadores",
+        "module": "Módulo 8.5: Monitoramento",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "57"
+        ],
+        "testStrategy": "Testar que dashboard exibe todas as métricas corretamente",
+        "acceptanceCriteria": [
+          "Dashboard gerencial criado",
+          "Todas as métricas exibidas",
+          "Dashboard responsivo"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "71",
+        "title": "Módulo 8.5: Gráficos de tendência",
+        "description": "Implementar gráficos de tendência mostrando evolução de métricas ao longo do tempo",
+        "module": "Módulo 8.5: Monitoramento",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "70"
+        ],
+        "testStrategy": "Testar que gráficos são gerados corretamente",
+        "acceptanceCriteria": [
+          "Gráficos de tendência implementados",
+          "Gráficos exibem dados corretos",
+          "Visualização clara"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "72",
+        "title": "Métricas de performance (SInstances, queries N+1)",
+        "description": "Implementar coleta de métricas de performance: tamanho de SInstances, detecção de queries N+1",
+        "module": "Módulo 8.5: Monitoramento",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "71"
+        ],
+        "testStrategy": "Testar coleta e visualização de métricas de performance",
+        "acceptanceCriteria": [
+          "Métricas de SInstances coletadas",
+          "Detecção de queries N+1 funcionando",
+          "Métricas podem ser visualizadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "73",
+        "title": "Módulo 8.5: Alertas de SLA",
+        "description": "Implementar sistema de alertas para SLA estourado",
+        "module": "Módulo 8.5: Monitoramento",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "72"
+        ],
+        "testStrategy": "Testar que alertas são disparados quando SLA é estourado",
+        "acceptanceCriteria": [
+          "Sistema de alertas implementado",
+          "Alertas de SLA funcionando",
+          "Notificações sendo enviadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "74",
+        "title": "Módulo 8.5: Exportação de relatórios (Excel/CSV)",
+        "description": "Implementar exportação de relatórios gerenciais em Excel e CSV",
+        "module": "Módulo 8.5: Monitoramento",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "73"
+        ],
+        "testStrategy": "Testar exportação e validar conteúdo dos arquivos",
+        "acceptanceCriteria": [
+          "Exportação para Excel funcionando",
+          "Exportação para CSV funcionando",
+          "Arquivos gerados corretamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "75",
+        "title": "Módulo 8.6: Estratégias de versionamento semântico",
+        "description": "Documentar e implementar estratégias de versionamento semântico para formulários",
+        "module": "Módulo 8.6: Migração",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "34"
+        ],
+        "testStrategy": "Validar que versionamento segue padrão semântico",
+        "acceptanceCriteria": [
+          "Estratégia de versionamento documentada",
+          "Versionamento semântico implementado",
+          "Padrão seguido consistentemente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "76",
+        "title": "Migração lazy vs eager",
+        "description": "Implementar suporte a migração lazy (sob demanda) e eager (batch)",
+        "module": "Módulo 8.6: Migração",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "75"
+        ],
+        "testStrategy": "Testar ambos os tipos de migração",
+        "acceptanceCriteria": [
+          "Migração lazy funcionando",
+          "Migração eager funcionando",
+          "Ambas estratégias testadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "77",
+        "title": "Módulo 8.6: Coexistência de múltiplas versões",
+        "description": "Implementar suporte para múltiplas versões de formulários coexistindo em produção",
+        "module": "Módulo 8.6: Migração",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "76"
+        ],
+        "testStrategy": "Testar que múltiplas versões podem ser usadas simultaneamente",
+        "acceptanceCriteria": [
+          "Múltiplas versões podem coexistir",
+          "Roteamento por versão funcionando",
+          "Compatibilidade garantida"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "78",
+        "title": "Módulo 8.6: Importação de dados legados (ETL)",
+        "description": "Criar scripts ETL para importar dados de sistemas legados para o novo formato Singular",
+        "module": "Módulo 8.6: Migração",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "77"
+        ],
+        "testStrategy": "Testar importação com dados de exemplo",
+        "acceptanceCriteria": [
+          "Scripts ETL criados",
+          "Importação funcionando",
+          "Dados validados após importação"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "79",
+        "title": "Módulo 8.6: Validação pós-migração",
+        "description": "Implementar validação automática de dados após migração para garantir integridade",
+        "module": "Módulo 8.6: Migração",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "78"
+        ],
+        "testStrategy": "Testar validação pós-migração com diferentes cenários",
+        "acceptanceCriteria": [
+          "Validação pós-migração implementada",
+          "Validação detecta problemas",
+          "Relatórios de validação gerados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "80",
+        "title": "Módulo 9: Fluxo completo end-to-end",
+        "description": "Implementar caso prático completo: Requerente solicita → Analista analisa → Supervisor aprova → PDF gerado → E-mail enviado",
+        "module": "Módulo 9: Casos Práticos",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "69",
+          "63"
+        ],
+        "testStrategy": "Testar fluxo completo end-to-end",
+        "acceptanceCriteria": [
+          "Fluxo completo funcionando",
+          "Todas as etapas integradas",
+          "Sistema end-to-end testado"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "81",
+        "title": "Módulo 9: Portal do requerente",
+        "description": "Criar portal self-service para requerentes: login, solicitar certidão, acompanhar status, baixar documentos",
+        "module": "Módulo 9: Casos Práticos",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "80"
+        ],
+        "testStrategy": "Testar todas as funcionalidades do portal",
+        "acceptanceCriteria": [
+          "Portal do requerente criado",
+          "Todas as funcionalidades funcionando",
+          "UX adequada"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "82",
+        "title": "Módulo 9: Painel do analista",
+        "description": "Criar painel completo para analistas: fila de trabalho, análise de documentos, aprovação/rejeição, parecer técnico",
+        "module": "Módulo 9: Casos Práticos",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "81"
+        ],
+        "testStrategy": "Testar todas as funcionalidades do painel",
+        "acceptanceCriteria": [
+          "Painel do analista criado",
+          "Todas as funcionalidades funcionando",
+          "Workflow integrado"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "83",
+        "title": "Módulo 9: Dashboard gerencial",
+        "description": "Criar dashboard gerencial completo: visão geral, gráficos, relatórios, alertas, reatribuição de tarefas",
+        "module": "Módulo 9: Casos Práticos",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "82"
+        ],
+        "testStrategy": "Testar que dashboard exibe informações corretas",
+        "acceptanceCriteria": [
+          "Dashboard gerencial criado",
+          "Todas as funcionalidades funcionando",
+          "Métricas atualizadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "84",
+        "title": "Migração de sistema legado",
+        "description": "Implementar migração completa de dados de sistema legado (Excel/arquivos físicos) para OpenSingular",
+        "module": "Módulo 9: Casos Práticos",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "79"
+        ],
+        "testStrategy": "Testar migração com dados de exemplo",
+        "acceptanceCriteria": [
+          "Migração implementada",
+          "Dados importados corretamente",
+          "Validação pós-importação funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": "85",
+        "title": "Módulo 9: Integração de todos os módulos",
+        "description": "Integrar todos os módulos (1-9) em um sistema completo e funcional, validando todas as integrações",
+        "module": "Módulo 9: Casos Práticos",
+        "priority": "low",
+        "status": "pending",
+        "dependencies": [
+          "84"
+        ],
+        "testStrategy": "Testar integração completa de todos os módulos",
+        "acceptanceCriteria": [
+          "Todos os módulos integrados",
+          "Sistema completo funcionando",
+          "Checklist de integração completo"
+        ],
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "version": "1.0.0",
+      "lastModified": "2026-01-05T21:52:11.016Z",
+      "taskCount": 85,
+      "completedCount": 0,
+      "tags": [
+        "opensingular"
+      ],
+      "created": "2026-01-07T18:19:11.088Z",
+      "description": "Tasks for singular context",
+      "updated": "2026-01-07T18:19:11.088Z"
+    }
+  },
+  "wicket": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Módulo 2: Processamento de Requisições (Request Processing)",
+        "description": "Implementar e documentar o processamento de requisições no Wicket, incluindo RequestCycle, Request, Response e as etapas do ciclo de vida de uma requisição.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Criar testes unitários usando WicketTester para verificar o processamento de requisições",
+        "acceptanceCriteria": [
+          "RequestCycleListener implementado e funcionando",
+          "Documentação explicando as etapas de processamento",
+          "Exemplo prático demonstrando o ciclo de requisição"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Módulo 2: Configuração e uso de Application",
+        "description": "Aprofundar a configuração do WicketApplication, incluindo configurações avançadas, recursos, páginas e inicialização.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Testar configurações da aplicação e verificar inicialização correta",
+        "acceptanceCriteria": [
+          "WicketApplication configurado com todas as opções necessárias",
+          "Documentação sobre configurações disponíveis",
+          "Recursos e páginas configurados corretamente"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Módulo 2: Gerenciamento de Session",
+        "description": "Implementar e documentar o gerenciamento de Session no Wicket, incluindo Session customizada, armazenamento de dados e ciclo de vida.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Testar criação, uso e serialização de Session",
+        "acceptanceCriteria": [
+          "Session customizada implementada (já existe CertidoesSession)",
+          "Documentação sobre uso de Session",
+          "Exemplos práticos de armazenamento de dados na Session"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Módulo 2: Implementação de Session Store",
+        "description": "Implementar e documentar Session Store, incluindo diferentes tipos de armazenamento (memória, disco, banco de dados) e configuração.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "3"
+        ],
+        "testStrategy": "Testar diferentes tipos de Session Store e verificar persistência",
+        "acceptanceCriteria": [
+          "Session Store configurado e documentado",
+          "Exemplo de uso de diferentes tipos de store",
+          "Documentação sobre quando usar cada tipo"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Módulo 2: Outros objetos do Wicket (RequestCycle, Response, etc.)",
+        "description": "Documentar e demonstrar o uso de outros objetos importantes do Wicket como RequestCycle, Response, WebRequest, WebResponse, etc.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "1"
+        ],
+        "testStrategy": "Criar exemplos práticos usando cada objeto",
+        "acceptanceCriteria": [
+          "Documentação sobre cada objeto importante",
+          "Exemplos práticos de uso",
+          "Casos de uso comuns documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Módulo 2: Etapas detalhadas de processamento de uma requisição",
+        "description": "Criar documentação detalhada e exemplos práticos das etapas de processamento de uma requisição no Wicket (onBeginRequest, onEndRequest, etc.).",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "1"
+        ],
+        "testStrategy": "Criar RequestCycleListener que demonstre cada etapa",
+        "acceptanceCriteria": [
+          "Documentação completa das etapas",
+          "Exemplo prático demonstrando cada etapa",
+          "RequestCycleListener implementado mostrando o fluxo"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Módulo 2: Segurança de thread (Thread Safety)",
+        "description": "Documentar e demonstrar thread safety no Wicket, incluindo boas práticas, armadilhas comuns e como garantir thread safety em componentes.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Criar testes que verifiquem thread safety",
+        "acceptanceCriteria": [
+          "Documentação sobre thread safety no Wicket",
+          "Exemplos de código thread-safe",
+          "Armadilhas comuns documentadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Módulo 2: Revisão e aprofundamento em Componentes do Wicket",
+        "description": "Revisar e aprofundar conhecimentos sobre componentes do Wicket, incluindo hierarquia, ciclo de vida e métodos importantes.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Expandir ComponentesDemoPage com exemplos avançados",
+        "acceptanceCriteria": [
+          "ComponentesDemoPage expandida com exemplos avançados",
+          "Documentação sobre hierarquia de componentes",
+          "Ciclo de vida de componentes documentado"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Módulo 2: A 'tríade' do componente (Component Triad)",
+        "description": "Implementar e documentar a tríade do componente: Markup, Component e Model, demonstrando como trabalham juntos.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "8"
+        ],
+        "testStrategy": "Criar exemplos práticos demonstrando cada parte da tríade",
+        "acceptanceCriteria": [
+          "Documentação sobre Component Triad",
+          "Exemplos práticos demonstrando cada parte",
+          "Componente customizado que demonstre a tríade"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Módulo 2: Page como componente principal",
+        "description": "Documentar e demonstrar Page como componente principal, incluindo ciclo de vida, renderização e métodos importantes.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "8"
+        ],
+        "testStrategy": "Criar página de exemplo que demonstre ciclo de vida",
+        "acceptanceCriteria": [
+          "Documentação sobre ciclo de vida de Page",
+          "Exemplo prático demonstrando métodos do ciclo de vida",
+          "BasePage documentada com explicações"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 11,
+        "title": "Módulo 2: Exemplo de aninhamento de componentes (Component Nesting)",
+        "description": "Criar exemplos práticos de aninhamento de componentes, demonstrando hierarquia e composição.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "9"
+        ],
+        "testStrategy": "Criar componente composto que demonstre aninhamento",
+        "acceptanceCriteria": [
+          "Exemplo de componente aninhado criado",
+          "Documentação sobre aninhamento",
+          "Demonstração prática funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 12,
+        "title": "Módulo 2: MVC do jeito Wicket (MVC - The Wicket Way)",
+        "description": "Documentar e demonstrar como o Wicket implementa o padrão MVC de forma única, diferente de outros frameworks.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "9",
+          "10"
+        ],
+        "testStrategy": "Criar exemplo completo demonstrando MVC no Wicket",
+        "acceptanceCriteria": [
+          "Documentação sobre MVC no Wicket",
+          "Comparação com outros frameworks",
+          "Exemplo prático completo"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 13,
+        "title": "Módulo 2: Model e sua importância",
+        "description": "Documentar a importância do Model no Wicket, incluindo separação de dados e apresentação.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "9"
+        ],
+        "testStrategy": "Criar exemplos demonstrando uso de Models",
+        "acceptanceCriteria": [
+          "Documentação sobre importância do Model",
+          "Exemplos práticos",
+          "Boas práticas documentadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 14,
+        "title": "Módulo 2: Behavior e seus usos",
+        "description": "Implementar e documentar Behaviors no Wicket, incluindo quando usar, como criar e exemplos práticos.",
+        "module": "Módulo 2: Arquitetura do Wicket",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "8"
+        ],
+        "testStrategy": "Criar Behavior customizado e testá-lo",
+        "acceptanceCriteria": [
+          "Behavior customizado criado (já existe ConfirmacaoBehavior)",
+          "Documentação sobre Behaviors",
+          "Exemplos práticos de uso"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 15,
+        "title": "Módulo 3: Revisão completa de Models",
+        "description": "Revisar todos os tipos de Models do Wicket, incluindo Model, IModel, PropertyModel, CompoundPropertyModel, etc.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "13"
+        ],
+        "testStrategy": "Criar exemplos práticos de cada tipo de Model",
+        "acceptanceCriteria": [
+          "Documentação completa sobre todos os tipos de Models",
+          "Exemplos práticos de cada tipo",
+          "Comparação entre diferentes tipos"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 16,
+        "title": "Módulo 3: Padrões e convenções de Models",
+        "description": "Documentar padrões e convenções de uso de Models no Wicket, incluindo boas práticas e anti-padrões.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "15"
+        ],
+        "testStrategy": "Aplicar padrões em exemplos práticos",
+        "acceptanceCriteria": [
+          "Documentação sobre padrões de Models",
+          "Boas práticas listadas",
+          "Anti-padrões documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 17,
+        "title": "Módulo 3: Usando Model básico",
+        "description": "Demonstrar uso do Model básico (Model.of(), Model.ofNullable(), etc.) com exemplos práticos.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "15"
+        ],
+        "testStrategy": "Criar exemplos usando Model básico",
+        "acceptanceCriteria": [
+          "Exemplos práticos de Model básico",
+          "Documentação sobre quando usar",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 18,
+        "title": "Módulo 3: Estático vs dinâmico",
+        "description": "Documentar diferenças entre Models estáticos e dinâmicos, quando usar cada um e exemplos práticos.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "15"
+        ],
+        "testStrategy": "Criar exemplos comparando estático vs dinâmico",
+        "acceptanceCriteria": [
+          "Documentação sobre diferenças",
+          "Exemplos práticos de cada tipo",
+          "Guia de quando usar cada um"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 19,
+        "title": "Módulo 3: Serialização de Models",
+        "description": "Documentar serialização de Models no Wicket, incluindo como funciona, quando é necessário e boas práticas.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "15"
+        ],
+        "testStrategy": "Testar serialização de diferentes tipos de Models",
+        "acceptanceCriteria": [
+          "Documentação sobre serialização",
+          "Exemplos de Models serializáveis",
+          "Boas práticas documentadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 20,
+        "title": "Módulo 3: PropertyModel (abordagem dinâmica)",
+        "description": "Implementar e documentar PropertyModel, demonstrando acesso dinâmico a propriedades de objetos.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "15",
+          "18"
+        ],
+        "testStrategy": "Criar exemplos usando PropertyModel",
+        "acceptanceCriteria": [
+          "Exemplos práticos de PropertyModel",
+          "Documentação sobre uso",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 21,
+        "title": "Módulo 3: CompoundPropertyModel",
+        "description": "Implementar e documentar CompoundPropertyModel, demonstrando bind automático de propriedades.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "15",
+          "20"
+        ],
+        "testStrategy": "Refatorar formulários para usar CompoundPropertyModel",
+        "acceptanceCriteria": [
+          "Exemplos práticos de CompoundPropertyModel",
+          "Formulários refatorados usando CompoundPropertyModel",
+          "Documentação sobre vantagens"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 22,
+        "title": "Módulo 3: Modelos destacáveis (Detachable Models)",
+        "description": "Documentar e implementar Detachable Models, explicando quando e por que usar.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "15",
+          "19"
+        ],
+        "testStrategy": "Criar exemplos de Detachable Models",
+        "acceptanceCriteria": [
+          "Documentação sobre Detachable Models",
+          "Exemplos práticos",
+          "Vantagens documentadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 23,
+        "title": "Módulo 3: LoadableDetachableModel",
+        "description": "Implementar LoadableDetachableModel em componentes existentes para otimização, substituindo Models que carregam dados desnecessariamente.",
+        "module": "Módulo 3: Modelos (Models)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "22"
+        ],
+        "testStrategy": "Refatorar CertidaoLoadableDetachableModel e criar novos exemplos",
+        "acceptanceCriteria": [
+          "LoadableDetachableModel implementado em componentes principais",
+          "Documentação sobre otimização",
+          "Performance melhorada"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 24,
+        "title": "Módulo 4: Entrada do usuário e formulários",
+        "description": "Revisar e documentar entrada de dados do usuário em formulários, incluindo diferentes tipos de campos.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "21"
+        ],
+        "testStrategy": "Expandir exemplos de formulários",
+        "acceptanceCriteria": [
+          "Documentação sobre entrada de dados",
+          "Exemplos de diferentes tipos de campos",
+          "Boas práticas documentadas"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 25,
+        "title": "Módulo 4: Diferenças entre GET e POST",
+        "description": "Documentar diferenças entre GET e POST no Wicket, quando usar cada um e exemplos práticos.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Criar exemplos usando GET e POST",
+        "acceptanceCriteria": [
+          "Documentação sobre GET vs POST",
+          "Exemplos práticos",
+          "Guia de quando usar cada um"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 26,
+        "title": "Módulo 4: Processamento de submissão (Submission Processing)",
+        "description": "Documentar e demonstrar processamento de submissão de formulários, incluindo onSubmit, onError, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Expandir CertidaoFormPage com exemplos de processamento",
+        "acceptanceCriteria": [
+          "Documentação sobre processamento de submissão",
+          "Exemplos práticos em CertidaoFormPage",
+          "Tratamento de erros documentado"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 27,
+        "title": "Módulo 4: Entrada de texto (Text Input)",
+        "description": "Documentar e demonstrar diferentes tipos de entrada de texto: TextField, TextArea, PasswordTextField, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Expandir ComponentesDemoPage com exemplos de texto",
+        "acceptanceCriteria": [
+          "Exemplos de todos os tipos de entrada de texto",
+          "Documentação sobre cada tipo",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 28,
+        "title": "Módulo 4: Listas (Lists) - DropDownChoice, ListView, etc.",
+        "description": "Implementar e documentar componentes de lista: DropDownChoice, ListView, RadioChoice, CheckBoxMultipleChoice, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Criar exemplos de cada tipo de lista",
+        "acceptanceCriteria": [
+          "Exemplos de todos os tipos de lista",
+          "Documentação sobre cada tipo",
+          "Uso prático em formulários"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 29,
+        "title": "Módulo 4: Componentes para submeter dados do formulário",
+        "description": "Documentar e demonstrar componentes de submissão: Button, SubmitLink, AjaxButton, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "26"
+        ],
+        "testStrategy": "Criar exemplos de cada tipo de botão",
+        "acceptanceCriteria": [
+          "Exemplos de todos os tipos de botão",
+          "Documentação sobre cada tipo",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 30,
+        "title": "Módulo 4: Validação de dados (validators built-in)",
+        "description": "Documentar e demonstrar validadores built-in do Wicket: RequiredValidator, StringValidator, NumberValidator, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Criar exemplos usando cada validador built-in",
+        "acceptanceCriteria": [
+          "Exemplos de todos os validadores built-in",
+          "Documentação sobre cada validador",
+          "Uso prático em formulários"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 31,
+        "title": "Módulo 4: Escrevendo validadores customizados",
+        "description": "Expandir validadores customizados existentes e criar novos, documentando como criar validadores customizados.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "30"
+        ],
+        "testStrategy": "Expandir DataFormatadaValidator e NumeroUnicoValidator, criar novos exemplos",
+        "acceptanceCriteria": [
+          "Validadores customizados documentados",
+          "Novos validadores criados se necessário",
+          "Guia de como criar validadores"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 32,
+        "title": "Módulo 4: Sistema de Feedback",
+        "description": "Documentar e expandir sistema de feedback, incluindo diferentes tipos de mensagens e quando usar cada um.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "26"
+        ],
+        "testStrategy": "Expandir FeedbackPanelCustomizado com mais exemplos",
+        "acceptanceCriteria": [
+          "Documentação sobre sistema de feedback",
+          "Exemplos de todos os tipos de mensagem",
+          "FeedbackPanelCustomizado expandido"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 33,
+        "title": "Módulo 4: FeedbackPanel e suas variações",
+        "description": "Documentar FeedbackPanel e suas variações, incluindo FeedbackPanel, ComponentFeedbackMessageFilter, etc.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "32"
+        ],
+        "testStrategy": "Criar exemplos de diferentes tipos de FeedbackPanel",
+        "acceptanceCriteria": [
+          "Documentação sobre FeedbackPanel",
+          "Exemplos de variações",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 34,
+        "title": "Módulo 4: Tratamento de erros de validação",
+        "description": "Documentar e implementar tratamento completo de erros de validação, incluindo exibição e recuperação.",
+        "module": "Módulo 4: Formulários (Forms)",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "31",
+          "32"
+        ],
+        "testStrategy": "Testar cenários de erro e verificar tratamento",
+        "acceptanceCriteria": [
+          "Tratamento de erros implementado",
+          "Mensagens de erro claras",
+          "Recuperação de erros funcionando"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 35,
+        "title": "Módulo 5: Agrupamento de componentes",
+        "description": "Documentar e demonstrar técnicas de agrupamento de componentes no Wicket.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "11"
+        ],
+        "testStrategy": "Criar exemplos de agrupamento",
+        "acceptanceCriteria": [
+          "Documentação sobre agrupamento",
+          "Exemplos práticos",
+          "Técnicas documentadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-03T22:43:42.126Z"
+      },
+      {
+        "id": 36,
+        "title": "Módulo 5: Componentes com WebMarkupContainer",
+        "description": "Documentar e demonstrar uso de WebMarkupContainer para agrupar e gerenciar componentes.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "35"
+        ],
+        "testStrategy": "Criar exemplos usando WebMarkupContainer",
+        "acceptanceCriteria": [
+          "Documentação sobre WebMarkupContainer",
+          "Exemplos práticos",
+          "Casos de uso documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 37,
+        "title": "Módulo 5: Container Panel",
+        "description": "Documentar e demonstrar uso de Panel para criar containers reutilizáveis.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "36"
+        ],
+        "testStrategy": "Criar Panel customizado reutilizável",
+        "acceptanceCriteria": [
+          "Panel customizado criado",
+          "Documentação sobre Panel",
+          "Exemplos de reutilização"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 38,
+        "title": "Módulo 5: Agrupamento com Fragments",
+        "description": "Implementar e documentar uso de Fragments para agrupamento dinâmico de componentes.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "36"
+        ],
+        "testStrategy": "Criar exemplo usando Fragments",
+        "acceptanceCriteria": [
+          "Exemplo de Fragment criado",
+          "Documentação sobre Fragments",
+          "Vantagens documentadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-03T23:06:44.125Z"
+      },
+      {
+        "id": 39,
+        "title": "Módulo 5: Layout consistente (BasePage, herança)",
+        "description": "Expandir e documentar BasePage, demonstrando herança de layout e reutilização.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "10"
+        ],
+        "testStrategy": "Verificar que todas as páginas usam BasePage corretamente",
+        "acceptanceCriteria": [
+          "BasePage documentada completamente",
+          "Herança funcionando corretamente",
+          "Exemplos de uso"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 40,
+        "title": "Módulo 5: Criação de componentes reutilizáveis",
+        "description": "Expandir componentes reutilizáveis existentes e criar novos, documentando padrões de reutilização.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "37"
+        ],
+        "testStrategy": "Criar novos componentes reutilizáveis",
+        "acceptanceCriteria": [
+          "Componentes reutilizáveis expandidos",
+          "Novos componentes criados",
+          "Padrões de reutilização documentados"
+        ],
+        "subtasks": []
+      },
+      {
+        "id": 41,
+        "title": "Módulo 5: Padrões de composição",
+        "description": "Documentar padrões de composição no Wicket, incluindo melhores práticas e exemplos.",
+        "module": "Módulo 5: Composição de Páginas e Componentes",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "40"
+        ],
+        "testStrategy": "Aplicar padrões em exemplos práticos",
+        "acceptanceCriteria": [
+          "Padrões documentados",
+          "Exemplos práticos",
+          "Boas práticas listadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-03T23:06:54.920Z"
+      },
+      {
+        "id": 42,
+        "title": "Módulo 6: O que são RIAs (Rich Internet Applications)",
+        "description": "Documentar conceitos de RIAs e sua importância em aplicações web modernas.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "low",
+        "status": "cancelled",
+        "dependencies": [],
+        "testStrategy": "Documentação teórica",
+        "acceptanceCriteria": [
+          "Documentação sobre RIAs",
+          "Conceitos explicados",
+          "Importância documentada"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:46:42.872Z"
+      },
+      {
+        "id": 43,
+        "title": "Módulo 6: Tecnologias de RIA",
+        "description": "Documentar diferentes tecnologias de RIA e como o Wicket se encaixa.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "low",
+        "status": "cancelled",
+        "dependencies": [
+          "42"
+        ],
+        "testStrategy": "Documentação comparativa",
+        "acceptanceCriteria": [
+          "Documentação sobre tecnologias",
+          "Comparação com Wicket",
+          "Vantagens do Wicket documentadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:46:53.591Z"
+      },
+      {
+        "id": 44,
+        "title": "Módulo 6: O que é Ajax e sua importância",
+        "description": "Documentar conceitos de Ajax e sua importância em aplicações web.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "medium",
+        "status": "cancelled",
+        "dependencies": [
+          "42"
+        ],
+        "testStrategy": "Documentação teórica",
+        "acceptanceCriteria": [
+          "Documentação sobre Ajax",
+          "Conceitos explicados",
+          "Importância documentada"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:47:04.834Z"
+      },
+      {
+        "id": 45,
+        "title": "Módulo 6: Ajax e JavaScript no Wicket",
+        "description": "Documentar como o Wicket integra Ajax e JavaScript, incluindo como funciona internamente.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "medium",
+        "status": "cancelled",
+        "dependencies": [
+          "44"
+        ],
+        "testStrategy": "Criar exemplos básicos de Ajax",
+        "acceptanceCriteria": [
+          "Documentação sobre integração",
+          "Exemplos básicos",
+          "Como funciona documentado"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:47:16.010Z"
+      },
+      {
+        "id": 46,
+        "title": "Módulo 6: XMLHttpRequest e Wicket",
+        "description": "Documentar como o Wicket usa XMLHttpRequest internamente e como isso é abstraído.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "low",
+        "status": "cancelled",
+        "dependencies": [
+          "45"
+        ],
+        "testStrategy": "Documentação técnica",
+        "acceptanceCriteria": [
+          "Documentação sobre XMLHttpRequest",
+          "Abstração do Wicket explicada",
+          "Detalhes técnicos documentados"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:47:25.866Z"
+      },
+      {
+        "id": 47,
+        "title": "Módulo 6: Wicket e Ajax (integração nativa)",
+        "description": "Documentar e demonstrar integração nativa de Ajax no Wicket, incluindo componentes Ajax built-in.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "high",
+        "status": "cancelled",
+        "dependencies": [
+          "45"
+        ],
+        "testStrategy": "Criar exemplos usando componentes Ajax",
+        "acceptanceCriteria": [
+          "Documentação sobre integração nativa",
+          "Exemplos de componentes Ajax",
+          "Funcionalidades Ajax implementadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:47:37.320Z"
+      },
+      {
+        "id": 48,
+        "title": "Módulo 6: Componentes e behaviors Ajax",
+        "description": "Implementar e documentar componentes e behaviors Ajax: AjaxButton, AjaxLink, AjaxFormComponentUpdatingBehavior, etc.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "47"
+        ],
+        "testStrategy": "Criar exemplos de cada tipo de componente/behavior Ajax",
+        "acceptanceCriteria": [
+          "Exemplos de componentes Ajax",
+          "Exemplos de behaviors Ajax",
+          "Funcionalidades implementadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T00:46:07.300Z"
+      },
+      {
+        "id": 49,
+        "title": "Módulo 6: Contribuições de cabeçalho (Header Contributions)",
+        "description": "Implementar e documentar Header Contributions, incluindo como adicionar CSS e JavaScript dinamicamente.",
+        "module": "Módulo 6: Ajax e Componentes Ricos",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "47"
+        ],
+        "testStrategy": "Criar exemplos de Header Contributions",
+        "acceptanceCriteria": [
+          "Exemplos de Header Contributions",
+          "Documentação sobre uso",
+          "CSS e JavaScript dinâmicos funcionando"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T00:51:32.242Z"
+      },
+      {
+        "id": 50,
+        "title": "Módulo 7: Autenticação (implementação completa)",
+        "description": "Implementar sistema completo de autenticação no Wicket, incluindo login, logout e gerenciamento de sessão autenticada.",
+        "module": "Módulo 7: Extras",
+        "priority": "high",
+        "status": "cancelled",
+        "dependencies": [],
+        "testStrategy": "Criar testes de autenticação",
+        "acceptanceCriteria": [
+          "Sistema de autenticação implementado",
+          "Páginas de login/logout criadas",
+          "Proteção de páginas funcionando"
+        ],
+        "updatedAt": "2026-01-04T15:45:13.938Z",
+        "subtasks": []
+      },
+      {
+        "id": 51,
+        "title": "Módulo 7: Implementando autorização",
+        "description": "Implementar sistema de autorização, incluindo roles e permissões.",
+        "module": "Módulo 7: Extras",
+        "priority": "high",
+        "status": "cancelled",
+        "dependencies": [
+          "50"
+        ],
+        "testStrategy": "Criar testes de autorização",
+        "acceptanceCriteria": [
+          "Sistema de autorização implementado",
+          "Roles e permissões funcionando",
+          "Proteção baseada em roles"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-04T15:45:30.314Z"
+      },
+      {
+        "id": 52,
+        "title": "Módulo 7: I18N e L10N (internacionalização e localização)",
+        "description": "Implementar internacionalização e localização, suportando Português e Inglês.",
+        "module": "Módulo 7: Extras",
+        "priority": "medium",
+        "status": "cancelled",
+        "dependencies": [],
+        "testStrategy": "Testar mudança de idioma",
+        "acceptanceCriteria": [
+          "I18N configurado",
+          "Arquivos de propriedades criados (pt_BR, en_US)",
+          "Mudança de idioma funcionando"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T14:48:28.352Z"
+      },
+      {
+        "id": 53,
+        "title": "Módulo 7: Customização do carregamento de recursos",
+        "description": "Documentar e implementar customização de carregamento de recursos (CSS, JS, imagens).",
+        "module": "Módulo 7: Extras",
+        "priority": "low",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Criar exemplo de customização",
+        "acceptanceCriteria": [
+          "Documentação sobre customização",
+          "Exemplo prático",
+          "Recursos customizados funcionando"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T14:48:44.352Z"
+      },
+      {
+        "id": 54,
+        "title": "Módulo 7: Converters (conversores customizados)",
+        "description": "Implementar e documentar conversores customizados para tipos de dados específicos.",
+        "module": "Módulo 7: Extras",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "24"
+        ],
+        "testStrategy": "Criar conversor customizado e testá-lo",
+        "acceptanceCriteria": [
+          "Conversor customizado criado",
+          "Documentação sobre conversores",
+          "Exemplos práticos"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T15:39:28.060Z"
+      },
+      {
+        "id": 55,
+        "title": "Módulo 7: Testes unitários com WicketTester",
+        "description": "Implementar 4 testes unitários e 1 teste de integração usando WicketTester.",
+        "module": "Módulo 7: Extras",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Criar 4 testes unitários e 1 de integração",
+        "acceptanceCriteria": [
+          "4 testes unitários criados",
+          "1 teste de integração criado",
+          "Todos os testes passando"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T17:58:26.910Z"
+      },
+      {
+        "id": 56,
+        "title": "Módulo 7: URLs (bookmarkable pages, URL encoding)",
+        "description": "Documentar e implementar bookmarkable pages e URL encoding no Wicket.",
+        "module": "Módulo 7: Extras",
+        "priority": "medium",
+        "status": "done",
+        "dependencies": [
+          "10"
+        ],
+        "testStrategy": "Criar exemplos de bookmarkable pages",
+        "acceptanceCriteria": [
+          "Documentação sobre URLs",
+          "Bookmarkable pages implementadas",
+          "URL encoding funcionando"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T19:02:04.312Z"
+      },
+      {
+        "id": 57,
+        "title": "Módulo 7: Modo de produção (Production Mode)",
+        "description": "Configurar e documentar modo de produção, incluindo otimizações e configurações necessárias.",
+        "module": "Módulo 7: Extras",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Testar aplicação em modo de produção",
+        "acceptanceCriteria": [
+          "Modo de produção configurado",
+          "Documentação sobre configuração",
+          "Otimizações aplicadas"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T19:35:56.887Z"
+      },
+      {
+        "id": 58,
+        "title": "Funcionalidade: Busca e Filtros na listagem de certidões",
+        "description": "Implementar funcionalidade de busca e filtros na página de listagem de certidões, permitindo filtrar por tipo, status, data, etc.",
+        "module": "Funcionalidades Adicionais",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [
+          "28"
+        ],
+        "testStrategy": "Testar busca e filtros com diferentes critérios",
+        "acceptanceCriteria": [
+          "Campo de busca implementado",
+          "Filtros por tipo, status, data funcionando",
+          "Interface intuitiva para busca/filtros"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T21:26:59.895Z"
+      },
+      {
+        "id": 59,
+        "title": "Funcionalidade: Relatórios com Apache POI",
+        "description": "Implementar funcionalidade de geração de relatórios de certidões usando Apache POI, permitindo exportar certidões para Excel/Word.",
+        "module": "Funcionalidades Adicionais",
+        "priority": "high",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Testar geração de relatórios e verificar formato",
+        "acceptanceCriteria": [
+          "Apache POI integrado ao projeto",
+          "Geração de relatório de certidão funcionando",
+          "Exportação para Excel/Word implementada"
+        ],
+        "subtasks": [],
+        "updatedAt": "2026-01-05T21:52:11.014Z"
+      },
+      {
+        "id": 60,
+        "title": "Documentação: Seção de Troubleshooting",
+        "description": "Criar seção de troubleshooting com problemas comuns e soluções para desenvolvimento com Wicket.",
+        "module": "Documentação",
+        "priority": "low",
+        "status": "done",
+        "dependencies": [],
+        "testStrategy": "Revisar documentação criada",
+        "acceptanceCriteria": [
+          "Seção de troubleshooting criada",
+          "Problemas comuns documentados",
+          "Soluções práticas fornecidas"
+        ],
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "version": "1.0.0",
+      "lastModified": "2026-01-05T21:52:11.016Z",
+      "taskCount": 60,
+      "completedCount": 49,
+      "tags": [
+        "master"
+      ],
+      "created": "2026-01-07T18:17:24.499Z",
+      "description": "Tasks for master context",
+      "updated": "2026-01-07T18:17:24.499Z"
+    }
+  }
+}
