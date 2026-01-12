@@ -6,7 +6,7 @@
       "description": "Configurar dependências Maven do OpenSingular (singular-form-core, singular-form-wicket) e criar estrutura de pacotes com.hvivox.certidoes.singular.*",
       "module": "Módulo 1: Fundamentos",
       "priority": "critical",
-      "status": "pending",
+      "status": "completed",
       "dependencies": [],
       "testStrategy": "Verificar que dependências foram adicionadas corretamente no pom.xml e estrutura de diretórios criada",
       "acceptanceCriteria": [

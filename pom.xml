@@ -48,6 +48,8 @@
 		<!-- Bumped to a secure Log4j 2.x release to mitigate critical CVEs (CVE-2021-44228, CVE-2021-45046, CVE-2021-45105, etc.) -->
 		<log4j.version>2.17.1</log4j.version>
 		<junit.version>4.12</junit.version>
+		<!-- OpenSingular version -->
+		<singular.version>1.8.1</singular.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
 		<wtp.version>none</wtp.version>
@@ -64,6 +66,21 @@
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-extensions</artifactId>
 			<version>${wicket.version}</version>
+		</dependency>
+		
+		<!-- OPENSINGULAR DEPENDENCIES - Módulo 1: Setup inicial -->
+		<!-- OpenSingular Core - Sistema de tipos e instâncias -->
+		<dependency>
+			<groupId>org.opensingular</groupId>
+			<artifactId>singular-form-core</artifactId>
+			<version>${singular.version}</version>
+		</dependency>
+		
+		<!-- OpenSingular Wicket Integration - Componentes Wicket do Singular -->
+		<dependency>
+			<groupId>org.opensingular</groupId>
+			<artifactId>singular-form-wicket</artifactId>
+			<version>${singular.version}</version>
 		</dependency>
 		
 		<!-- APACHE POI - Para geração de relatórios Excel e Word -->
@@ -223,6 +240,18 @@
 			</releases>
 			<snapshots>
 				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<!-- OpenSingular Maven Repository -->
+		<repository>
+			<id>opensingular-releases</id>
+			<name>OpenSingular Releases</name>
+			<url>https://oss.sonatype.org/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
