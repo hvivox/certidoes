@@ -1137,7 +1137,7 @@
         "description": "Criar primeiro SType simples com campos básicos (nome, email) para demonstrar conceitos fundamentais",
         "module": "Módulo 1: Fundamentos",
         "priority": "critical",
-        "status": "pending",
+        "status": "done",
         "dependencies": [
           "2"
         ],
@@ -1147,7 +1147,8 @@
           "SType compila e pode ser instanciado",
           "Exemplo documentado"
         ],
-        "subtasks": []
+        "subtasks": [],
+        "updatedAt": "2026-01-13T17:21:43.642Z"
       },
       {
         "id": "4",
@@ -2633,15 +2634,12 @@
     ],
     "metadata": {
       "version": "1.0.0",
-      "lastModified": "2026-01-05T21:52:11.016Z",
+      "lastModified": "2026-01-13T17:21:43.645Z",
       "taskCount": 85,
-      "completedCount": 0,
+      "completedCount": 3,
       "tags": [
-        "opensingular"
-      ],
-      "created": "2026-01-07T18:19:11.088Z",
-      "description": "Tasks for singular context",
-      "updated": "2026-01-07T18:19:11.088Z"
+        "singular"
+      ]
     }
   },
   "wicket": {
