@@ -3,6 +3,7 @@ package com.hvivox.certidoes;
 import com.hvivox.certidoes.listener.CertidoesRequestCycleListener;
 import com.hvivox.certidoes.page.*;
 import com.hvivox.certidoes.session.CertidoesSession;
+import com.hvivox.certidoes.singular.config.SingularConfiguration;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.protocol.http.WebSession;
@@ -78,6 +79,10 @@ public class WicketApplication extends WebApplication {
 		// Define o encoding padrão para arquivos de markup (HTML)
 		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
 
+		// MÓDULO 1 - TAREFA 2: Configurar OpenSingular
+		// Configura o SingularServerConfiguration e registra pacotes
+		configurarOpenSingular();
+
 		// MÓDULO 2 - ITEM 2: Adicionar RequestCycleListener
 		// Intercepta o ciclo de requisição para logging e monitoramento
 		getRequestCycleListeners().add(new CertidoesRequestCycleListener());
@@ -90,6 +95,32 @@ public class WicketApplication extends WebApplication {
 
 		// MÓDULO 7 - ITEM 57: Configurar modo de produção
 		configurarModoProducao();
+	}
+
+	/**
+	 * MÓDULO 1 - TAREFA 2: CONFIGURAÇÃO DO OPENSINGULAR
+	 * 
+	 * Configura o OpenSingular no WicketApplication.
+	 * 
+	 * Na versão 1.8.1 do OpenSingular, a configuração básica é simples:
+	 * - O OpenSingular detecta automaticamente os SPackages no classpath
+	 * - Não é necessária configuração explícita para uso básico de STypes/SInstances
+	 * - Configurações avançadas (persistência, workflow) serão adicionadas nos módulos correspondentes
+	 * 
+	 * Esta inicialização garante que o OpenSingular esteja pronto para uso
+	 * quando os primeiros STypes forem criados.
+	 * 
+	 * BENEFÍCIOS:
+	 * - Sistema de tipos estruturado (SType)
+	 * - Instâncias tipadas (SInstance)
+	 * - Separação entre dados e apresentação
+	 * - Validação integrada
+	 * - Serialização JSON automática
+	 */
+	private void configurarOpenSingular() {
+		// Inicializar configuração básica do OpenSingular
+		// O OpenSingular detectará automaticamente os SPackages quando necessário
+		SingularConfiguration.initialize();
 	}
 
 	/**
