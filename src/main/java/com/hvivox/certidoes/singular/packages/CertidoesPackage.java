@@ -1,5 +1,6 @@
 package com.hvivox.certidoes.singular.packages;
 
+import org.opensingular.form.SInfoPackage;
 import org.opensingular.form.SPackage;
 
 /**
@@ -14,17 +15,14 @@ import org.opensingular.form.SPackage;
  * @author OpenSingular Implementation
  * @version 1.0
  */
+@SInfoPackage(name = "certidoes")
 public class CertidoesPackage extends SPackage {
 
     /**
-     * Nome do pacote (usado para identificação)
-     */
-    public static final String NAME = "certidoes";
-
-    /**
      * Construtor padrão do pacote
+     * O nome do pacote é definido pela anotação @SInfoPackage
      */
     public CertidoesPackage() {
-        super(NAME);
+        super();
     }
 }
